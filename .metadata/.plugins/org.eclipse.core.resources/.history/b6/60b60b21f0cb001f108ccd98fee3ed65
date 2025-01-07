@@ -1,0 +1,381 @@
+package pageModules;
+
+import org.apache.commons.lang3.RandomStringUtils;
+
+import base.BasicFunctions;
+import pageObjMod.pom;
+import webElement.LoginPageXPaths;
+ // Import the factory class
+
+public class LoginPage extends BasicFunctions {
+
+
+    public void DirectSignIn() throws InterruptedException {
+    //	LoginPageXPaths loginPage = new LoginPageXPaths(driver);
+    	
+    	
+    	try {
+    	
+    	fluentWait(pom.getInstanceLoginXP().userName,10);
+    	 click(pom.getInstanceLoginXP().userName);
+    	 sendKeys(pom.getInstanceLoginXP().userName,"check");
+    	 System.out.println("check");
+    	}
+    	
+    	catch(Exception e){
+    e.printStackTrace();   
+   		implicitWait(30);	
+   		explicitWait(loginPage.signinBtn,30);
+       	click(loginPage.signinBtn);
+      	 
+       	if (loginPage.invaidUserName.isDisplayed()) {
+			
+			System.out.println("User is unable to enter with direct signin button");
+			loginPage.alertOkBtn.click();
+			
+	}}
+    		
+    	
+       	
+   	 
+    		
+    	}
+
+	
+
+	public void DirectPassEntry() throws InterruptedException {
+		LoginPageXPaths loginPage = new LoginPageXPaths(driver);
+
+      	 implicitWait(30);
+		 explicitWait(loginPage.userpass,30);
+       	 click(loginPage.userpass);
+       	 implicitWait(30);
+       	 
+       	 sendKeys(loginPage.userpass,"Coempt@bpu");
+			    
+       	implicitWait(30);	
+   		explicitWait(loginPage.signinBtn,30);
+       	click(loginPage.signinBtn);
+    	implicitWait(30);	
+       	
+		if (loginPage.invaidUserName.isDisplayed()) {
+			
+			System.out.println("User is unable to enter with direct userpass");
+			implicitWait(30);	
+	   		explicitWait(loginPage.alertOkBtn,30);
+			loginPage.alertOkBtn.click();
+			implicitWait(30);	
+			loginPage.userpass.clear();
+			
+	}}
+	
+	public void DirectUserEntry() throws InterruptedException {
+		LoginPageXPaths loginPage = new LoginPageXPaths(driver);
+
+     	 implicitWait(30);
+		
+     	 explicitWait(loginPage.userName,30);
+      	
+     	 click(loginPage.userName);
+      	
+      	 implicitWait(30);
+      	 
+      	 sendKeys(loginPage.userName,"admin");
+			    
+      	implicitWait(30);	
+  		explicitWait(loginPage.signinBtn,30);
+      	click(loginPage.signinBtn);
+      	
+		if (loginPage.invaidPassword.isDisplayed()) {
+			
+			System.out.println("User is unable to enter with direct username");
+			implicitWait(30);	
+	   		explicitWait(loginPage.alertOkBtn,30);
+			loginPage.alertOkBtn.click();
+			implicitWait(30);	
+			loginPage.userName.clear();
+			
+	}}
+	
+	public void LoginInFail() throws InterruptedException {
+		LoginPageXPaths loginPage = new LoginPageXPaths(driver);
+
+    	 implicitWait(30);
+		
+    	 explicitWait(loginPage.userName,30);
+     	
+    	 click(loginPage.userName);
+     	
+     	 implicitWait(30);
+     	 
+     	 sendKeys(loginPage.userName,RandomStringUtils.randomAlphanumeric(8));
+			    
+     	 implicitWait(30);
+		 explicitWait(loginPage.userpass,30);
+       	 click(loginPage.userpass);
+       	 implicitWait(30);
+       	 
+       	 sendKeys(loginPage.userpass,RandomStringUtils.randomAlphanumeric(8));
+			    
+       	implicitWait(30);	
+   		explicitWait(loginPage.signinBtn,30);
+       	click(loginPage.signinBtn);
+    	implicitWait(30);	
+     	
+		if (loginPage.loginFail.isDisplayed()) {
+			
+			System.out.println("User is unable to enter with direct username");
+			implicitWait(30);	
+	   		explicitWait(loginPage.alertOkBtn,30);
+			loginPage.alertOkBtn.click();
+			implicitWait(30);	
+			loginPage.userName.clear();
+			implicitWait(30);
+			loginPage.userpass.clear();
+	}}
+	
+
+	public void Login() throws InterruptedException {
+		LoginPageXPaths loginPage = new LoginPageXPaths(driver);	
+
+    	 implicitWait(30);
+		
+    	 explicitWait(loginPage.userName,30);
+     	
+    	 click(loginPage.userName);
+     	
+     	 implicitWait(30);
+     	 
+     	 sendKeys(loginPage.userName,"admin");
+			    
+     	 implicitWait(30);
+		 explicitWait(loginPage.userpass,30);
+       	 click(loginPage.userpass);
+       	 implicitWait(30);
+       	 
+       	 sendKeys(loginPage.userpass,"Coempt@bpu");
+			    
+       	implicitWait(30);	
+   		explicitWait(loginPage.signinBtn,30);
+       	click(loginPage.signinBtn);
+    	implicitWait(30);	
+    	explicitWait(loginPage.loginTags,30);
+		if (loginPage.loginTags.isDisplayed()) {
+			
+			System.out.println("The Admin Login Page has login and the landing page of KNRUHS is displayed");
+			implicitWait(30);	
+	   		
+	}}
+	
+	
+	
+	public void Logout() {		
+		LoginPageXPaths loginPage = new LoginPageXPaths(driver);
+
+		implicitWait(30);	
+   		explicitWait(loginPage.loginTags,30);		
+		
+			if (loginPage.loginTags.isDisplayed()) {
+				
+				implicitWait(30);	
+		   		explicitWait(loginPage.loginTags,30);
+				
+				click(loginPage.loginTags);
+				
+				implicitWait(30);	
+		   		explicitWait(loginPage.signOutBtn,30);
+		   		click(loginPage.signOutBtn);
+			
+			
+				
+			}
+			}
+			
+	
+//	if (invaidUserName.isDisplayed()) {
+//		WebElement alertOkBtn = driver.findElement(By.xpath("//button[@type='button' and text()='OK']"));
+//		
+//		System.out.println("The Admin Login Page has unable to login with invalid userpass");
+//		alertOkBtn.click();
+//		
+//		WebElement signoutBtn = driver.findElement(By.xpath("//span[contains(text(),'Sign out')]")));
+//		signoutBtn.click();
+//	
+//	
+//		
+//	}
+//	
+	
+//	
+//	public void ReportCardCheck(long regno,String examdate,String awardName,String semester,long regulation,String examType) {		
+//		
+//
+//		implicitWait(30);	
+//   		explicitWait(loginPage.loginTags,30);		
+//		
+//			if (loginPage.loginTags.isDisplayed()) {
+//				
+//				implicitWait(30);	
+//		   		explicitWait(loginPage.loginTags,30);
+//				
+//		   		jsScroll(loginPage.reportCardOption);
+//			
+//				implicitWait(30);	
+//		   		explicitWait(loginPage.reportCardOption,30);
+//		   		click(loginPage.reportCardOption);
+//			
+//		   		implicitWait(30);	
+//		   		explicitWait(loginPage.reportCardEnroll,30);
+//				
+//	    		jsScroll(loginPage.reportCardEnroll);
+//				
+//				implicitWait(30);	
+//		   		explicitWait(loginPage.reportCardEnroll,30);
+//		   		click(loginPage.reportCardEnroll);
+//		
+//		   		implicitWait(30);	
+//		   		explicitWait(loginPage.enrollNo,30);
+//        		click(loginPage.enrollNo);
+//		   		
+//		   		String str = String.valueOf(regno);
+//		   		System.out.println(str); 
+//		   		implicitWait(30);	
+//		   		explicitWait(loginPage.enrollNo,30);
+//		   		sendKeys(loginPage.enrollNo, str);
+//		   		implicitWait(30);	
+//////		   		explicitWait(loginPage.submitBtn,30);
+//////		   		click(loginPage.submitBtn);
+////		   		
+//		   		explicitWait(loginPage.examSeries,30);
+//		   		click(loginPage.examSeries);
+//		   		
+//		   		explicitWait(loginPage.examSeries,30);
+//		   		click(loginPage.examSeries);
+////		   		
+//		   		explicitWait(loginPage.examSeries,30);
+//		   		click(loginPage.examSeries);
+////		   	
+////		if(loginPage.alertOk.isDisplayed()) {
+////		   		
+////		   		implicitWait(30);	
+////		   		explicitWait(loginPage.alertOk,30);
+////		   		click(loginPage.alertOk);
+////			}
+//
+//		
+//		   		
+//		   		implicitWait(30);	
+//		   		explicitWait(loginPage.examSeries,30);
+//    	   		click(loginPage.examSeries);
+////		   		implicitWait(30);	
+////		   		
+////		   	//li[contains(@class,'select2-results__option')
+//		   		WebElement examDateOption = driver.findElement(By.xpath("//li[@role='option' and text()='" + examdate + "']"));
+//		   		explicitWait(examDateOption,30);
+//		   		
+//		   		click(examDateOption);
+//		    	
+////		   		dropDownClick(loginPage.examSeriesOption,examdate);
+//		   		
+//		   		implicitWait(30);	
+//		   		explicitWait(loginPage.awardName,30);
+//		   		click(loginPage.awardName);
+////
+////		   	//li[contains(@class,'select2-results__option') and text()!='Select']
+////		   	// Construct XPath with the dynamic text
+//		    	WebElement awardOption = driver.findElement(By.xpath("//li[@role='option' and text()='" + awardName + "']"));
+//		    	click(awardOption);
+//
+////
+//		   		implicitWait(30);	
+//		   		explicitWait(loginPage.yearSession,30);
+//		   		click(loginPage.yearSession);
+////		   		
+////		   		implicitWait(30);	
+////		   		
+////		   	//li[contains(@class,'select2-results__option')
+//		   		WebElement yearSessionOption  = driver.findElement(By.xpath("//li[@role='option' and text()='" + semester + "']"));
+//		    	click(yearSessionOption);		    	
+////		    	
+//		    	implicitWait(30);	
+//		   		explicitWait(loginPage.regulation,30);
+//		   		click(loginPage.regulation);
+//		   		implicitWait(30);	
+//		    	
+//		   		WebElement regulationOption  = driver.findElement(By.xpath("//li[@role='option' and text()='" + regulation + "']"));
+//		    	click(regulationOption);		    	
+//		    	
+//	    	
+//		    	implicitWait(30);	
+//		   		explicitWait(loginPage.examType,30);
+//		   		click(loginPage.examType);
+//	    		implicitWait(30);	
+//		    	
+//		   		WebElement examTypeOption  = driver.findElement(By.xpath("//li[@role='option' and text()='" + examType + "']"));
+//		    	click(examTypeOption);	
+//		    	
+//		    	implicitWait(30);	
+//		   		explicitWait(loginPage.submitBtn,30);
+//		   		click(loginPage.submitBtn);
+//	    	
+//     	   		String str = String.valueOf(regno);
+//		   		System.out.println(str); 
+//		   		implicitWait(30);	
+//		   		explicitWait(loginPage.enrollNo,30);
+//		   		sendKeys(loginPage.enrollNo, str );
+//	   		
+//}}
+	
+	
+//			
+	public void SignIn() throws InterruptedException {	
+			//input[@id='username']
+
+//	Actions actions = new Actions(driver);
+//	actions.moveToElement(loginPage.userName).click().perform();
+
+//
+//		WebElement check= driver.findElement(By.xpath("//label[@class='form-label']"));
+//		
+//		check.getText();
+//		System.out.println(check);
+		
+	//fluentWait(loginPage.userName);
+//	
+//	
+//	
+//
+//	
+//	
+//		Thread.sleep(5000);
+//    fluentWait(loginPage.userName);
+//	click( loginPage.userName);
+//	implicitWait( loginPage.userName, 5);
+//	sendKeys(loginPage.userName, "admin");
+//	
+//	
+		
+
+			
+
+//	implicitWait( loginPage.userpass, 10);
+	
+	}
+	
+	
+
+
+	
+	
+
+
+
+  
+}
+
+	
+
+
+    
+    
+

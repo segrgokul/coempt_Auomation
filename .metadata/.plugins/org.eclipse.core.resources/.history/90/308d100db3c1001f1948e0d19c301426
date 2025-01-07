@@ -1,0 +1,122 @@
+package runner_Execution;
+
+import java.io.IOException;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.beust.jcommander.Parameter;
+
+import org.testng.annotations.DataProvider;
+import java.io.IOException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
+import browsers.BrowserManager;
+import dataProcessing.ReadExcelData;
+import dataProcessing.ReadExcelFiles;
+import pageModules.LoginPage;
+
+public class Exceution extends BrowserManager {
+
+	public static WebDriver driver;
+
+	LoginPage login = new LoginPage();
+	
+//	@DataProvider(name ="excel")
+//	public Object[][]ReadExcel() throws IOException,InvalidFormatException {
+//		return dataProcessing.ReadExcelData.readexcel();
+//		
+//		
+//	
+//	}
+	
+	@Test(priority = 1, enabled = true,dataProvider="excel", dataProviderClass = ReadExcelFiles.class)
+	public void testCase2(String Regno,String RegStd) throws InterruptedException, IOException {
+		login.Login();
+		
+		
+	//	login.ReportCardCheck(Regno,RegStd);
+		ReadExcelFiles.readexcel();
+	}
+	
+	@Test(priority = 1, enabled = false)
+	public void testCase1() throws InterruptedException {
+		System.out.println("This is the A Normal Test Case");
+		login.DirectSignIn();
+		login.DirectPassEntry();
+		login.DirectUserEntry();
+		login.LoginInFail();
+		login.Login();
+		login.Logout();
+//		login.Login();
+
+	}
+
+	
+//
+//	
+//	 public Object[][] readExcel() throws InvalidFormatException, IOException {
+//	  System.out.println("Reading data from the Excel file..."); 
+//	  String excelPath =System.getProperty("user.dir") + "/src/test/resources/dataSheets/ResulProcess.xlsx"; 
+//	  return dataProcessing.ReadExcelFiles.readExcel(excelPath, "mds");
+//	  }
+
+	
+
+
+	@BeforeMethod
+	public void beforeMethod() throws IOException {
+		System.out.println("This will execute foruth before every Method and after the before class");
+//		ReadExcelData.ExcelReader(C:\\Users\\User\\Downloads\\DumpScore.xlsx,"mds");
+	//	ReadExcelData.getColumnData()
+	
+	}
+
+	@AfterMethod
+	public void afterMethod() {
+		System.out.println("This will execute after every Method");
+	}
+
+	@BeforeClass
+	public void beforeClass() {
+		System.out.println("This will execute third before the Class and after the befortest");
+	}
+
+	@AfterClass
+	public void afterClass() {
+		System.out.println("This will execute after the Class");
+
+	}
+
+	@BeforeTest
+	public void beforeTest() {
+		System.out.println("This will execute second before the Test and after the before test suite");
+	}
+
+	@AfterTest
+	public void afterTest() {
+		System.out.println("This will execute after the Test");
+
+	}
+
+	@BeforeSuite
+	public void beforeSuite() {
+		System.out.println("This will execute first before the Test Suite");
+		Browser_Launch();
+	}
+
+	@AfterSuite
+	public void afterSuite() {
+		System.out.println("This will execute after the Test Suite");
+	}
+}

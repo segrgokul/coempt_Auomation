@@ -1,0 +1,62 @@
+package pageObjMod;
+
+	import org.openqa.selenium.WebDriver;
+
+import webElement.LoginPageXPaths;
+import webElement.ReportEnrollmentPageXpaths;
+
+
+	public class pom  {
+		 static WebDriver driver;
+		private static pom instance; // Singleton instance
+		public static LoginPageXPaths loginXP ;
+		private static ReportEnrollmentPageXpaths EnrollmentXP;
+
+		    // Use a different name for the static instance
+
+		    // Constructor
+		   public pom(WebDriver driver) {
+		        // Initialize the driver when the class is instantiated
+		        pom.driver = driver;
+		    }
+
+
+		   public static pom getInstance(WebDriver driver) {
+		        if (instance == null) {
+		            // Only create a new instance if it's not already created
+		            instance = new pom(driver);
+		        }
+		        return instance;
+		    }
+
+
+
+	    // Method to get the instance of LoginPageXPath
+	    public static LoginPageXPaths getInstanceLoginXP() {
+	        // If the instance is null, create a new instance
+	
+	    	if (driver == null) {
+	    	    System.out.println("Driver is null!");
+	    	} else {
+	    	    System.out.println("Driver is initialized properly.");
+	    	}
+
+	    	if (loginXP == null) {
+	        	loginXP = new LoginPageXPaths(driver);
+	        	return loginXP;
+	        }
+	    
+
+	        return loginXP; // Return the instance
+	    }
+
+		public static ReportEnrollmentPageXpaths getInstanceEnrollXP() {
+		
+					if (EnrollmentXP == null) {
+						EnrollmentXP = new ReportEnrollmentPageXpaths(driver);
+					}
+				
+			
+			return EnrollmentXP;
+		}
+	}

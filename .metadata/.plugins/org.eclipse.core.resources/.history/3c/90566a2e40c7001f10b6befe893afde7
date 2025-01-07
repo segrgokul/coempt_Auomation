@@ -1,0 +1,176 @@
+package runner_Execution;
+
+import java.io.IOException;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import browsers.BrowserManager;
+import pageModules.LoginPage;
+import pageModules.ReportCoursePage;
+import pageModules.ReportEnrollmentPage;
+import pageModules.SettingsAssingCoursePage;
+
+public class Exceution extends BrowserManager {
+
+public Object[][] data1;
+public Object[][] data2;
+
+	public static WebDriver driver;
+
+	LoginPage login = new LoginPage();
+	ReportEnrollmentPage Enrollment = new  ReportEnrollmentPage();
+	ReportCoursePage Coursewise = new  ReportCoursePage();
+	SettingsAssingCoursePage SetAssignCourse = new SettingsAssingCoursePage();
+	
+	
+	@DataProvider(name ="excel")
+	public Object[][]ReadExcelEnroll() throws IOException,InvalidFormatException {
+		
+//		Object[][] data = dataProcessing.ReadExcelFiles.readExcel("file1","file1");
+	
+		data1 = dataProcessing.ReadExcelFiles.readExcel("excel.file1", "excel.file1");
+
+		
+		
+//	System.out.println("Data size: " + data.length);
+for (Object[] row : data1) {
+//    System.out.println(Arrays.toString(row));
+}
+return data1;
+	} 
+	
+	
+	@DataProvider(name ="course")
+	public Object[][]ReadExcelCourse() throws IOException,InvalidFormatException {
+		
+//		Object[][] data = dataProcessing.ReadExcelFiles.readExcel("file1","file1");
+	
+	
+
+		data2= dataProcessing.ReadExcelFiles.readExcel("excel.file2", "excel.file2");
+		
+//	System.out.println("Data size: " + data.length);
+for (Object[] row : data2) {
+//    System.out.println(Arrays.toString(row));
+}
+return data2;
+	} 
+
+	
+	
+	@Test(priority = 2, enabled = true,dataProvider="excel")
+	public void testCase2(Object Regno,Object examdate,Object awardName,Object  semester,Object  regulation,Object  examType,Object  paper1,Object  paper2,Object  paper3,Object  theroryExam,Object  praticalExam,Object  examTotal) throws InterruptedException, IOException {
+		
+		System.out.println("Starting testCase2 execution for: " + Regno);
+		
+
+		Enrollment.ReportCardEnrollNavigation();
+	
+		Enrollment.ReportCardCheck(Regno,examdate,awardName,semester,regulation,examType,paper1,paper2,paper3,theroryExam,praticalExam,examTotal);
+//		SetAssignCourse.check()
+		Enrollment.ReportCardCheckData(Regno, examdate, awardName, semester, regulation, examType, paper1, paper2, paper3, theroryExam, praticalExam, examTotal);
+		System.out.println("Reached end of testCase2 execution for: " + Regno);
+
+		
+//		System.out.println("This is the A Normal Test Case2");
+	}
+	
+	@Test(priority = 3, enabled = false)
+	public void testCase1() throws InterruptedException {
+		System.out.println("This is the A Normal Test Case1");
+		
+		login.DirectSignIn();
+		login.DirectPassEntry();
+		login.DirectUserEntry();
+		login.LoginInFail();
+		login.Login();
+		login.Logout();
+		login.Login();
+		Enrollment.ReportCardNavigation();
+
+	}
+	
+	@Test(priority = 1, enabled = true,dataProvider="course")
+
+	public void testCase3(Object clgCode,Object examdate,Object awardName,Object  semester,Object  regulation,Object  examType,Object  paper1,Object  paper2,Object  paper3,Object  theroryExam,Object  praticalExam,Object  examTotal) throws InterruptedException, IOException {
+		System.out.println("This is the A Normal Test Case3");
+		
+		
+		login.Login();
+		Coursewise.ReportCardNavigation();
+		Coursewise.ReportCardCourseNavigation();
+		Coursewise.ReportCardCheckCoursewise(clgCode, examdate, awardName, semester, regulation, examType, paper1, paper2, paper3, theroryExam, praticalExam, examTotal);
+
+	}
+	
+//
+//	
+//	 public Object[][] readExcel() throws InvalidFormatException, IOException {
+//	  System.out.println("Reading data from the Excel file..."); 
+//	  String excelPath =System.getProperty("user.dir") + "/src/test/resources/dataSheets/ResulProcess.xlsx"; 
+//	  return dataProcessing.ReadExcelFiles.readExcel(excelPath, "mds");
+//	  }
+
+	
+
+
+	@BeforeMethod
+	public void beforeMethod() throws IOException, InterruptedException {
+		System.out.println("This will execute foruth before every Method and after the before class");
+//		ReadExcelData.ExcelReader(C:\\Users\\User\\Downloads\\DumpScore.xlsx,"mds");
+	//	ReadExcelData.getColumnData()
+		
+	
+	}
+
+	@AfterMethod
+	public void afterMethod() {
+		System.out.println("This will execute after every Method");
+	}
+
+	@BeforeClass
+	public void beforeClass() {
+		System.out.println("This will execute third before the Class and after the befortest");
+	}
+
+	@AfterClass
+	public void afterClass() {
+		System.out.println("This will execute after the Class");
+
+	}
+
+	@BeforeTest
+	public void beforeTest() {
+		System.out.println("This will execute second before the Test and after the before test suite");
+		Browser_Launch();
+	}
+
+	@AfterTest
+	public void afterTest() {
+		System.out.println("This will execute after the Test");
+
+	}
+
+	@BeforeSuite
+	public void beforeSuite() {
+		System.out.println("This will execute first before the Test Suite");
+//		report = new 
+	}
+
+	@AfterSuite
+	public void afterSuite() {
+		System.out.println("This will execute after the Test Suite");
+		
+	}
+}

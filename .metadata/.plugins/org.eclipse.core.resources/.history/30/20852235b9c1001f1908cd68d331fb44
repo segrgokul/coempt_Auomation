@@ -1,0 +1,54 @@
+package dataProcessing;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ReadExcelData {
+
+	  public static Object[][] readexcel() throws IOException {
+	  
+	 FileInputStream excel = new FileInputStream("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\dataSheets\\ResulProcess.xlsx");
+	  //      D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\dataSheets\\ResulProcess.xlsx
+	        // Creating a workbook
+	        XSSFWorkbook workbook = new XSSFWorkbook(excel);
+
+	        // Getting the sheet
+	        XSSFSheet sheet = workbook.getSheet("Sheet1");
+	        
+	        
+	        
+	        int rowCount = sheet.getLastRowNum();
+	        int columnCount = sheet.getRow(0).getPhysicalNumberOfCells();
+
+	        Object[][] data = new Object[rowCount][columnCount];
+	for (int i =1;i<=rowCount;i++) {
+		XSSFRow row=sheet.getRow(i);
+System.out.println(i);
+		for (int j =0;j<columnCount;j++) {
+			XSSFCell cell=sheet.getRow(j).getCell(j);
+			DataFormatter formatter = new DataFormatter();
+			String val = formatter.formatCellValue(cell);
+			if (val != null && !val.trim().isEmpty()) {
+                data[i - 1][j] = val;
+            } else {
+                // Optionally, set null or skip
+                data[i - 1][j] = null;
+            }
+		
+
+		
+		}}
+	        
+	        
+	        return data;
+
+
+}
+
+}

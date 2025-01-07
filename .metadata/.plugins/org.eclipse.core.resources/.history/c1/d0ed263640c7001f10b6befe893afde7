@@ -1,0 +1,117 @@
+package pageModules;
+
+import java.io.IOException;
+
+import org.openqa.selenium.interactions.Actions;
+
+import base.BasicFunctions;
+import webElement.ReportCoursePageXpaths;
+
+public class ReportCoursePage extends BasicFunctions {
+
+	
+	public void ReportCardNavigation() {
+		ReportCoursePageXpaths CoursePage = new ReportCoursePageXpaths(driver);
+		implicitWait(driver, 30);
+		explicitWait(driver, CoursePage.loginTags, 30);
+
+		if (CoursePage.loginTags.isDisplayed()) {
+
+			implicitWait(driver, 30);
+			explicitWait(driver, CoursePage.loginTags, 30);
+
+			jsScroll(driver, CoursePage.reportCardOption);
+
+			implicitWait(driver, 30);
+			explicitWait(driver, CoursePage.reportCardOption, 30);
+			click(driver, CoursePage.reportCardOption);
+		}
+	}
+	
+	
+	
+	public void ReportCardCourseNavigation() {
+		ReportCoursePageXpaths CoursePage = new ReportCoursePageXpaths(driver);
+		implicitWait(driver, 30);
+		explicitWait(driver, CoursePage.reportCardCourse, 30);
+
+		jsScroll(driver, CoursePage.reportCardCourse);
+
+		implicitWait(driver, 30);
+		explicitWait(driver, CoursePage.reportCardCourse, 30);
+		click(driver, CoursePage.reportCardCourse);
+
+	}
+	
+	public void ReportCardCheckCoursewise(Object clgCode,Object examdate,Object awardName,Object  semester,Object  regulation,Object  examType,Object  paper1,Object  paper2,Object  paper3,Object  theroryExam,Object  praticalExam,Object  examTotal) throws InterruptedException, IOException
+	
+	{
+		
+	
+		
+			ReportCoursePageXpaths CoursePage = new ReportCoursePageXpaths(driver);
+			Actions action = new Actions(driver);
+			Object[][] excelData = dataProcessing.ReadExcelFiles.readExcel("excel.file2", "excel.file2");
+		//	Object[][] excelData = dataProcessing.ReadExcelFiles.readExcel("excel.file1", "excel.file1");
+			
+			implicitWait(driver, 30);
+			explicitWait(driver, CoursePage.clgDropDown, 30);
+
+			click(driver, CoursePage.clgDropDown);
+			implicitWait(driver, 30);
+			explicitWait(driver, CoursePage.clgTextBox, 30);
+			
+			implicitWait(driver, 30);
+			explicitWait(driver, CoursePage.clgTextBox, 30);
+			click(driver, CoursePage.clgTextBox);
+Thread.sleep(1000);
+			implicitWait(driver, 30);
+			sendKeys(CoursePage.clgTextBox,String.valueOf(clgCode));
+			implicitWait(driver, 30);
+			explicitWait(driver, CoursePage.clgDropDownResults.get(0), 30);
+			
+			if(CoursePage.clgDropDownResults.get(0).isDisplayed()) {
+				
+				click(driver, CoursePage.clgDropDownResults.get(0));
+				
+			}
+			else {
+				System.out.println("eeror");
+			}
+			
+			
+			ReportEnrollmentPage reportEnrollmentPage = new ReportEnrollmentPage();
+			reportEnrollmentPage.ReportCardCheckData(clgCode, examdate, awardName, semester, regulation, examType, paper1, paper2, paper3, theroryExam, praticalExam, examTotal);
+				
+			
+}
+			
+	
+		
+		
+		
+		public double objectToDataType(Object obj) {
+		if (obj == null) {
+			throw new IllegalArgumentException("Object cannot be null");
+		}
+
+		if (obj instanceof Double) {
+			return (Double) obj;
+		} else if (obj instanceof Integer) {
+			return ((Integer) obj).doubleValue();
+		} else if (obj instanceof Float) {
+			return ((Float) obj).doubleValue();
+		} else if (obj instanceof Long) {
+			return ((Long) obj).doubleValue();
+		} else if (obj instanceof String) {
+			String str = (String) obj;
+			try {
+				return Double.parseDouble(str);
+			} catch (NumberFormatException e) {
+				throw new IllegalArgumentException("String value cannot be converted to double: " + str);
+			}
+		} else {
+			throw new IllegalArgumentException("Unsupported object type: " + obj.getClass().getSimpleName());
+		}
+	}
+}

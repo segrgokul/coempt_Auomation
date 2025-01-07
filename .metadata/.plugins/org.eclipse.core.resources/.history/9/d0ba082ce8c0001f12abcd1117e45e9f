@@ -1,0 +1,34 @@
+package dataProcessing;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.google.common.collect.Table.Cell;
+
+public class ReadExcelFiles {
+public static void readexcel() throws IOException{
+//Path of the excel file
+FileInputStream fs = new FileInputStream("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\dataSheets\\ResulProcess.xlsx");
+//Creating a workbook
+XSSFWorkbook workbook = new XSSFWorkbook(fs);
+XSSFSheet sheet = workbook.getSheet("mds");
+Row row = sheet.getRow(0);
+Cell cell = (Cell) row.getCell(0);
+System.out.println(sheet.getRow(0).getCell(0));
+Row row1 = sheet.getRow(1);
+Cell cell1 = (Cell) row1.getCell(1);
+System.out.println(sheet.getRow(0).getCell(1));
+//Row row2 = sheet.getRow(1);
+//Cell cell2 = row2.getCell(1);
+//System.out.println(sheet.getRow(1).getCell(0));
+//Row row3 = sheet.getRow(1);
+//Cell cell3 = row3.getCell(1);
+//System.out.println(sheet.getRow(1).getCell(1));
+//String cellval = cell.getStringCellValue();
+//System.out.println(cellval);
+}
+}

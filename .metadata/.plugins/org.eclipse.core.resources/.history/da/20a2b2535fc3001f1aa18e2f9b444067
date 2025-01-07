@@ -1,0 +1,181 @@
+package pageModules;
+
+import java.awt.image.BufferedImage;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import base.BasicFunctions;
+import webElement.ReportEnrollmentPageXpaths;
+
+public class ReportEnrollmentPage extends BasicFunctions{
+
+	public void ReportCardCheck(long regno,String examdate,String awardName,String semester,long regulation,String examType) {		
+		ReportEnrollmentPageXpaths enrollPage = new	ReportEnrollmentPageXpaths(driver);
+		
+
+		implicitWait(driver,30);	
+   		explicitWait(driver,enrollPage.loginTags,30);		
+		
+			if (enrollPage.loginTags.isDisplayed()) {
+				
+				implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.loginTags,30);
+				
+		   		jsScroll(driver,enrollPage.reportCardOption);
+			
+				implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.reportCardOption,30);
+		   		click(driver,enrollPage.reportCardOption);
+			
+		   		implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.reportCardEnroll,30);
+				
+	    		jsScroll(driver,enrollPage.reportCardEnroll);
+				
+				implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.reportCardEnroll,30);
+		   		click(driver,enrollPage.reportCardEnroll);
+		
+		   		implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.enrollNo,30);
+        		click(driver,enrollPage.enrollNo);
+		   		
+		   		String str = String.valueOf(regno);
+		   		System.out.println(str); 
+		   		implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.enrollNo,30);
+		   		sendKeys(enrollPage.enrollNo, str);
+		   		implicitWait(driver,30);	
+////		   		explicitWait(driver,enrollPage.submitBtn,30);
+////		   		click(driver,enrollPage.submitBtn);
+//		   		
+		   		explicitWait(driver,enrollPage.examSeries,30);
+		   		click(driver,enrollPage.examSeries);
+		   		
+		   		explicitWait(driver,enrollPage.examSeries,30);
+		   		click(driver,enrollPage.examSeries);
+//		   		
+//		   	
+//		if(enrollPage.alertOk.isDisplayed()) {
+//		   		
+//		   		implicitWait(driver,30);	
+//		   		explicitWait(driver,enrollPage.alertOk,30);
+//		   		click(driver,enrollPage.alertOk);
+//			}
+
+		
+		   		
+		   		implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.examSeries,30);
+    	   		click(driver,enrollPage.examSeries);
+//		   		implicitWait(driver,30);	
+//		   		
+//		   	//li[contains(@class,'select2-results__option')
+		   		WebElement examDateOption = driver.findElement(By.xpath("//li[@role='option' and text()='" + examdate + "']"));
+		   		explicitWait(driver,examDateOption,30);
+		   		
+		   		click(driver,examDateOption);
+		    	
+//		   		dropDownClick(driver,enrollPage.examSeriesOption,examdate);
+		   		
+		   		implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.awardName,30);
+		   		click(driver,enrollPage.awardName);
+//
+//		   	//li[contains(@class,'select2-results__option') and text()!='Select']
+//		   	// Construct XPath with the dynamic text
+		    	WebElement awardOption = driver.findElement(By.xpath("//li[@role='option' and text()='" + awardName + "']"));
+		    	click(driver,awardOption);
+
+//
+		   		implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.yearSession,30);
+		   		click(driver,enrollPage.yearSession);
+//		   		
+//		   		implicitWait(driver,30);	
+//		   		
+//		   	//li[contains(@class,'select2-results__option')
+		   		WebElement yearSessionOption  = driver.findElement(By.xpath("//li[@role='option' and text()='" + semester + "']"));
+		    	click(driver,yearSessionOption);		    	
+//		    	
+		    	implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.regulation,30);
+		   		click(driver,enrollPage.regulation);
+		   		implicitWait(driver,30);	
+		    	
+		   		WebElement regulationOption  = driver.findElement(By.xpath("//li[@role='option' and text()='" + regulation + "']"));
+		    	click(driver,regulationOption);		    	
+		    	
+	    	
+		    
+		    	
+		    	implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.examType,30);
+		   		click(driver,enrollPage.examType);
+	    		implicitWait(driver,30);	
+		    	
+		   		WebElement examTypeOption  = driver.findElement(By.xpath("//li[@role='option' and text()='" + examType + "']"));
+		    	click(driver,examTypeOption);	
+		    	
+		    	implicitWait(driver,30);	
+		   		explicitWait(driver,enrollPage.submitBtn,30);
+		   		click(driver,enrollPage.submitBtn);
+		   		
+		   		implicitWait(driver,30);	
+		   		fluentWait(driver,enrollPage.reportCardImg,30);
+		   		try {
+		   			
+		   		jsScroll(driver,enrollPage.reportCardImg);
+		   		
+		   		long Total = (regno+regulation);
+		    	
+		    	System.out.println(Total);
+		   			
+		   			
+		   			if(enrollPage.reportCardImg.isDisplayed()){
+		   				implicitWait(driver,30);	
+		   			
+				    	
+				    	System.out.println(Total);	
+		   				
+		   				System.out.println("Report card preview is showned sucessfully");
+//		   				String imageSrc = enrollPage.reportCardImg.getAttribute("src");
+//		   			
+//		   				implicitWait(driver,30);	
+//		   			
+//		   			// Download the image
+//		   	            BufferedImage image = ImageIO.read(new (imageSrc));
+//
+//		   	            // Create Tesseract instance
+//		   	            ITesseract tesseract = new Tesseract();
+//		   	            tesseract.setDatapath("path/to/tessdata"); // Set the path to Tesseract's data directory
+//
+//		   	            // Extract text from the image
+//		   	            String extractedText = tesseract.doOCR(image);
+//
+//		   	            System.out.println("Extracted Text:\n" + extractedText);
+//		   				System.out.println(imageSrc);
+		   			}
+		   				
+		   		}
+		   		
+		   		catch(Exception e) {
+		   			e.printStackTrace();
+		   				
+		   				
+		   		}
+		   		
+		   		
+//     	   		String str = String.valueOf(regno);
+//		   		System.out.println(str); 
+//		   		implicitWait(driver,30);	
+//		   		explicitWait(driver,enrollPage.enrollNo,30);
+//		   		sendKeys(enrollPage.enrollNo, str );
+//	   		
+}}
+	
+}

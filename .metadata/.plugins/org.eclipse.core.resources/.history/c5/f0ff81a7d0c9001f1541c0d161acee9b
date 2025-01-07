@@ -1,0 +1,193 @@
+package pageModules;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import base.BasicFunctions;
+import webElement.ReportCoursePageXpaths;
+
+public class ReportCoursePage extends BasicFunctions {
+	public Object[][] data1;
+	public Object[][] data2;
+	
+	public void ReportCardNavigation() {
+		ReportCoursePageXpaths CoursePage = new ReportCoursePageXpaths(driver);
+		implicitWait( 30);
+		explicitWait( CoursePage.loginTags, 30);
+
+		if (CoursePage.loginTags.isDisplayed()) {
+
+			implicitWait( 30);
+			explicitWait( CoursePage.loginTags, 30);
+
+			jsScroll( CoursePage.reportCardOption);
+
+			implicitWait( 30);
+			explicitWait( CoursePage.reportCardOption, 30);
+			click( CoursePage.reportCardOption);
+		}
+	}
+	
+	
+	
+	public void ReportCardCourseNavigation() {
+		ReportCoursePageXpaths CoursePage = new ReportCoursePageXpaths(driver);
+		implicitWait( 30);
+		explicitWait( CoursePage.reportCardCourse, 30);
+
+		jsScroll( CoursePage.reportCardCourse);
+
+		implicitWait( 30);
+		explicitWait( CoursePage.reportCardCourse, 30);
+		click( CoursePage.reportCardCourse);
+
+	}
+	
+	public void handleCollegeCode(Object clgCode) throws InterruptedException {
+		ReportCoursePageXpaths CoursePage = new ReportCoursePageXpaths(driver);
+		
+		// Wait for the dropdown and textbox elements
+		implicitWait( 30);
+		explicitWait( CoursePage.clgDropDown, 30);
+	
+		// Click the college dropdown
+		click( CoursePage.clgDropDown);
+		
+		// Wait for the textbox to become clickable
+		implicitWait( 30);
+		explicitWait( CoursePage.clgTextBox, 30);
+		
+		// Enter the college code in the textbox
+		click( CoursePage.clgTextBox);
+		Thread.sleep(1000);  // Sleep to ensure the textbox is fully active
+		implicitWait( 30);
+		sendKeys(CoursePage.clgTextBox, String.valueOf(clgCode));
+		
+		// Wait for the dropdown results to load
+		implicitWait( 30);
+		explicitWait( CoursePage.clgDropDownResults.get(0), 30);
+	
+		// Click the first result in the dropdown
+		if (CoursePage.clgDropDownResults.get(0).isDisplayed()) {
+			click( CoursePage.clgDropDownResults.get(0));
+		} else {
+			System.out.println("College code not found.");
+		}
+	}
+	
+			
+	public void handleOtherParameters(Object examdate, Object awardName,Object regulation,Object semester, Object examType) throws IOException, InterruptedException {
+		
+	
+		// Log the received parameters for debugging purposes
+    System.out.println("Handling parameters:");
+    System.out.println("Exam Date: " + examdate);
+    System.out.println("Award Name: " + awardName);
+    System.out.println("Regulation: " + regulation);
+	System.out.println("ExamType:: " + examType);
+
+	System.out.println("Semester: " + semester);
+	
+
+
+    // Example of passing these parameters to another method
+    ReportEnrollmentPage reportEnrollmentPage = new ReportEnrollmentPage();
+
+	reportEnrollmentPage.EnrollmentExamDate(examdate);
+	implicitWait( 30);
+
+	reportEnrollmentPage.EnrollmentAwardName(awardName);
+	implicitWait( 30);
+
+//	reportEnrollmentPage.EnrollmentAwardName(programcourse);
+	implicitWait( 30);
+	reportEnrollmentPage.EnrollmentRegulation(regulation);
+	implicitWait( 30);
+	reportEnrollmentPage.EnrollmentExamType(examType);
+
+	implicitWait( 30);
+	reportEnrollmentPage.EnrollmentSemester(semester);	
+	}
+
+
+
+
+
+
+
+
+
+	public void handleProgramCourse(Object programcourse) throws InterruptedException {
+		ReportCoursePageXpaths CoursePage = new ReportCoursePageXpaths(driver);
+		
+		// Wait for the dropdown and textbox elements
+		implicitWait( 30);
+		explicitWait( CoursePage.ProgramCourse, 30);
+	
+		// Click the college dropdown
+		click( CoursePage.ProgramCourse);
+		
+		Thread.sleep(1000);  // Sleep to ensure the textbox is fully active
+	   		implicitWait(30);	
+//		   		
+//		   	//li[contains(@class,'select2-results__option')
+		WebElement ProgramCourseOption = driver.findElement(By.xpath("//li[@role='option' and text()='" + programcourse + "']"));
+				explicitWait( ProgramCourseOption, 30);
+//		click(yearSessionOption);
+//		    	
+	// System.out.println(yearSessionOption.isDisplayed());
+		if (ProgramCourseOption.isDisplayed()) {
+			explicitWait( ProgramCourseOption, 30);
+			implicitWait( 30);		
+		click( ProgramCourseOption);
+
+		}
+		
+		else {
+			implicitWait( 30);
+			explicitWait(  CoursePage.ProgramCourse, 30);
+			click(  CoursePage.ProgramCourse);
+			implicitWait( 30);
+			explicitWait( CoursePage.ProgramCourse, 30);
+			click( ProgramCourseOption);
+		}
+		
+	
+
+	//reportEnrollmentPage.processOtherDetails(examdate,awardName,semester, regulation, examType);
+    // Assuming the ReportCardCheckData method requires all these parameters
+	
+       
+
+	}
+
+		
+		
+		
+		public double objectToDataType(Object obj) {
+		if (obj == null) {
+			throw new IllegalArgumentException("Object cannot be null");
+		}
+
+		if (obj instanceof Double) {
+			return (Double) obj;
+		} else if (obj instanceof Integer) {
+			return ((Integer) obj).doubleValue();
+		} else if (obj instanceof Float) {
+			return ((Float) obj).doubleValue();
+		} else if (obj instanceof Long) {
+			return ((Long) obj).doubleValue();
+		} else if (obj instanceof String) {
+			String str = (String) obj;
+			try {
+				return Double.parseDouble(str);
+			} catch (NumberFormatException e) {
+				throw new IllegalArgumentException("String value cannot be converted to double: " + str);
+			}
+		} else {
+			throw new IllegalArgumentException("Unsupported object type: " + obj.getClass().getSimpleName());
+		}
+	}
+}
