@@ -9,100 +9,15 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Surefire suite</th></tr>
-<tr><td><a href="#t0">Surefire test</a></td><td class="num">2</td><td class="num">0</td><td class="num">0</td><td class="num attn">4</td><td class="num">70,749</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Surefire test</a></td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">190,932</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="4">runner_Execution.Exceution</td><td><a href="#m0">testCase5</a></td><td rowspan="4">1737520968647</td><td rowspan="4">19</td></tr><tr class="failedeven"><td><a href="#m1">testCase5</a></td></tr><tr class="failedeven"><td><a href="#m2">testCase5</a></td></tr><tr class="failedeven"><td><a href="#m3">testCase5</a></td></tr><tr><th colspan="4">Surefire test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">runner_Execution.Exceution</td><td><a href="#m4">testCase3</a></td><td rowspan="1">1737520898002</td><td rowspan="1">10742</td></tr><tr class="passedeven"><td><a href="#m5">testCase5</a></td><td rowspan="1">1737520909994</td><td rowspan="1">52980</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="6">runner_Execution.Exceution</td><td><a href="#m0">testCase3</a></td><td rowspan="1">1737525482777</td><td rowspan="1">10943</td></tr><tr class="passedeven"><td><a href="#m1">testCase5</a></td><td rowspan="5">1737525638497</td><td rowspan="5">35160</td></tr><tr class="passedeven"><td><a href="#m2">testCase5</a></td></tr><tr class="passedeven"><td><a href="#m3">testCase5</a></td></tr><tr class="passedeven"><td><a href="#m4">testCase5</a></td></tr><tr class="passedeven"><td><a href="#m5">testCase5</a></td></tr></tbody>
 </table>
-<h2>Surefire test</h2><h3 id="m0">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>21202100003</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Regular</td><td>52</td><td>59</td><td>60</td><td>171</td><td>260</td><td>431</td></tr><tr><th colspan="12">Exception</th></tr><tr><td colspan="12"><div class="stacktrace">org.openqa.selenium.WebDriverException: Failed to decode response from marionette
-Build info: version: &apos;4.26.0&apos;, revision: &apos;8ccf0219d7&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [b64843af-51ef-41c2-887f-182bf5f41757, setTimeout {implicit=30000}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: b64843af-51ef-41c2-887f-182bf5f41757
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteTimeouts.implicitlyWait(RemoteWebDriver.java:960)
-	at base.BasicFunctions.implicitWait(BasicFunctions.java:61)
-	at pageModules.ReportEnrollmentPage.ReportCardEnrollNavigation(ReportEnrollmentPage.java:72)
-	at runner_Execution.Exceution.testCase5(Exceution.java:219)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 33 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>20205103002</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Supplementary</td><td>34</td><td>37</td><td>36</td><td>107</td><td>150</td><td>257</td></tr><tr><th colspan="12">Exception</th></tr><tr><td colspan="12"><div class="stacktrace">org.openqa.selenium.NoSuchSessionException: WebDriver session does not exist, or is not active
-Build info: version: &apos;4.26.0&apos;, revision: &apos;8ccf0219d7&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [b64843af-51ef-41c2-887f-182bf5f41757, findElement {using=xpath, value=//span[@class=&apos;select2-selection select2-selection--single&apos;]/span[@id=&apos;select2-SemSelection-container&apos; or @id=&apos;select2-ddlSem-container&apos;]}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: b64843af-51ef-41c2-887f-182bf5f41757
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy16.isDisplayed(Unknown Source)
-	at base.BasicFunctions$2.apply(BasicFunctions.java:53)
-	at base.BasicFunctions$2.apply(BasicFunctions.java:1)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-	at base.BasicFunctions.explicitWait(BasicFunctions.java:51)
-	at pageModules.ReportEnrollmentPage.EnrollmentSemester(ReportEnrollmentPage.java:162)
-	at runner_Execution.Exceution.testCase5(Exceution.java:227)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 33 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>21207103001</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Regular</td><td>53</td><td>58</td><td>55</td><td>166</td><td>169</td><td>335</td></tr><tr><th colspan="12">Exception</th></tr><tr><td colspan="12"><div class="stacktrace">org.openqa.selenium.NoSuchSessionException: Tried to run command without establishing a connection
-Build info: version: &apos;4.26.0&apos;, revision: &apos;8ccf0219d7&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [b64843af-51ef-41c2-887f-182bf5f41757, setTimeout {implicit=30000}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: b64843af-51ef-41c2-887f-182bf5f41757
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteTimeouts.implicitlyWait(RemoteWebDriver.java:960)
-	at base.BasicFunctions.implicitWait(BasicFunctions.java:61)
-	at pageModules.ReportEnrollmentPage.ReportCardEnrollNavigation(ReportEnrollmentPage.java:72)
-	at runner_Execution.Exceution.testCase5(Exceution.java:219)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 33 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>21200100003</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Regular</td><td>58</td><td>65</td><td>64</td><td>187</td><td>225</td><td>412</td></tr><tr><th colspan="12">Exception</th></tr><tr><td colspan="12"><div class="stacktrace">org.openqa.selenium.NoSuchSessionException: Tried to run command without establishing a connection
-Build info: version: &apos;4.26.0&apos;, revision: &apos;8ccf0219d7&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [b64843af-51ef-41c2-887f-182bf5f41757, setTimeout {implicit=30000}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: b64843af-51ef-41c2-887f-182bf5f41757
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteTimeouts.implicitlyWait(RemoteWebDriver.java:960)
-	at base.BasicFunctions.implicitWait(BasicFunctions.java:61)
-	at pageModules.ReportEnrollmentPage.ReportCardEnrollNavigation(ReportEnrollmentPage.java:72)
-	at runner_Execution.Exceution.testCase5(Exceution.java:219)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 33 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">runner_Execution.Exceution#testCase3</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>21202105005</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Regular</td><td>null</td><td>58</td><td>62</td><td>174</td><td>200</td><td>374</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Surefire test</h2><h3 id="m0">runner_Execution.Exceution#testCase3</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>21200100003</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Regular</td><td>58</td><td>65</td><td>64</td><td>187</td><td>225</td><td>412</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>21202100003</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Regular</td><td>52</td><td>59</td><td>60</td><td>171</td><td>260</td><td>431</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>20205103002</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Supplementary</td><td>34</td><td>37</td><td>36</td><td>107</td><td>150</td><td>257</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>21207103001</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Regular</td><td>53</td><td>58</td><td>55</td><td>166</td><td>169</td><td>335</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">runner_Execution.Exceution#testCase5</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th><th>Parameter #8</th><th>Parameter #9</th><th>Parameter #10</th><th>Parameter #11</th><th>Parameter #12</th></tr><tr class="param stripe"><td>21202105005</td><td>Nov-24</td><td>MDS NEW</td><td>PART-II</td><td>2018</td><td>Regular</td><td>12</td><td>58</td><td>62</td><td>174</td><td>200</td><td>374</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

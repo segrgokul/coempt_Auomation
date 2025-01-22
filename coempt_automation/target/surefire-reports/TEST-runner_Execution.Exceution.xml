@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="runner_Execution.Exceution" time="71.763" tests="6" errors="0" skipped="0" failures="4">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="runner_Execution.Exceution" time="191.841" tests="6" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="jpda.address" value="57327"/>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
@@ -11,13 +10,12 @@
     <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="user.timezone" value="Asia/Calcutta"/>
-    <property name="forkMode" value="once"/>
     <property name="os.name" value="Windows 10"/>
     <property name="java.vm.specification.version" value="21"/>
     <property name="user.country" value="IN"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\User\AppData\Local\Temp\surefire9985431813773099962\surefirebooter-20250122101135074_3.jar C:\Users\User\AppData\Local\Temp\surefire9985431813773099962 2025-01-22T10-11-34_870-jvmRun1 surefire-20250122101135074_1tmp surefire_0-20250122101135074_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\User\AppData\Local\Temp\surefire18288517348626247857\surefirebooter-20250122112801070_3.jar C:\Users\User\AppData\Local\Temp\surefire18288517348626247857 2025-01-22T11-28-00_758-jvmRun1 surefire-20250122112801070_1tmp surefire_0-20250122112801070_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="runner_Execution.Exceution"/>
     <property name="surefire.test.class.path" value="D:\Coempt_Automation\coempt_automation\target\test-classes;D:\Coempt_Automation\coempt_automation\target\classes;C:\Users\User\.m2\repository\io\github\bonigarcia\webdrivermanager\5.9.1\webdrivermanager-5.9.1.jar;C:\Users\User\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\User\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\User\.m2\repository\com\google\errorprone\error_prone_annotations\2.27.0\error_prone_annotations-2.27.0.jar;C:\Users\User\.m2\repository\com\github\docker-java\docker-java\3.3.6\docker-java-3.3.6.jar;C:\Users\User\.m2\repository\com\github\docker-java\docker-java-core\3.3.6\docker-java-core-3.3.6.jar;C:\Users\User\.m2\repository\com\github\docker-java\docker-java-api\3.3.6\docker-java-api-3.3.6.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.10.3\jackson-annotations-2.10.3.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.10.3\jackson-databind-2.10.3.jar;C:\Users\User\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.10.3\jackson-core-2.10.3.jar;C:\Users\User\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.30\jcl-over-slf4j-1.7.30.jar;C:\Users\User\.m2\repository\com\github\docker-java\docker-java-transport-httpclient5\3.3.6\docker-java-transport-httpclient5-3.3.6.jar;C:\Users\User\.m2\repository\com\github\docker-java\docker-java-transport\3.3.6\docker-java-transport-3.3.6.jar;C:\Users\User\.m2\repository\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar;C:\Users\User\.m2\repository\org\brotli\dec\0.1.2\dec-0.1.2.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-lang3\3.14.0\commons-lang3-3.14.0.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-compress\1.26.2\commons-compress-1.26.2.jar;C:\Users\User\.m2\repository\commons-codec\commons-codec\1.17.0\commons-codec-1.17.0.jar;C:\Users\User\.m2\repository\org\apache\httpcomponents\client5\httpclient5\5.2.1\httpclient5-5.2.1.jar;C:\Users\User\.m2\repository\org\apache\httpcomponents\core5\httpcore5\5.2\httpcore5-5.2.jar;C:\Users\User\.m2\repository\org\apache\httpcomponents\core5\httpcore5-h2\5.2\httpcore5-h2-5.2.jar;C:\Users\User\.m2\repository\org\slf4j\slf4j-simple\2.0.9\slf4j-simple-2.0.9.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-java\4.26.0\selenium-java-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-api\4.26.0\selenium-api-4.26.0.jar;C:\Users\User\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.26.0\selenium-chrome-driver-4.26.0.jar;C:\Users\User\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.26.0\selenium-chromium-driver-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-json\4.26.0\selenium-json-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.26.0\selenium-manager-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v128\4.26.0\selenium-devtools-v128-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v129\4.26.0\selenium-devtools-v129-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v130\4.26.0\selenium-devtools-v130-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.26.0\selenium-devtools-v85-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.26.0\selenium-edge-driver-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.26.0\selenium-firefox-driver-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-http\4.26.0\selenium-http-4.26.0.jar;C:\Users\User\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.26.0\selenium-ie-driver-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.26.0\selenium-remote-driver-4.26.0.jar;C:\Users\User\.m2\repository\com\google\guava\guava\33.3.1-jre\guava-33.3.1-jre.jar;C:\Users\User\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\User\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\User\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\User\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\User\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.25.0-alpha\opentelemetry-semconv-1.25.0-alpha.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-api\1.43.0\opentelemetry-api-1.43.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-context\1.43.0\opentelemetry-context-1.43.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.43.0\opentelemetry-exporter-logging-1.43.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.43.0\opentelemetry-sdk-common-1.43.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.43.0\opentelemetry-sdk-extension-autoconfigure-spi-1.43.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.43.0\opentelemetry-sdk-extension-autoconfigure-1.43.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-api-incubator\1.43.0-alpha\opentelemetry-api-incubator-1.43.0-alpha.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.43.0\opentelemetry-sdk-trace-1.43.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.43.0\opentelemetry-sdk-1.43.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.43.0\opentelemetry-sdk-metrics-1.43.0.jar;C:\Users\User\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.43.0\opentelemetry-sdk-logs-1.43.0.jar;C:\Users\User\.m2\repository\net\bytebuddy\byte-buddy\1.15.7\byte-buddy-1.15.7.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-os\4.26.0\selenium-os-4.26.0.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-exec\1.4.0\commons-exec-1.4.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.26.0\selenium-safari-driver-4.26.0.jar;C:\Users\User\.m2\repository\org\seleniumhq\selenium\selenium-support\4.26.0\selenium-support-4.26.0.jar;C:\Users\User\.m2\repository\org\testng\testng\7.10.1\testng-7.10.1.jar;C:\Users\User\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\User\.m2\repository\org\webjars\jquery\3.7.1\jquery-3.7.1.jar;C:\Users\User\.m2\repository\net\sourceforge\jexcelapi\jxl\2.6.12\jxl-2.6.12.jar;C:\Users\User\.m2\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;C:\Users\User\.m2\repository\com\aventstack\extentreports\5.0.9\extentreports-5.0.9.jar;C:\Users\User\.m2\repository\io\reactivex\rxjava3\rxjava\3.0.4\rxjava-3.0.4.jar;C:\Users\User\.m2\repository\org\reactivestreams\reactive-streams\1.0.3\reactive-streams-1.0.3.jar;C:\Users\User\.m2\repository\org\freemarker\freemarker\2.3.30\freemarker-2.3.30.jar;C:\Users\User\.m2\repository\org\projectlombok\lombok\1.18.12\lombok-1.18.12.jar;C:\Users\User\.m2\repository\com\relevantcodes\extentreports\2.41.2\extentreports-2.41.2.jar;C:\Users\User\.m2\repository\org\jsoup\jsoup\1.8.3\jsoup-1.8.3.jar;C:\Users\User\.m2\repository\org\xerial\sqlite-jdbc\3.8.11.1\sqlite-jdbc-3.8.11.1.jar;C:\Users\User\.m2\repository\org\mongodb\mongodb-driver\3.0.4\mongodb-driver-3.0.4.jar;C:\Users\User\.m2\repository\org\mongodb\bson\3.0.4\bson-3.0.4.jar;C:\Users\User\.m2\repository\org\mongodb\mongodb-driver-core\3.0.4\mongodb-driver-core-3.0.4.jar;C:\Users\User\.m2\repository\org\apache\poi\poi-ooxml\5.2.3\poi-ooxml-5.2.3.jar;C:\Users\User\.m2\repository\org\apache\poi\poi\5.2.3\poi-5.2.3.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\User\.m2\repository\com\zaxxer\SparseBitSet\1.2\SparseBitSet-1.2.jar;C:\Users\User\.m2\repository\org\apache\poi\poi-ooxml-lite\5.2.3\poi-ooxml-lite-5.2.3.jar;C:\Users\User\.m2\repository\org\apache\xmlbeans\xmlbeans\5.1.1\xmlbeans-5.1.1.jar;C:\Users\User\.m2\repository\commons-io\commons-io\2.11.0\commons-io-2.11.0.jar;C:\Users\User\.m2\repository\com\github\virtuald\curvesapi\1.07\curvesapi-1.07.jar;C:\Users\User\.m2\repository\org\apache\logging\log4j\log4j-api\2.18.0\log4j-api-2.18.0.jar;C:\Users\User\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\User\.m2\repository\org\apache\logging\log4j\log4j-core\2.24.3\log4j-core-2.24.3.jar;C:\Users\User\.m2\repository\org\apache\pdfbox\pdfbox\2.0.29\pdfbox-2.0.29.jar;C:\Users\User\.m2\repository\org\apache\pdfbox\fontbox\2.0.29\fontbox-2.0.29.jar;C:\Users\User\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;"/>
@@ -33,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\User\AppData\Local\Temp\surefire9985431813773099962\surefirebooter-20250122101135074_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\User\AppData\Local\Temp\surefire18288517348626247857\surefirebooter-20250122112801070_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.5+9-LTS-239"/>
@@ -44,7 +42,6 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="jpda.listen" value="true"/>
     <property name="maven.ext.class.path" value="C:\Users\User\.vscode\extensions\oracle.oracle-java-23.0.1\nbcode\java\maven-nblib\netbeans-eventspy.jar"/>
     <property name="localRepository" value="C:\Users\User\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
@@ -63,9 +60,8 @@
     <property name="java.vm.version" value="21.0.5+9-LTS-239"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
-    <property name="maven.surefire.debug" value="-agentlib:jdwp=transport=dt_socket,server=n,address=57327"/>
   </properties>
-  <testcase name="testCase3" classname="runner_Execution.Exceution" time="10.751">
+  <testcase name="testCase3" classname="runner_Execution.Exceution" time="10.941">
     <system-out><![CDATA[This will execute first before the Test Suite
 This will execute second before the Test and after the before test suite
 This will execute third before the Class and after the befortest
@@ -77,14 +73,14 @@ The Admin Login Page has login and the landing page of KNRUHS is displayed
 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.gecko.driver as C:\Users\User\.cache\selenium\geckodriver\win64\0.35.0\geckodriver.exe
 ]]></system-err>
   </testcase>
-  <testcase name="testCase5[21202105005, Nov-24, MDS NEW, PART-II, 2018, Regular, null, 58, 62, 174, 200, 374](1)" classname="runner_Execution.Exceution" time="52.982">
+  <testcase name="testCase5[21202105005, Nov-24, MDS NEW, PART-II, 2018, Regular, 12, 58, 62, 174, 200, 374](1)" classname="runner_Execution.Exceution" time="36.674">
     <system-out><![CDATA[This will execute after every Method
 This will execute foruth before every Method and after the before class
 =========================
 This is a Normal Test Case5
 Starting testCase5 execution for: 21202105005
 =========================
-PDF opened successfully: file:///C:/Users/User/Downloads/MDSMarkStatementPart2-162.pdf
+PDF opened successfully: file:///C:/Users/User/Downloads/MDSMarkStatementPart2-168.pdf
 =========================
 === Extracted PDF Text ===
 Registration No: 21202105005
@@ -116,7 +112,9 @@ Grand Total: 374
 374.0
 Result: Pass
 ===========================
-Error occurred for Paper1 with Registration number 21202105005: Object cannot be null
+12.0
+Both Excel and Pdf data are not same please check Excel file or Pdf file for paper 1 mark
+Pdf mark is 54.0 Excel mark is 12.0
 Both Excel and Pdf data are same for paper 2 mark
 The following Registration number 21202105005 is passed in Paper2 exam with marks: 58.0
 Both Excel and Pdf data are same for paper 3 mark
@@ -124,8 +122,8 @@ The following Registration number 21202105005 is passed in Paper3 exam with mark
 Both Excel and Pdf data are same for pratical exam
 The following Registration number 21202105005 is passed in Practical Exam with marks: 200.0
 174.0
-Both Excel and Pdf data are same for theory exam mark
-The following Registration number  has failed in one or more papers and is therefore failed in the Theory exam:174.0
+Both Excel and Pdf data are not same please check Excel file or Pdf file for theory exam mark
+The following Registration number 21202105005 has failed in one or more papers and is therefore failed in the Theory exam:174.0
 Both Excel and Pdf data are same for grand total exam mark
 The following Registration number 21202105005 has failed in one or more papers and is therefore failed in the final exam:374.0
 =====================
@@ -134,265 +132,232 @@ Reached end of testCase2 execution for: 21202105005
     <system-err><![CDATA[ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
 ]]></system-err>
   </testcase>
-  <testcase name="testCase5[20205103002, Nov-24, MDS NEW, PART-II, 2018, Supplementary, 34, 37, 36, 107, 150, 257](2)" classname="runner_Execution.Exceution" time="5.666">
-    <failure message="WebDriver session does not exist, or is not active&#10;Build info: version: &apos;4.26.0&apos;, revision: &apos;8ccf0219d7&apos;&#10;System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;&#10;Driver info: org.openqa.selenium.firefox.FirefoxDriver&#10;Command: [b64843af-51ef-41c2-887f-182bf5f41757, findElement {using=xpath, value=//span[@class=&apos;select2-selection select2-selection--single&apos;]/span[@id=&apos;select2-SemSelection-container&apos; or @id=&apos;select2-ddlSem-container&apos;]}]&#10;Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}&#10;Session ID: b64843af-51ef-41c2-887f-182bf5f41757" type="org.openqa.selenium.NoSuchSessionException"><![CDATA[org.openqa.selenium.NoSuchSessionException: 
-WebDriver session does not exist, or is not active
-Build info: version: '4.26.0', revision: '8ccf0219d7'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.5'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [b64843af-51ef-41c2-887f-182bf5f41757, findElement {using=xpath, value=//span[@class='select2-selection select2-selection--single']/span[@id='select2-SemSelection-container' or @id='select2-ddlSem-container']}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: b64843af-51ef-41c2-887f-182bf5f41757
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy16.isDisplayed(Unknown Source)
-	at base.BasicFunctions$2.apply(BasicFunctions.java:53)
-	at base.BasicFunctions$2.apply(BasicFunctions.java:1)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-	at base.BasicFunctions.explicitWait(BasicFunctions.java:51)
-	at pageModules.ReportEnrollmentPage.EnrollmentSemester(ReportEnrollmentPage.java:162)
-	at runner_Execution.Exceution.testCase5(Exceution.java:227)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]></failure>
+  <testcase name="testCase5[20205103002, Nov-24, MDS NEW, PART-II, 2018, Supplementary, 34, 37, 36, 107, 150, 257](2)" classname="runner_Execution.Exceution" time="36.166">
     <system-out><![CDATA[This will execute after every Method
 This will execute foruth before every Method and after the before class
 =========================
 This is a Normal Test Case5
 Starting testCase5 execution for: 20205103002
 =========================
+PDF opened successfully: file:///C:/Users/User/Downloads/MDSMarkStatementPart2-170.pdf
+=========================
+=== Extracted PDF Text ===
+Registration No: 20205103002
+==============
+
+=== Paper and Total Max/Min Marks ===
+Paper I Max Marks: 100
+Paper II Max Marks: 100
+Paper III Max Marks: 100
+Theory Max Marks: 300, Min Marks: 150
+Practical Max Marks: 300, Min Marks: 150
+Grand Total Max Marks 600, Min Marks: 300
+
+=== Marks and Results ===
+Paper I: 34
+Paper II: 37
+Paper III: 36
+Theory Max Mark:300.0
+Theory Min Mark:150.0
+Theory Total: 107
+==============
+Practical Max Mark:300.0
+Pratical Min Mark:150.0
+Practical Total: 150
+===============
+Grand Total Max Mark:600.0
+Grand Total Min Mark:300.0
+Grand Total: 257
+257.0
+Result: Fail
+===========================
+34.0
+Both Excel and Pdf data are same for paper 1 mark
+The following Registration number 20205103002 is failed in Paper1 exam with marks: 34.0
+Both Excel and Pdf data are same for paper 2 mark
+The following Registration number 20205103002 is failed in Paper2 exam with marks: 37.0
+Both Excel and Pdf data are same for paper 3 mark
+The following Registration number 20205103002 is failed in Paper3 exam with marks: 36.0
+Both Excel and Pdf data are same for pratical exam
+The following Registration number 20205103002 is passed in Practical Exam with marks: 150.0
+107.0
+Both Excel and Pdf data are same for theory exam mark
+The following Registration number 20205103002 has failed in one or more papers and is therefore failed in the Theory exam:107.0
+Both Excel and Pdf data are same for grand total exam mark
+The following Registration number 20205103002 has failed in one or more papers and is therefore failed in the final exam:257.0
+=====================
+Reached end of testCase2 execution for: 20205103002
 ]]></system-out>
   </testcase>
-  <testcase name="testCase5[21202100003, Nov-24, MDS NEW, PART-II, 2018, Regular, 52, 59, 60, 171, 260, 431](3)" classname="runner_Execution.Exceution" time="0.021">
-    <failure message="Failed to decode response from marionette&#10;Build info: version: &apos;4.26.0&apos;, revision: &apos;8ccf0219d7&apos;&#10;System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;&#10;Driver info: org.openqa.selenium.firefox.FirefoxDriver&#10;Command: [b64843af-51ef-41c2-887f-182bf5f41757, setTimeout {implicit=30000}]&#10;Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}&#10;Session ID: b64843af-51ef-41c2-887f-182bf5f41757" type="org.openqa.selenium.WebDriverException"><![CDATA[org.openqa.selenium.WebDriverException: 
-Failed to decode response from marionette
-Build info: version: '4.26.0', revision: '8ccf0219d7'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.5'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [b64843af-51ef-41c2-887f-182bf5f41757, setTimeout {implicit=30000}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: b64843af-51ef-41c2-887f-182bf5f41757
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteTimeouts.implicitlyWait(RemoteWebDriver.java:960)
-	at base.BasicFunctions.implicitWait(BasicFunctions.java:61)
-	at pageModules.ReportEnrollmentPage.ReportCardEnrollNavigation(ReportEnrollmentPage.java:72)
-	at runner_Execution.Exceution.testCase5(Exceution.java:219)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]></failure>
+  <testcase name="testCase5[21202100003, Nov-24, MDS NEW, PART-II, 2018, Regular, 52, 59, 60, 171, 260, 431](3)" classname="runner_Execution.Exceution" time="35.536">
     <system-out><![CDATA[This will execute after every Method
 This will execute foruth before every Method and after the before class
 =========================
 This is a Normal Test Case5
 Starting testCase5 execution for: 21202100003
 =========================
+PDF opened successfully: file:///C:/Users/User/Downloads/MDSMarkStatementPart2-172.pdf
+=========================
+=== Extracted PDF Text ===
+Registration No: 21202100003
+==============
+
+=== Paper and Total Max/Min Marks ===
+Paper I Max Marks: 100
+Paper II Max Marks: 100
+Paper III Max Marks: 100
+Theory Max Marks: 300, Min Marks: 150
+Practical Max Marks: 300, Min Marks: 150
+Grand Total Max Marks 600, Min Marks: 300
+
+=== Marks and Results ===
+Paper I: 52
+Paper II: 59
+Paper III: 60
+Theory Max Mark:300.0
+Theory Min Mark:150.0
+Theory Total: 171
+==============
+Practical Max Mark:300.0
+Pratical Min Mark:150.0
+Practical Total: 260
+===============
+Grand Total Max Mark:600.0
+Grand Total Min Mark:300.0
+Grand Total: 431
+431.0
+Result: Pass
+===========================
+52.0
+Both Excel and Pdf data are same for paper 1 mark
+The following Registration number 21202100003 is passed in Paper1 exam with marks: 52.0
+Both Excel and Pdf data are same for paper 2 mark
+The following Registration number 21202100003 is passed in Paper2 exam with marks: 59.0
+Both Excel and Pdf data are same for paper 3 mark
+The following Registration number 21202100003 is passed in Paper3 exam with marks: 60.0
+Both Excel and Pdf data are same for pratical exam
+The following Registration number 21202100003 is passed in Practical Exam with marks: 260.0
+171.0
+Both Excel and Pdf data are same for theory exam mark
+The following Registration number 21202100003 is passed in Theory Exam with total marks: 171.0
+Both Excel and Pdf data are same for grand total exam mark
+The following Registration number 21202100003 is passed with total score: 431.0
+=====================
+Reached end of testCase2 execution for: 21202100003
 ]]></system-out>
   </testcase>
-  <testcase name="testCase5[21207103001, Nov-24, MDS NEW, PART-II, 2018, Regular, 53, 58, 55, 166, 169, 335](4)" classname="runner_Execution.Exceution" time="0.005">
-    <failure message="Tried to run command without establishing a connection&#10;Build info: version: &apos;4.26.0&apos;, revision: &apos;8ccf0219d7&apos;&#10;System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;&#10;Driver info: org.openqa.selenium.firefox.FirefoxDriver&#10;Command: [b64843af-51ef-41c2-887f-182bf5f41757, setTimeout {implicit=30000}]&#10;Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}&#10;Session ID: b64843af-51ef-41c2-887f-182bf5f41757" type="org.openqa.selenium.NoSuchSessionException"><![CDATA[org.openqa.selenium.NoSuchSessionException: 
-Tried to run command without establishing a connection
-Build info: version: '4.26.0', revision: '8ccf0219d7'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.5'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [b64843af-51ef-41c2-887f-182bf5f41757, setTimeout {implicit=30000}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: b64843af-51ef-41c2-887f-182bf5f41757
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteTimeouts.implicitlyWait(RemoteWebDriver.java:960)
-	at base.BasicFunctions.implicitWait(BasicFunctions.java:61)
-	at pageModules.ReportEnrollmentPage.ReportCardEnrollNavigation(ReportEnrollmentPage.java:72)
-	at runner_Execution.Exceution.testCase5(Exceution.java:219)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]></failure>
+  <testcase name="testCase5[21207103001, Nov-24, MDS NEW, PART-II, 2018, Regular, 53, 58, 55, 166, 169, 335](4)" classname="runner_Execution.Exceution" time="35.321">
     <system-out><![CDATA[This will execute after every Method
 This will execute foruth before every Method and after the before class
 =========================
 This is a Normal Test Case5
 Starting testCase5 execution for: 21207103001
 =========================
+PDF opened successfully: file:///C:/Users/User/Downloads/MDSMarkStatementPart2-174.pdf
+=========================
+=== Extracted PDF Text ===
+Registration No: 21207103001
+==============
+
+=== Paper and Total Max/Min Marks ===
+Paper I Max Marks: 100
+Paper II Max Marks: 100
+Paper III Max Marks: 100
+Theory Max Marks: 300, Min Marks: 150
+Practical Max Marks: 300, Min Marks: 150
+Grand Total Max Marks 600, Min Marks: 300
+
+=== Marks and Results ===
+Paper I: 53
+Paper II: 58
+Paper III: 55
+Theory Max Mark:300.0
+Theory Min Mark:150.0
+Theory Total: 166
+==============
+Practical Max Mark:300.0
+Pratical Min Mark:150.0
+Practical Total: 169
+===============
+Grand Total Max Mark:600.0
+Grand Total Min Mark:300.0
+Grand Total: 335
+335.0
+Result: Pass
+===========================
+53.0
+Both Excel and Pdf data are same for paper 1 mark
+The following Registration number 21207103001 is passed in Paper1 exam with marks: 53.0
+Both Excel and Pdf data are same for paper 2 mark
+The following Registration number 21207103001 is passed in Paper2 exam with marks: 58.0
+Both Excel and Pdf data are same for paper 3 mark
+The following Registration number 21207103001 is passed in Paper3 exam with marks: 55.0
+Both Excel and Pdf data are same for pratical exam
+The following Registration number 21207103001 is passed in Practical Exam with marks: 169.0
+166.0
+Both Excel and Pdf data are same for theory exam mark
+The following Registration number 21207103001 is passed in Theory Exam with total marks: 166.0
+Both Excel and Pdf data are same for grand total exam mark
+The following Registration number 21207103001 is passed with total score: 335.0
+=====================
+Reached end of testCase2 execution for: 21207103001
 ]]></system-out>
   </testcase>
-  <testcase name="testCase5[21200100003, Nov-24, MDS NEW, PART-II, 2018, Regular, 58, 65, 64, 187, 225, 412](5)" classname="runner_Execution.Exceution" time="0.003">
-    <failure message="Tried to run command without establishing a connection&#10;Build info: version: &apos;4.26.0&apos;, revision: &apos;8ccf0219d7&apos;&#10;System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;&#10;Driver info: org.openqa.selenium.firefox.FirefoxDriver&#10;Command: [b64843af-51ef-41c2-887f-182bf5f41757, setTimeout {implicit=30000}]&#10;Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}&#10;Session ID: b64843af-51ef-41c2-887f-182bf5f41757" type="org.openqa.selenium.NoSuchSessionException"><![CDATA[org.openqa.selenium.NoSuchSessionException: 
-Tried to run command without establishing a connection
-Build info: version: '4.26.0', revision: '8ccf0219d7'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.5'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [b64843af-51ef-41c2-887f-182bf5f41757, setTimeout {implicit=30000}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 134.0.1, moz:accessibilityChecks: false, moz:buildID: 20250113121357, moz:debuggerAddress: 127.0.0.1:38509, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 17316, moz:profile: C:\Users\User\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:38509/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Session ID: b64843af-51ef-41c2-887f-182bf5f41757
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteTimeouts.implicitlyWait(RemoteWebDriver.java:960)
-	at base.BasicFunctions.implicitWait(BasicFunctions.java:61)
-	at pageModules.ReportEnrollmentPage.ReportCardEnrollNavigation(ReportEnrollmentPage.java:72)
-	at runner_Execution.Exceution.testCase5(Exceution.java:219)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
-	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
-	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
-	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
-	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]></failure>
+  <testcase name="testCase5[21200100003, Nov-24, MDS NEW, PART-II, 2018, Regular, 58, 65, 64, 187, 225, 412](5)" classname="runner_Execution.Exceution" time="35.159">
     <system-out><![CDATA[This will execute after every Method
 This will execute foruth before every Method and after the before class
 =========================
 This is a Normal Test Case5
 Starting testCase5 execution for: 21200100003
 =========================
+PDF opened successfully: file:///C:/Users/User/Downloads/MDSMarkStatementPart2-176.pdf
+=========================
+=== Extracted PDF Text ===
+Registration No: 21200100003
+==============
+
+=== Paper and Total Max/Min Marks ===
+Paper I Max Marks: 100
+Paper II Max Marks: 100
+Paper III Max Marks: 100
+Theory Max Marks: 300, Min Marks: 150
+Practical Max Marks: 300, Min Marks: 150
+Grand Total Max Marks 600, Min Marks: 300
+
+=== Marks and Results ===
+Paper I: 58
+Paper II: 65
+Paper III: 64
+Theory Max Mark:300.0
+Theory Min Mark:150.0
+Theory Total: 187
+==============
+Practical Max Mark:300.0
+Pratical Min Mark:150.0
+Practical Total: 225
+===============
+Grand Total Max Mark:600.0
+Grand Total Min Mark:300.0
+Grand Total: 412
+412.0
+Result: Pass
+===========================
+58.0
+Both Excel and Pdf data are same for paper 1 mark
+The following Registration number 21200100003 is passed in Paper1 exam with marks: 58.0
+Both Excel and Pdf data are same for paper 2 mark
+The following Registration number 21200100003 is passed in Paper2 exam with marks: 65.0
+Both Excel and Pdf data are same for paper 3 mark
+The following Registration number 21200100003 is passed in Paper3 exam with marks: 64.0
+Both Excel and Pdf data are same for pratical exam
+The following Registration number 21200100003 is passed in Practical Exam with marks: 225.0
+187.0
+Both Excel and Pdf data are same for theory exam mark
+The following Registration number 21200100003 is passed in Theory Exam with total marks: 187.0
+Both Excel and Pdf data are same for grand total exam mark
+The following Registration number 21200100003 is passed with total score: 412.0
+=====================
+Reached end of testCase2 execution for: 21200100003
 ]]></system-out>
   </testcase>
 </testsuite>

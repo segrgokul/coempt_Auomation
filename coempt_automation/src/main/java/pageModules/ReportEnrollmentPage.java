@@ -30,24 +30,21 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	double ExamTotalScore;
 	public Object[][] data1;
 	public Object[][] data2;
-	
-	
+
 	long registrationNumber;
 	double paper1Mark;
 	double paper2Mark;
 	double paper3Mark;
-	
+
 	double praticalMinMark;
 	double praticalMaxMark;
-	double theoryMinMark;	
+	double theoryMinMark;
 	double theoryMaxMark;
 	double grandTotalMinMark;
 	double grandTotalMaxMark;
 	double theoryTotal;
 	double praticalTotal;
 	double grandTotal;
-	
-
 
 	public void ReportCardNavigation() {
 
@@ -537,9 +534,9 @@ public class ReportEnrollmentPage extends BasicFunctions {
 					latestFile = files[0];
 
 					// Check if the latest file was created/modified after the start time
-				//	if (latestFile.lastModified() > startTime) {
-						fileDownloaded = true;
-				//	}
+					// if (latestFile.lastModified() > startTime) {
+					fileDownloaded = true;
+					// }
 				}
 
 				Thread.sleep(1000); // Check every second
@@ -576,35 +573,33 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 				// Print the normalized extracted text
 				System.out.println("=== Extracted PDF Text ===");
-	//			System.out.println(normalizedText);
+				// System.out.println(normalizedText);
 
 				Pattern registrationPattern = Pattern.compile("Registration No:\\s*(\\d+)");
 
 				Matcher regMatcher = registrationPattern.matcher(normalizedText);
 				if (regMatcher.find()) {
-					
-					
-					
-	//				String regNoText =regMatcher.group(1)
-					
-			//		registrationNumber =Integer.parseInt(regMatcher.group(1));
-					
-					// Split the string by ": "
-			        String[] parts = regMatcher.group(1).split(":");
-			        
-			        // Get the number part (second part after the split)
-			    //    String regnumber = parts[1];
 
-			        // Debug: Print the result of the split
-			     //   System.out.println("Split parts:");
-			        for (int i = 0; i < parts.length; i++) {
-			            registrationNumber = Long.parseLong(parts[i]);
-			        	
-			     //   	System.out.println("parts[" + i + "]: '" + parts[i] + "'");
-			          
-			            System.out.println("Registration No: " + registrationNumber);   
-			            
-			        }
+					// String regNoText =regMatcher.group(1)
+
+					// registrationNumber =Integer.parseInt(regMatcher.group(1));
+
+					// Split the string by ": "
+					String[] parts = regMatcher.group(1).split(":");
+
+					// Get the number part (second part after the split)
+					// String regnumber = parts[1];
+
+					// Debug: Print the result of the split
+					// System.out.println("Split parts:");
+					for (int i = 0; i < parts.length; i++) {
+						registrationNumber = Long.parseLong(parts[i]);
+
+						// System.out.println("parts[" + i + "]: '" + parts[i] + "'");
+
+						System.out.println("Registration No: " + registrationNumber);
+
+					}
 
 					/*
 					 * // Check if the array has at least two parts if (parts.length > 1) { // Trim
@@ -613,7 +608,7 @@ public class ReportEnrollmentPage extends BasicFunctions {
 					 * println("Error: The input string does not contain the expected delimiter ':'"
 					 * ); }
 					 */
-			        
+
 				}
 				try {
 //       	  // Regular expression to find the marks for "Paper I"
@@ -642,10 +637,10 @@ public class ReportEnrollmentPage extends BasicFunctions {
 									+ paperMatcher.group(4));
 							theoryMaxMark = Integer.parseInt(paperMatcher.group(3));
 							theoryMinMark = Integer.parseInt(paperMatcher.group(4));
-							
-						boolean	theoryMinMarkText=	(!paperMatcher.group(4).isEmpty());
-						
-					//	System.out.println("djfhjkhdskdfskjhfkdfjh" +theoryMinMarkText);
+
+							boolean theoryMinMarkText = (!paperMatcher.group(4).isEmpty());
+
+							// System.out.println("djfhjkhdskdfskjhfkdfjh" +theoryMinMarkText);
 						}
 						// Loop over the remaining groups dynamically to detect Practical Marks or Grand
 						// Total
@@ -660,20 +655,20 @@ public class ReportEnrollmentPage extends BasicFunctions {
 									if (isTheory) {
 										System.out.println(
 												"Practical Max Marks: " + maxMarks + ", Min Marks: " + minMarks);
-										
+
 										praticalMinMark = Integer.parseInt(minMarks);
 										praticalMaxMark = Integer.parseInt(maxMarks);
 
 										isTheory = false; // Next set will be for Practical or Grand Total
 									} else if (!isTheory && !isPractical) {
-										System.out.println(	"Grand Total Max Marks " + maxMarks + ", Min Marks: " + minMarks);
+										System.out.println(
+												"Grand Total Max Marks " + maxMarks + ", Min Marks: " + minMarks);
 										grandTotalMinMark = Integer.parseInt(minMarks);
-										grandTotalMaxMark =  Integer.parseInt(maxMarks);
-										
-										
+										grandTotalMaxMark = Integer.parseInt(maxMarks);
+
 									} else {
 										System.out.println("Total Max Marks: " + maxMarks + ", Min Marks: " + minMarks);
-										System.out.println(grandTotalMinMark + grandTotalMaxMark  );
+										System.out.println(grandTotalMinMark + grandTotalMaxMark);
 										System.out.println("==============");
 									}
 								}
@@ -702,12 +697,12 @@ public class ReportEnrollmentPage extends BasicFunctions {
 					Matcher marksMatcher = marksPattern.matcher(normalizedText);
 					System.out.println("\n=== Marks and Results ===");
 					if (marksMatcher.find()) {
-						
-						paper1Mark= Integer.parseInt(marksMatcher.group(1));
-						paper2Mark= Integer.parseInt(marksMatcher.group(2));
-						paper3Mark= Integer.parseInt(marksMatcher.group(3));
-						
-						System.out.println("Paper I: " + marksMatcher.group(1) );
+
+						paper1Mark = Integer.parseInt(marksMatcher.group(1));
+						paper2Mark = Integer.parseInt(marksMatcher.group(2));
+						paper3Mark = Integer.parseInt(marksMatcher.group(3));
+
+						System.out.println("Paper I: " + marksMatcher.group(1));
 						System.out.println("Paper II: " + marksMatcher.group(2));
 						System.out.println("Paper III: " + marksMatcher.group(3));
 						System.out.println("Theory Max Mark:" + theoryMaxMark);
@@ -716,32 +711,26 @@ public class ReportEnrollmentPage extends BasicFunctions {
 						System.out.println("Theory Total: " + marksMatcher.group(4));
 						theoryTotal = Integer.parseInt(marksMatcher.group(4));
 						System.out.println("==============");
-						
-						
-					
+
 						System.out.println("Practical Max Mark:" + praticalMaxMark);
 						System.out.println("Pratical Min Mark:" + praticalMinMark);
 						System.out.println("Practical Total: " + marksMatcher.group(5));
 						praticalTotal = Integer.parseInt(marksMatcher.group(5));
 						System.out.println("===============");
-						
+
 						System.out.println("Grand Total Max Mark:" + grandTotalMaxMark);
 						System.out.println("Grand Total Min Mark:" + grandTotalMinMark);
 						System.out.println("Grand Total: " + marksMatcher.group(6));
 						grandTotal = Integer.parseInt(marksMatcher.group(6));
 						System.out.println(grandTotal);
-						
-						
-						
-						
-						
+
 						System.out.println("Result: " + marksMatcher.group(7));
 					} else {
 						System.out.println("Marks and result not found.");
 					}
 					document.close();
 				}
-      
+
 				catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -767,37 +756,36 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			Paper1 = objectToDataType(paper1);
 			System.out.println(Paper1);
 			try {
-				if(paper1Mark == Paper1) {
-					System.out.println("Both Excel and Pdf data are same for paper 1 mark");
+				if (paper1Mark == Paper1) {
+					System.out.println(
+							"Both Excel " + Paper1 + " and Pdf " + paper1Mark + " data are same for paper 1 mark");
 				}
-	
-			// need to debug why the else part is not printing 
+
 				else {
-					System.out.println("Both Excel and Pdf data are not same please check Excel file or Pdf file for paper 1 mark");	
+					System.out.println("Both Excel " + Paper1 + " and Pdf " + paper1Mark
+							+ " data are not same please check Excel file or Pdf file for paper 1 mark");
 				}
-				
-				}
-				catch(Exception e) {
-					e.printStackTrace();
-					
-				}
-			
-			
-			
-			if (paper1Mark <50 && Paper1 < 50) {
-				System.out.println("The following Registration number "  +registrationNumber
-						+ " is failed in Paper1 exam with marks: " + paper1Mark );
-			} else if (paper1Mark >= 50 && Paper1 >= 50) {
-				System.out.println("The following Registration number "  + registrationNumber
-						+ " is passed in Paper1 exam with marks: " +  paper1Mark );
+
+			} catch (Exception e) {
+				e.printStackTrace();
+
 			}
-			else{
-				System.out.println("Pdf mark is " + paper1Mark + " Excel mark is" + Paper1);
+
+			if (paper1Mark < 50 && Paper1 < 50) {
+				System.out.println("The following Registration number " + registrationNumber
+						+ " is failed in Paper1 exam with marks: " + paper1Mark);
+			} else if (paper1Mark >= 50 && Paper1 >= 50) {
+				System.out.println("The following Registration number " + registrationNumber
+						+ " is passed in Paper1 exam with marks: " + paper1Mark);
+			} else {
+				System.out.println("Pdf mark is " + paper1Mark + " Excel mark is " + Paper1);
 
 			}
 
 		} catch (Exception e) {
-			System.out.println("Error occurred for Paper1 with Registration number "  + registrationNumber + ": " + e.getMessage());
+			System.out.println("Paper 1 row in the excel sheet is empty for the following " + registrationNumber
+					+ " number please check the excel sheet" + e.getMessage());
+
 		}
 	}
 
@@ -805,40 +793,37 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	public void checkPaper2Result(Object regno, Object paper2) {
 		try {
 			Paper2 = objectToDataType(paper2);
-			
-			
+
 			try {
-				if(paper2Mark == Paper2) {
-					System.out.println("Both Excel and Pdf data are same for paper 2 mark");
+				if (paper2Mark == Paper2) {
+					System.out.println(
+							"Both Excel " + Paper2 + " and Pdf " + paper2Mark + " data are same for paper 2 mark");
 				}
-				
+
 				else {
-					System.out.println("Both Excel and Pdf data are not same please check Excel file or Pdf file for paper 2 mark");	
+					System.out.println("Both Excel " + Paper2 + " and Pdf " + paper2Mark
+							+ " data are not same please check Excel file or Pdf file for paper 2 mark");
 				}
-				
-				}
-				catch(Exception e) {
-					e.printStackTrace();
-					
-				}
-			
-			
-			
-			if (paper2Mark == Paper2 && paper2Mark <50 && Paper2 < 50) {
-				System.out.println("The following Registration number " +registrationNumber
-						+ " is failed in Paper2 exam with marks: " + paper2Mark );
-			} else if (paper2Mark == Paper2 && paper2Mark >=50 && Paper2 >= 50) {
-				System.out.println("The following Registration number "  + registrationNumber
-						+ " is passed in Paper2 exam with marks: " + paper2Mark );
+
+			} catch (Exception e) {
+				e.printStackTrace();
+
 			}
-			else{
+
+			if (paper2Mark == Paper2 && paper2Mark < 50 && Paper2 < 50) {
+				System.out.println("The following Registration number " + registrationNumber
+						+ " is failed in Paper2 exam with marks: " + paper2Mark);
+			} else if (paper2Mark == Paper2 && paper2Mark >= 50 && Paper2 >= 50) {
+				System.out.println("The following Registration number " + registrationNumber
+						+ " is passed in Paper2 exam with marks: " + paper2Mark);
+			} else {
 				System.out.println("Pdf mark is " + paper2Mark + " Excel mark is" + Paper2);
 
 			}
 
-			
 		} catch (Exception e) {
-			System.out.println("Paper 2 row in the excel sheet is empty for the following "  + registrationNumber	+ " number please check the excel sheet");
+			System.out.println("Paper 2 row in the excel sheet is empty for the following " + registrationNumber
+					+ " number please check the excel sheet" + e.getMessage());
 		}
 	}
 
@@ -846,37 +831,36 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	public void checkPaper3Result(Object regno, Object paper3) {
 		try {
 			Paper3 = objectToDataType(paper3);
-			
+
 			try {
-				if(paper3Mark == Paper3) {
-					System.out.println("Both Excel and Pdf data are same for paper 3 mark");
+				if (paper3Mark == Paper3) {
+					System.out.println(
+							"Both Excel " + Paper3 + " and Pdf " + paper3Mark + " data are same for paper 3 mark");
 				}
-				
+
 				else {
-					System.out.println("Both Excel and Pdf data are not same please check Excel file or Pdf file for paper 3 mark");	
+					System.out.println("Both Excel " + Paper3 + " and Pdf " + paper3Mark
+							+ " data are not same please check Excel file or Pdf file for paper 3 mark");
 				}
-				
-				}
-				catch(Exception e) {
-					e.printStackTrace();
-					
-				}
-			
-			
-			if (paper3Mark == Paper3 && paper3Mark <50 && Paper3 < 50) {
-				System.out.println("The following Registration number " + registrationNumber
-						+ " is failed in Paper3 exam with marks: " +  paper3Mark);
-			} else if (paper3Mark == Paper3 && paper3Mark >=50 && Paper3 >= 50) {
-				System.out.println("The following Registration number "  + registrationNumber
-						+ " is passed in Paper3 exam with marks: " + paper3Mark);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+
 			}
-			else{
+
+			if (paper3Mark < 50 && Paper3 < 50) {
+				System.out.println("The following Registration number " + registrationNumber
+						+ " is failed in Paper3 exam with marks: " + paper3Mark);
+			} else if (paper3Mark >= 50 && Paper3 >= 50) {
+				System.out.println("The following Registration number " + registrationNumber
+						+ " is passed in Paper3 exam with marks: " + paper3Mark);
+			} else {
 				System.out.println("Pdf mark is " + paper3Mark + " Excel mark is" + Paper3);
 
 			}
 		} catch (Exception e) {
-			System.out.println("Paper 3 row in the excel sheet is empty for the following " 
-					+ " number please check the excel sheet");
+			System.out.println("Paper 3 row in the excel sheet is empty for the following " + registrationNumber
+					+ " number please check the excel sheet" + e.getMessage());
 		}
 	}
 
@@ -887,47 +871,45 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 			TheroryExamTotal = Paper1 + Paper2 + Paper3;
 			//
-			
-			theoryTotal =paper1Mark +paper2Mark+paper3Mark;
-			
-			Double theroryExamTotal = objectToDataType(theoryExam);
-			
-			System.out.println(theoryTotal);
-			
-			
-			try {
-				if(theoryTotal == theroryExamTotal && theoryTotal == TheroryExamTotal ) {
-					System.out.println("Both Excel and Pdf data are same for theory exam mark");
-				}
-				
-				else {
-					System.out.println("Both Excel and Pdf data are not same please check Excel file or Pdf file for theory exam mark");	
-				}
-				
-				}
-				catch(Exception e) {
-				System.out.println("Pdf mark is " + paper1Mark + " Excel mark is" + Paper1);
 
-					
+			theoryTotal = paper1Mark + paper2Mark + paper3Mark;
+
+			Double theroryExamTotal = objectToDataType(theoryExam);
+
+			System.out.println(theoryTotal);
+
+			try {
+				if (theoryTotal == theroryExamTotal && theoryTotal == TheroryExamTotal) {
+					System.out.println("Both Excel " + theroryExamTotal + " and Pdf " + theoryTotal
+							+ " data are same for theory total mark");
 				}
-			
-			
-			if (paper1Mark <50 || paper2Mark <50||paper3Mark <50|| Paper1 < 50 || Paper2 < 50 || Paper3 < 50) {
-				System.out.println("The following Registration number " 
-						+ " has failed in one or more papers and is therefore failed in the Theory exam:"
-						+ theoryTotal );
+
+				else {
+					System.out.println("Both Excel " + theroryExamTotal + " and Pdf " + theoryTotal
+							+ " data are not same please check Excel file or Pdf file for theory total mark");
+				}
+
+			} catch (Exception e) {
+				System.out.println("Pdf mark is " + theoryTotal + " Excel mark is" + theroryExamTotal + e.getMessage());
+
 			}
 
-			else if (theoryTotal == TheroryExamTotal && theoryTotal < theoryMinMark &&  TheroryExamTotal < theoryMinMark) {
-				System.out.println("The following Registration number "  + registrationNumber
+			if (paper1Mark < 50 || paper2Mark < 50 || paper3Mark < 50 || Paper1 < 50 || Paper2 < 50 || Paper3 < 50) {
+				System.out.println("The following Registration number " + registrationNumber
+						+ " has failed in one or more papers and is therefore failed in the Theory exam:"
+						+ theoryTotal);
+			}
+
+			else if (theoryTotal < theoryMinMark && TheroryExamTotal < theoryMinMark) {
+				System.out.println("The following Registration number " + registrationNumber
 						+ " is failed in Theory Exam with total marks: " + theoryTotal);
 			} else if (theoryTotal >= theoryMinMark && TheroryExamTotal >= theoryMinMark) {
-				System.out.println("The following Registration number "  + registrationNumber
+				System.out.println("The following Registration number " + registrationNumber
 						+ " is passed in Theory Exam with total marks: " + theoryTotal);
 			}
 		} catch (Exception e) {
-			System.out.println("Therory Exam row in the excel sheet is empty for the following " 
-					+ " number please check the excel sheet");
+			System.out.println("Therory Exam row in the excel sheet is empty for the following " + registrationNumber
+					+ " number please check the excel sheet" + e.getMessage());
 		}
 	}
 
@@ -935,32 +917,33 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	public void checkPracticalExamResult(Object regno, Object praticalExam) {
 		try {
 			PraticalExamTotal = objectToDataType(praticalExam);
-			
+
 			try {
-			if(praticalTotal == PraticalExamTotal) {
-				System.out.println("Both Excel and Pdf data are same for pratical exam");
-			}
-			
-			else {
-				System.out.println("Both Excel and Pdf data are not same please check Excel file or Pdf file for pratical exam mark");	
-			}
-			
-			}
-			catch(Exception e) {
+				if (praticalTotal == PraticalExamTotal) {
+					System.out.println("Both Excel " + PraticalExamTotal +" and Pdf "+ praticalTotal +" data are same for pratical total mark");
+				}
+	
+				else {
+					System.out.println("Both Excel " + PraticalExamTotal +" and Pdf "+ praticalTotal +" data are not same please check Excel file or Pdf file for pratical total mark");	
+				}
+
+			} catch (Exception e) {
 				e.printStackTrace();
-				
+
 			}
-			
-			if (praticalTotal == PraticalExamTotal && praticalTotal<praticalMinMark && PraticalExamTotal < praticalMinMark) {
-				System.out.println("The following Registration number "  + registrationNumber
+
+			if (praticalTotal < praticalMinMark && PraticalExamTotal < praticalMinMark) {
+				System.out.println("The following Registration number " + registrationNumber
 						+ " is failed in Practical Exam with marks: " + praticalTotal);
 			} else if (praticalTotal >= praticalMinMark && PraticalExamTotal >= praticalMinMark) {
-				System.out.println("The following Registration number "  + registrationNumber
+				System.out.println("The following Registration number " + registrationNumber
 						+ " is passed in Practical Exam with marks: " + praticalTotal);
 			}
 		} catch (Exception e) {
-			System.out.println(
-					"Error occurred for Practical Exam with Registration number "  + registrationNumber + ": " + e.getMessage());
+
+			System.out.println("Pratical Exam row in the excel sheet is empty for the following " + registrationNumber
+					+ " number please check the excel sheet" + e.getMessage());
+
 		}
 	}
 
@@ -970,43 +953,44 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 			// Calculate total score (Theory + Practical)
 			ExamTotalScore = TheroryExamTotal + PraticalExamTotal;
-			
+
 			grandTotal = theoryTotal + praticalTotal;
-			
-			double grandTotalScore= objectToDataType(examTotal);
-			
+
+			double grandTotalScore = objectToDataType(examTotal);
 
 			try {
-				if(grandTotal == grandTotalScore) {
-					System.out.println("Both Excel and Pdf data are same for grand total exam mark");
-				}
-				else {
-					System.out.println("Both Excel and Pdf data are not same please check Excel file or Pdf file for grand total exam mark");	
-				}
+				if (grandTotal == grandTotalScore) {
 				
-				}
-				catch(Exception e) {
-					e.printStackTrace();
-					
-				}
-			
-			
-			if (paper1Mark <50 ||paper2Mark <50||paper3Mark <50 || Paper1 < 50 || Paper2 < 50 || Paper3 < 50 || PraticalExamTotal < praticalMinMark || praticalTotal<praticalMinMark
+						System.out.println("Both Excel " + grandTotalScore +" and Pdf "+ grandTotal +" data are same for pratical grand total mark");
+					}
+		
+					else {
+						System.out.println("Both Excel " + grandTotalScore +" and Pdf "+ grandTotal +" data are not same please check Excel file or Pdf file for grand total mark");	
+					}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			}
+
+			if (paper1Mark < 50 || paper2Mark < 50 || paper3Mark < 50 || Paper1 < 50 || Paper2 < 50 || Paper3 < 50
+					|| PraticalExamTotal < praticalMinMark || praticalTotal < praticalMinMark
 					|| grandTotal < grandTotalMinMark || grandTotal < grandTotalMinMark) {
-				System.out.println("The following Registration number "  + registrationNumber
-						+ " has failed in one or more papers and is therefore failed in the final exam:"
-						+ grandTotal);
+				System.out.println("The following Registration number " + registrationNumber
+						+ " has failed in one or more papers and is therefore failed in the final exam:" + grandTotal);
 			}
 			// If total marks are above 300 but failed in individual papers, still fail
 			else if (grandTotal < grandTotalMinMark && ExamTotalScore < grandTotalMinMark) {
-				System.out.println("The following Registration number "  + registrationNumber + " is failed with total score: "
-						+ grandTotal);
+				System.out.println("The following Registration number " + registrationNumber
+						+ " is failed with total score: " + grandTotal);
 			} else {
-				System.out.println("The following Registration number "  + registrationNumber + " is passed with total score: "
-						+ grandTotal);
+				System.out.println("The following Registration number " + registrationNumber
+						+ " is passed with total score: " + grandTotal);
 			}
 		} catch (Exception e) {
-			System.out.println("Error occurred for Registration number "  + registrationNumber + ": " + e.getMessage());
+
+			System.out.println("GrandTotal(EP)row in the excel sheet is empty for the following " + registrationNumber
+					+ " number please check the excel sheet" + e.getMessage());
 		}
 	}
 
@@ -1196,14 +1180,14 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 	// if (Paper1 < 50) {
 
-	// System.out.println("The following Registration number"  + " is failed
+	// System.out.println("The following Registration number" + " is failed
 	// in Paper1 exam");
 	// // test.log(Status.PASS, regno +" is Passed" ,test.add);
 	// System.out.println(Paper1);
 	// }
 
 	// else if (Paper1 >= 50) {
-	// System.out.println("The following Registration number"  + " is passed
+	// System.out.println("The following Registration number" + " is passed
 	// in Paper1 exam");
 	// System.out.println(Paper1);
 	// }
@@ -1224,19 +1208,19 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 	// if (Paper2 < 50) {
 
-	// System.out.println("The following Registration number "  + " is failed
+	// System.out.println("The following Registration number " + " is failed
 	// in Paper2 exam");
 	// System.out.println(Paper2);
 	// }
 
 	// else if (Paper2 >= 50) {
-	// System.out.println("The following Registration number "  + " is passed
+	// System.out.println("The following Registration number " + " is passed
 	// in Paper2 exam");
 	// System.out.println(Paper2);
 	// }
 
 	// else if (Paper2 >= 50) {
-	// System.out.println("The following Registration number "  + " is passed
+	// System.out.println("The following Registration number " + " is passed
 	// in Paper2 exam");
 	// System.out.println(Paper2);
 	// }
@@ -1255,13 +1239,13 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 	// if (Paper3 < 50) {
 
-	// System.out.println("The following Registration number "  + " is failed
+	// System.out.println("The following Registration number " + " is failed
 	// in Paper3 exam");
 	// System.out.println(Paper3);
 	// }
 
 	// else if (Paper3 >= 50) {
-	// System.out.println("The following Registration number "  + " is passed
+	// System.out.println("The following Registration number " + " is passed
 	// in Paper3 exam");
 	// System.out.println(Paper3);
 	// }
@@ -1280,13 +1264,13 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	// PraticalExamTotal = objectToDataType(praticalExam);
 
 	// if (PraticalExamTotal < 150) {
-	// System.out.println("The following Registration number "  + " is Failed
+	// System.out.println("The following Registration number " + " is Failed
 	// in Pratical Exam");
 	// System.out.println(PraticalExamTotal);
 	// }
 
 	// else if (PraticalExamTotal >= 150) {
-	// System.out.println("The following Registration number "  + " is Passed
+	// System.out.println("The following Registration number " + " is Passed
 	// in Practical Exam");
 	// System.out.println(PraticalExamTotal);
 	// }
@@ -1307,13 +1291,13 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	// TheroryExamTotal = objectToDataType(examTotal);
 
 	// if (TheroryExamTotal < 150) {
-	// System.out.println("The following Registration number "  + " is Failed
+	// System.out.println("The following Registration number " + " is Failed
 	// in Therory Exam");
 	// System.out.println(TheroryExamTotal);
 	// }
 
 	// else if (TheroryExamTotal >= 150) {
-	// System.out.println("The following Registration number "  + " is Passed
+	// System.out.println("The following Registration number " + " is Passed
 	// in Therory Exam");
 	// System.out.println(TheroryExamTotal);
 	// }
@@ -1345,13 +1329,13 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	// ExamTotalScore = objectToDataType(examTotal);
 
 	// if (ExamTotalScore < 300) {
-	// System.out.println("The following Registration number "  + " is Failed
+	// System.out.println("The following Registration number " + " is Failed
 	// ");
 	// System.out.println(ExamTotalScore);
 	// }
 
 	// else if (ExamTotalScore >= 300) {
-	// System.out.println("The following Registration number "  + " is Passed
+	// System.out.println("The following Registration number " + " is Passed
 	// ");
 	// System.out.println(ExamTotalScore);
 	// }
