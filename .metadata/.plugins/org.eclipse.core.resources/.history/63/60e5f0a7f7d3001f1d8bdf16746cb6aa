@@ -1,0 +1,33 @@
+package pageModules;
+
+import base.BasicFunctions;
+import pageObjMod.pom;
+
+public class MasterPage extends BasicFunctions {
+
+	public void CollegeMasterNavigation() {
+		
+		implicitWait( 30);
+		explicitWait( pom.getInstanceCourseXP().loginTags, 30);
+
+		if (pom.getInstanceCourseXP().loginTags.isDisplayed()) {
+
+			implicitWait( 30);
+			explicitWait( pom.getInstanceCourseXP().loginTags, 30);
+
+			scroll( pom.getInstanceMasterXP().masterBtn);
+
+			implicitWait( 30);
+			explicitWait( pom.getInstanceCourseXP().reportCardOption, 30);
+			click( pom.getInstanceCourseXP().reportCardOption);
+		}	
+			else {
+	   //         test.log(LogStatus.FAIL, "Login tag is not displayed");
+	        }
+
+	   
+		}
+		
+	
+	
+}

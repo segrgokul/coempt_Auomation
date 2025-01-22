@@ -66,8 +66,11 @@ public class BrowserManager {
         // Maximize the browser window
         driver.manage().window().maximize();
 
-        // Open a website
-        driver.get("http://103.154.253.118:81/");
+        // Open a website test url
+       driver.get("http://103.154.253.118:81/");
+        
+        //live url
+     //   driver.get("https://knruhs.uonex.in/");
 
         // Close the browser (optional)
         // driver.quit();

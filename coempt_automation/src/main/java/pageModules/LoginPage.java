@@ -1,6 +1,12 @@
 package pageModules;
 
+import java.io.IOException;
+
 import org.apache.commons.lang3.RandomStringUtils;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 import base.BasicFunctions;
 import pageObjMod.pom;
@@ -8,9 +14,13 @@ import pageObjMod.pom;
 public class LoginPage extends BasicFunctions {
 
 
-    public void DirectSignIn() throws InterruptedException {
+    public void DirectSignIn() throws InterruptedException, IOException {
     	
-    	
+		ExtentReports report = new ExtentReports("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\report.html",true);
+
+		ExtentTest test = report.startTest("ReportCardNavigation");	
+		
+		
     	
     	try {
     	
@@ -19,15 +29,18 @@ public class LoginPage extends BasicFunctions {
 			click(pom.getInstanceLoginXP().signinBtn);
 			
 			if (pom.getInstanceLoginXP().invaidUserName.isDisplayed()) {
-			 
+
+				test.log(LogStatus.PASS, "User is unable to enter with direct signin button ");
+				 
 			 System.out.println("User is unable to enter with direct signin button");
 			 pom.getInstanceLoginXP().alertOkBtn.click();
-			 
+			 capture(driver);
 	 }
     	}
     	
     	catch(Exception e){
     		e.printStackTrace();
+			capture(driver);
    	}
     		
     	
@@ -38,7 +51,7 @@ public class LoginPage extends BasicFunctions {
 
 	
 
-	public void DirectPassEntry() throws InterruptedException {
+	public void DirectPassEntry() throws InterruptedException, IOException {
 		
 
       	 implicitWait(30);
@@ -61,10 +74,11 @@ public class LoginPage extends BasicFunctions {
 			pom.getInstanceLoginXP().alertOkBtn.click();
 			implicitWait(30);	
 			pom.getInstanceLoginXP().userpass.clear();
+			capture(driver);
 			
 	}}
 	
-	public void DirectUserEntry() throws InterruptedException {
+	public void DirectUserEntry() throws InterruptedException, IOException {
 		
 
      	 implicitWait(30);
@@ -89,10 +103,11 @@ public class LoginPage extends BasicFunctions {
 			pom.getInstanceLoginXP().alertOkBtn.click();
 			implicitWait(30);	
 			pom.getInstanceLoginXP().userName.clear();
+			capture(driver);
 			
 	}}
 	
-	public void LoginInFail() throws InterruptedException {
+	public void LoginInFail() throws InterruptedException, IOException {
 		
 
     	 implicitWait(30);
@@ -127,10 +142,11 @@ public class LoginPage extends BasicFunctions {
 			pom.getInstanceLoginXP().userName.clear();
 			implicitWait(30);
 			pom.getInstanceLoginXP().userpass.clear();
+			capture(driver);
 	}}
 	
 
-	public void Login() throws InterruptedException {
+	public void Login() throws InterruptedException, IOException {
 			
 
     	 implicitWait(30);
@@ -159,12 +175,13 @@ public class LoginPage extends BasicFunctions {
 			
 			System.out.println("The Admin Login Page has login and the landing page of KNRUHS is displayed");
 			implicitWait(30);	
+			capture(driver);
 	   		
 	}}
 	
 	
 	
-	public void Logout() {		
+	public void Logout() throws IOException {		
 		
 
 		implicitWait(30);	
@@ -181,7 +198,7 @@ public class LoginPage extends BasicFunctions {
 		   		explicitWait(pom.getInstanceLoginXP().signOutBtn,30);
 		   		click(pom.getInstanceLoginXP().signOutBtn);
 			
-			
+				capture(driver);
 				
 			}
 			}

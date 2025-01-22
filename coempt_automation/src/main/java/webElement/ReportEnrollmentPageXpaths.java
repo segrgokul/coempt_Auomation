@@ -29,7 +29,7 @@ public WebElement loginTags;
     @FindBy(id = "select2-selSchemaMain-container")
     public WebElement awardName;  
   
-    @FindBy(xpath = "//span[@class='select2-selection select2-selection--single']/span[@id='select2-SemSelection-container']")
+    @FindBy(xpath = "//span[@class='select2-selection select2-selection--single']/span[@id='select2-SemSelection-container' or @id='select2-ddlSem-container']")
     public WebElement yearSession; 
     
     @FindBy(xpath = "//span[@class='select2-selection select2-selection--single']/span[@id='select2-ddlRegulation-container']")
@@ -38,7 +38,12 @@ public WebElement loginTags;
     @FindBy(xpath = "//span[@class='select2-selection select2-selection--single']/span[@id='select2-ddlExamType-container']")
     public WebElement examType;
     
-   
+
+    @FindBy(xpath = "    //h2[@id='swal2-title' and text()='Loading the Report Card...']")
+    public WebElement loadingScreen;
+
+    
+
 
     
     @FindBy(id = "btnSUB")

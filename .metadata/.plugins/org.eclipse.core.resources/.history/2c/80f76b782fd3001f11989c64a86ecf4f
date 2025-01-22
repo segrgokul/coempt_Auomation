@@ -1,0 +1,265 @@
+package pageModules;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import base.BasicFunctions;
+import pageObjMod.pom;
+
+public class DashboardPage extends BasicFunctions {
+String  clgCode ="767";
+String  clgName ="Indian College of Nursing";
+String  clgCourseNo ="7";
+
+	
+	
+	
+	public  void EntriesPerPage(){
+		
+		
+		implicitWait(30);	
+		fluentWait(pom.getInstanceAssignCourseXP().loginTags,30);		
+
+	if (pom.getInstanceDashboardXP().dashboardOption.isDisplayed()) {
+		
+		implicitWait(30);	
+   		explicitWait(pom.getInstanceDashboardXP().dashboardOption,30);
+		
+   		scroll(pom.getInstanceDashboardXP().dashboardOption);
+	
+	}
+	
+		implicitWait(30);	
+   		explicitWait(pom.getInstanceDashboardXP().dashboardOption,30);
+   		click(pom.getInstanceDashboardXP().dashboardOption);
+   		
+   		
+   		if(pom.getInstanceDashboardXP().entriesDropDown.isDisplayed()) {
+   			
+   			for (int i=0;i<=3;i++) {
+				click(pom.getInstanceDashboardXP().entriesDropDown);
+   				implicitWait(30);	
+   				fluentWait(pom.getInstanceDashboardXP().entriesDropDownOption.get(i),30);
+   				
+   				String entriesDropDownText = pom.getInstanceDashboardXP().entriesDropDownOption.get(i).getText();
+   				
+   				pom.getInstanceDashboardXP().entriesDropDownOption.get(i).click();
+   				implicitWait(30);	
+   				fluentWait(pom.getInstanceDashboardXP().entriesDropDownOption.get(i),30);
+   			   int entriesDropDownCount = pom.getInstanceDashboardXP().codeNos.size();
+   			
+
+				boolean allElementCodeDisplayed= true;
+				try{
+				   for(WebElement CodeNos : pom.getInstanceDashboardXP().codeNos){
+					
+					
+   
+					   if(!CodeNos.isDisplayed()){
+						allElementCodeDisplayed= false;
+					}
+
+
+					}
+				}
+				
+				catch(Exception e){
+					e.printStackTrace();
+				}
+
+				finally {
+				if (allElementCodeDisplayed){
+					System.out.println("Showing 1 to " + entriesDropDownCount +" for the " + entriesDropDownText +" entries per page list");
+				
+
+				}}
+
+
+
+   			}
+   		
+		
+	}
+	
+	}
+	
+	public  void DashBoardColumn(){
+		
+		if(pom.getInstanceDashboardXP().entriesDropDown.isDisplayed()||pom.getInstanceDashboardXP().entriesDropDownOption.get(0).isDisplayed()) {
+   			
+   			for (int i=0;i<=2;i++) {
+   				
+   				implicitWait(30);	
+   				fluentWait(pom.getInstanceDashboardXP().dashboardBtns.get(i),30);
+   				pom.getInstanceDashboardXP().dashboardBtns.get(i).click();
+   				
+   				implicitWait(30);	
+   				fluentWait(pom.getInstanceDashboardXP().dashboardBtns.get(i),30);
+   				pom.getInstanceDashboardXP().dashboardBtns.get(i).click();
+   				
+   				implicitWait(30);	
+   				fluentWait(pom.getInstanceDashboardXP().dashboardBtns.get(i),30);
+   				pom.getInstanceDashboardXP().dashboardBtns.get(i).click();
+   				
+   				
+   				String columnTitle = driver.findElements(By.xpath("//span[@class='dt-column-title']")).get(i).getText();
+   				
+   				System.out.println(columnTitle +" is Able to click and change the "+ columnTitle +" order ");
+   				
+   			}
+   			
+   		
+		
+		
+	}
+
+	}
+	
+		public  void DashBoardSearch(){
+		try {
+			
+		
+   			
+   		click(pom.getInstanceDashboardXP().dashboardSearch);
+   		implicitWait(30);	
+   		
+   		sendKeys(pom.getInstanceDashboardXP().dashboardSearch,clgCode);		
+   		implicitWait(30);	
+   		
+   	 WebElement	clgSearchedCode = driver.findElement(By.xpath("	//td[@class='row-index text-center small' and text()='" + clgCode + "']"));
+ 
+     		System.out.println(clgSearchedCode.getText());
+   		
+   		if(clgSearchedCode.getText().equals(clgCode)) {
+   			
+   			System.out.println("Clg code number search " + clgCode + " number matches the result");
+   			implicitWait(30);	
+   			
+   			clear(pom.getInstanceDashboardXP().dashboardSearch);
+   			implicitWait(30);	
+	  		fluentWait(pom.getInstanceDashboardXP().dashboardOption,30);
+			
+  			click(pom.getInstanceDashboardXP().dashboardOption);
+		}}
+   		
+   		catch(Exception e){
+   			e.printStackTrace();
+   		}
+		
+		try {
+		
+   		implicitWait(30);	
+   		fluentWait(pom.getInstanceDashboardXP().dashboardSearch,30);
+   		click(pom.getInstanceDashboardXP().dashboardSearch);
+   		implicitWait(30);	
+  		fluentWait(pom.getInstanceDashboardXP().dashboardSearch,30);
+   		sendKeys(pom.getInstanceDashboardXP().dashboardSearch,clgName);		
+   		implicitWait(30);	
+		
+		
+		
+	   	WebElement clgSearchedName = driver.findElement(By.xpath("	//td[@class='row-index text-center small' and text()='" + clgName + "']"));
+	   	 
+  		System.out.println(clgSearchedName.getText());
+		
+		if(clgSearchedName.getText().equals(clgName)) {
+			
+			System.out.println("Clg Name search " + clgName + " name matches the result");
+			implicitWait(30);	
+			
+			clear(pom.getInstanceDashboardXP().dashboardSearch);
+			implicitWait(30);	
+	  		fluentWait(pom.getInstanceDashboardXP().dashboardOption,30);
+			
+  			click(pom.getInstanceDashboardXP().dashboardOption);
+		}}
+		
+		catch(Exception e) {
+			e.printStackTrace();
+
+
+}
+		
+		try {
+			
+	   		implicitWait(30);	
+	   		fluentWait(pom.getInstanceDashboardXP().dashboardSearch,30);
+	   		click(pom.getInstanceDashboardXP().dashboardSearch);
+	   		implicitWait(30);	
+	  		fluentWait(pom.getInstanceDashboardXP().dashboardSearch,30);
+	   		sendKeys(pom.getInstanceDashboardXP().dashboardSearch,clgCourseNo);		
+	   		implicitWait(30);	
+			
+	      	 List<WebElement>	clgSearchedCode = driver.findElements(By.xpath("	//td[@class='row-index text-center small']"));
+	      	 
+	         
+
+	 		boolean allElementCourseCodeDisplayed= true;
+	 		try{
+	 		   for(WebElement CourseNos : clgSearchedCode){
+	 			
+	 			
+
+	 			   if(!CourseNos.isDisplayed()){
+	 				   allElementCourseCodeDisplayed= false;
+	 			}
+
+
+	 			}
+	 		}
+	 		
+	 		catch(Exception e){
+	 			e.printStackTrace();
+	 		}
+
+	 		finally {
+	 		if (allElementCourseCodeDisplayed){
+	 			System.out.println("All the course based on the clg course number "+ clgCourseNo +" is displaying");
+	 		
+	 			implicitWait(30);	
+		  		fluentWait(pom.getInstanceDashboardXP().dashboardOption,30);
+				
+	  			click(pom.getInstanceDashboardXP().dashboardOption);
+	 		}}
+	   		
+	   		
+		}
+		
+		catch(Exception e) {
+		e.printStackTrace();
+		
+		}
+		}
+		
+		
+		public void PageNavigation(){
+			
+		
+			implicitWait(30);	
+	   		fluentWait(pom.getInstanceDashboardXP().nextPageNavigation,30);
+	   		
+	   		scrollTillEnd(driver);
+//	   		scroll(pom.getInstanceDashboardXP().nextPageNavigation);
+
+		for (int i=0;i<=2;i++) {
+				
+				implicitWait(30);	
+    		fluentWait(pom.getInstanceDashboardXP().nextPageNavigation,30);
+	   		click(pom.getInstanceDashboardXP().nextPageNavigation);
+			}
+
+		implicitWait(30);	
+   		fluentWait(pom.getInstanceDashboardXP().lastPageNavigation,30);
+		click(pom.getInstanceDashboardXP().lastPageNavigation);
+		
+		}
+		
+
+
+
+
+
+
+}

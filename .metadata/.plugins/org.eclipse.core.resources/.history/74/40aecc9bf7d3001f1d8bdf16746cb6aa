@@ -1,0 +1,15 @@
+package pageModules;
+
+import base.BasicFunctions;
+
+public class MasterPage extends BasicFunctions {
+
+	public void CollegeMasterNavigation() {
+		
+		
+		
+		
+	}
+	 
+	
+}

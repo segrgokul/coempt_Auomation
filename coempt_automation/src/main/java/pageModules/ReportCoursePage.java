@@ -1,24 +1,42 @@
 package pageModules;
 
-import java.io.IOException;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import base.BasicFunctions;
 import static pageModules.ReportEnrollmentPage.EnrollmentAwardName;
 import static pageModules.ReportEnrollmentPage.EnrollmentExamDate;
 import static pageModules.ReportEnrollmentPage.EnrollmentExamType;
 import static pageModules.ReportEnrollmentPage.EnrollmentRegulation;
 import static pageModules.ReportEnrollmentPage.EnrollmentSemester;
+
+import java.io.File;
+import java.io.IOException;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import base.BasicFunctions;
 import pageObjMod.pom;
 
 public class ReportCoursePage extends BasicFunctions {
 	public Object[][] data1;
 	public Object[][] data2;
 	
-	public void ReportCardNavigation() {
-	
+//	static ExtentReports report;
+
+	  
+
+	    // Constructor to initialize ExtentReports
+	  
+	    	
+
+	public void ReportCardNavigation() throws IOException {
+//		ExtentReports     report = new ExtentReports("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html", true);
+//        report.loadConfig(new File("path_to_config_file.xml"));
+//    
+//        ExtentTest	 test = report.startTest("ReportCardNavigation");
+		
+		
 		implicitWait( 30);
 		explicitWait( pom.getInstanceCourseXP().loginTags, 30);
 
@@ -27,34 +45,59 @@ public class ReportCoursePage extends BasicFunctions {
 			implicitWait( 30);
 			explicitWait( pom.getInstanceCourseXP().loginTags, 30);
 
-			jsScroll( pom.getInstanceCourseXP().reportCardOption);
+			scroll( pom.getInstanceCourseXP().reportCardOption);
 
 			implicitWait( 30);
 			explicitWait( pom.getInstanceCourseXP().reportCardOption, 30);
 			click( pom.getInstanceCourseXP().reportCardOption);
+		}	
+			else {
+	   //         test.log(LogStatus.FAIL, "Login tag is not displayed");
+	        }
+
+	   
 		}
-	}
 	
+
 	
 	
 	public void ReportCardCourseNavigation() {
-	
+	// // // 	// // // ExtentReports     report = new ExtentReports("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html");
+    //    report.loadConfig(new File("path_to_config_file.xml"));
+    
+
+      //  ExtentTest	test = report.startTest("ReportCard Course Navigation");
+	    
 		implicitWait( 30);
 		explicitWait( pom.getInstanceCourseXP().reportCardCourse, 30);
 
-		jsScroll( pom.getInstanceCourseXP().reportCardCourse);
+		scroll( pom.getInstanceCourseXP().reportCardCourse);
 
 		implicitWait( 30);
 		explicitWait( pom.getInstanceCourseXP().reportCardCourse, 30);
 		click( pom.getInstanceCourseXP().reportCardCourse);
 
+//		test.log(LogStatus.PASS, "ReportCard option is navigated perfectly ");
+		
+	
 	}
 	
-	public void handleCollegeCode(Object clgCode) throws InterruptedException {
-	
+	public void handleCollegeCode(Object clgCode) throws InterruptedException, IOException {
+		/*
+		 * ExtentReports report = new ExtentReports(
+		 * "D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html"
+		 * ); report.loadConfig(new File("path_to_config_file.xml"));
+		 * 
+		 * 
+		 * ExtentTest test = report.startTest("Handle College Code");
+		 */
+		  
 		
 		// Wait for the dropdown and textbox elements
-		implicitWait( 30);
+		implicitWait( 50);
+		
+		pom.getInstanceCourseXP().clgDropDown.isDisplayed();
+		
 		explicitWait( pom.getInstanceCourseXP().clgDropDown, 30);
 	
 		// Click the college dropdown
@@ -77,9 +120,21 @@ public class ReportCoursePage extends BasicFunctions {
 		// Click the first result in the dropdown
 		if (pom.getInstanceCourseXP().clgDropDownResults.get(0).isDisplayed()) {
 			click( pom.getInstanceCourseXP().clgDropDownResults.get(0));
+			
+//			test.log(LogStatus.PASS, "College Dropdown is clicked");
+
+//			String screenshotPath = BasicFunctions.capture(driver);
+//			System.out.println("Screenshot path: " + screenshotPath);
+//			test.log(LogStatus.PASS, "Click action performed", test.addScreenCapture(screenshotPath));
+//			report.endTest(test);
+//			report.flush();
+//			test.log(LogStatus.PASS, "Other parameters handled successfully");
 		} else {
 			System.out.println("College code not found.");
+//			test.log(LogStatus.FAIL, "Click action performed", test.addScreenCapture(BasicFunctions.capture(driver)));
 		}
+//		 report.endTest(test); // End the test after all logs are added
+//	        report.flush();
 	}
 	
 			
@@ -167,7 +222,7 @@ public class ReportCoursePage extends BasicFunctions {
 
 	}
 
-		
+	 
 		
 		
 		public double objectToDataType(Object obj) {

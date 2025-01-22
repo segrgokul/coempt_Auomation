@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPageXPaths {
+import base.BasicFunctions;
+
+public class LoginPageXPaths extends BasicFunctions {
 
     @FindBy(xpath = "//input[@id='username']")
     public WebElement userName;

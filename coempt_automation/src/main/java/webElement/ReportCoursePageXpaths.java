@@ -22,7 +22,7 @@ public class ReportCoursePageXpaths {
 	 public WebElement reportCardCourse;
 		
 	 
-	  @FindBy(id = "select2-groupdrop-container")
+	  @FindBy(xpath = "//span[@id='select2-groupdrop-container' or @id='select2-ddlColleges-container']")
 	    public WebElement clgDropDown;  
 	    
 	  @FindBy(xpath = "//input[@class='select2-search__field']")

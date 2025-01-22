@@ -1,0 +1,48 @@
+
+package webElement;
+
+import java.util.List;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class DashboardPageXpaths {
+
+
+    @FindBy(id = "dt-length-1")
+    public WebElement entriesDropDown;
+
+    @FindBy(xpath = "//select[@id='dt-length-1']/option")
+    public List<WebElement> entriesDropDownOption;
+
+
+
+    @FindBy(xpath = "//td[@class='row-index text-center small sorting_1']")
+    public List<WebElement> codeNos;
+
+   
+
+    
+    @FindBy(xpath = "//span[@class='nk-menu-text' and text()='Dashboard']")
+    public WebElement dashboardOption;
+    
+    
+    
+    
+    @FindBy(xpath = "//span[@class='dt-column-title']")
+    public List<WebElement> dashboardBtns;
+    
+    @FindBy(id = "dt-search-1")
+    public WebElement dashboardSearch;
+    
+    
+    
+
+    public DashboardPageXpaths(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
+        
+    
+    }

@@ -3,9 +3,14 @@ package pageObjMod;
 	import org.openqa.selenium.WebDriver;
 
 import browsers.BrowserManager;
+import webElement.AttendanceTheroryXpaths;
+import webElement.DashboardPageXpaths;
 import webElement.LoginPageXPaths;
+import webElement.MasterPageXpaths;
 import webElement.ReportCoursePageXpaths;
 import webElement.ReportEnrollmentPageXpaths;
+import webElement.ResultTRDataXpaths;
+import webElement.SettingsAssignCoursePageXpaths;
 
 
 	public class pom  extends BrowserManager{
@@ -14,8 +19,13 @@ import webElement.ReportEnrollmentPageXpaths;
 				public static LoginPageXPaths loginXP ;
 				private static ReportCoursePageXpaths CourseXP;
 				private static ReportEnrollmentPageXpaths EnrollmentXP;
-
-					// Use a different name for the static instance
+				private static ResultTRDataXpaths TRDataXP;
+				private static SettingsAssignCoursePageXpaths AssignCourseXP;
+				private static AttendanceTheroryXpaths TheroryXP;
+				private static DashboardPageXpaths DashboardXP;
+				private static MasterPageXpaths MasterXP;
+				
+				// Use a different name for the static instance
 		
 					// Constructor
    public pom(WebDriver driver) {
@@ -33,7 +43,38 @@ import webElement.ReportEnrollmentPageXpaths;
 	        
 	        return loginXP; // Return the instance
 	    }
-
+	    
+	    public static DashboardPageXpaths getInstanceDashboardXP() {
+	        // If the instance is null, create a new instance
+	    	if (DashboardXP == null) {
+	    		DashboardXP = new DashboardPageXpaths(driver);
+	        	return DashboardXP;
+	        }
+	        
+	        return DashboardXP; // Return the instance
+	    }
+	    
+	 
+	    public static MasterPageXpaths getInstanceMasterXP() {
+	        // If the instance is null, create a new instance
+	    	if (MasterXP == null) {
+	    		MasterXP = new MasterPageXpaths(driver);
+	        	return MasterXP;
+	        }
+	        
+	        return MasterXP; // Return the instance
+	    }
+	    
+	    public static AttendanceTheroryXpaths getInstanceTheroryXP() {
+			
+			if (TheroryXP == null) {
+				TheroryXP = new AttendanceTheroryXpaths(driver);
+				return TheroryXP;
+			}	
+		return TheroryXP;
+		}
+	    
+	    
 		public static ReportCoursePageXpaths getInstanceCourseXP() {
 		
 			if (CourseXP == null) {
@@ -51,4 +92,26 @@ import webElement.ReportEnrollmentPageXpaths;
 					}	
 			return EnrollmentXP;
 		}
-	}
+	
+		public static ResultTRDataXpaths getInstanceTRDataXP() {
+			
+			if (TRDataXP == null) {
+				TRDataXP = new ResultTRDataXpaths(driver);
+				return TRDataXP;
+
+			}	
+	return TRDataXP;
+}
+		
+		public static SettingsAssignCoursePageXpaths getInstanceAssignCourseXP() {
+			
+			if (AssignCourseXP == null) {
+				AssignCourseXP = new SettingsAssignCoursePageXpaths(driver);
+				return AssignCourseXP;
+
+			}	
+	return AssignCourseXP;
+
+	
+		}	}
+	

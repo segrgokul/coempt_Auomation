@@ -82,12 +82,17 @@ public class BasicFunctions extends BrowserManager {
 	}
 
 
-	  public static void selectByVisibleText(WebElement dropdown, String visibleText) {
-	        Select select = new Select(dropdown);
+	  public static void selectByVisibleText(WebElement dropdownElement, String visibleText) {
+	        Select select = new Select(dropdownElement);
 	        select.selectByValue(visibleText);
 	    }
+
+		public static void selectByIndex(WebElement dropdownElement, int index) {
+			Select dropdown = new Select(dropdownElement);
+			dropdown.selectByIndex(index);
+		}
 	  
-	public void sendKeys(final WebElement ele, Object value) {
+	public static void sendKeys(final WebElement ele, Object value) {
 	    // Convert the value to a String
 	    String valueStr = null;
 	    
@@ -116,7 +121,7 @@ public class BasicFunctions extends BrowserManager {
 	}
 
 
-	public void jsScroll(final WebElement ele) {
+	public static void scroll(WebElement ele) {
 
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;	
@@ -124,12 +129,12 @@ public class BasicFunctions extends BrowserManager {
 
 	}
 
-	public void jsScrolltillend(WebDriver driver) {
+	public void scrollTillEnd(WebDriver driver) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
 
-	public void jsScrolltilltop(WebDriver driver) {
+	public void scrollToTop(WebDriver driver) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
 	}
@@ -138,31 +143,27 @@ public class BasicFunctions extends BrowserManager {
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(second));
 		wait.until(ExpectedConditions.elementToBeClickable(ele));
 	}
-	
-	public static String captureAndLogScreenshot(WebDriver driver) {
-        // Initialize ExtentReports and ExtentTest inside the method
-        ExtentReports extent = new ExtentReports();
-        ExtentTest extentTest = extent.createTest("Test Name");  // You can customize the test name as needed
 
+    public static String capture(WebDriver driver) throws IOException {
+        // Capture screenshot and store it in a file
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+        // Define the destination path for the screenshot
+        String destPath = System.getProperty("user.dir") + "/src/test/resources/reports/screenshot_" + System.currentTimeMillis() + ".png";
+        File dest = new File(destPath);
+
+        // Copy the screenshot to the destination
         try {
-            // Capture screenshot and store it in a file
-            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File dest = new File(System.getProperty("user.dir") + "//src//test//resources//reports//" + System.currentTimeMillis() + ".png");
-            String errflpath = dest.getAbsolutePath();
-            FileUtils.copyFile(scrFile, dest);  // Save the screenshot file
-
-            // Log the screenshot in ExtentReports
-            extentTest.log(Status.INFO, "Screenshot attached", 
-                MediaEntityBuilder.createScreenCaptureFromPath(errflpath).build());
-
+            FileUtils.copyFile(scrFile, dest);
         } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // Finalize and save the report
-            extent.flush();
+            // Handle the exception (e.g., log the error, rethrow the exception)
+            throw new IOException("Failed to save screenshot to " + destPath, e);
         }
-		return null;
+
+        // Return the absolute path of the screenshot file
+        return dest.getAbsolutePath();
     }
+
 	
 	public String incrementPhoneNumber(String phoneNumber) {
 	        long number = Long.parseLong(phoneNumber) + 1;

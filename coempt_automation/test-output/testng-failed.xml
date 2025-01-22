@@ -6,8 +6,8 @@
       <class name="runner_Execution.Exceution">
         <methods>
           <include name="beforeClass"/>
-          <include name="testCase3" invocation-numbers="0 1"/>
-          <include name="testCase4" invocation-numbers="0 1 2 3 4"/>
+          <include name="testCase3"/>
+          <include name="testCase5" invocation-numbers="0 1 2 3 4"/>
           <include name="beforeMethod"/>
           <include name="afterClass"/>
           <include name="afterTest"/>

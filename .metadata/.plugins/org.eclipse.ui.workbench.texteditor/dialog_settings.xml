@@ -3,6 +3,9 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="replacehistory">
+		<item value="// ExtentReports     report = new ExtentReports(&quot;D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html&quot;);"/>
+		<item value="// &#x09;ExtentReports     report = new ExtentReports(&quot;D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html&quot;);"/>
+		<item value="pom.getInstanceAssignCourseXP()"/>
 		<item value="CoursePage"/>
 		<item value="studentDetail"/>
 		<item value="AssignCourse"/>
@@ -12,6 +15,13 @@
 		<item value="sendKeys"/>
 	</list>
 	<list key="searchhistory">
+		<item value="isdisplayed"/>
+		<item value="check"/>
+		<item value="+ regno"/>
+		<item value="Input string does not match the pattern."/>
+		<item value="ExtentReports     report = new ExtentReports(&quot;D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html&quot;);"/>
+		<item value="&#x09;ExtentReports     report = new ExtentReports(&quot;D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html&quot;);"/>
+		<item value="AssignCourse"/>
 		<item value="driver,"/>
 		<item value="excelData"/>
 		<item value="enrollPage"/>
@@ -20,13 +30,6 @@
 		<item value="yeat"/>
 		<item value="e."/>
 		<item value="e.printstack"/>
-		<item value="system.out.println"/>
-		<item value="examSession"/>
-		<item value="award"/>
-		<item value="RegNo"/>
-		<item value="data"/>
-		<item value="userName"/>
-		<item value="loginPage"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item key="wrap" value="true"/>
@@ -34,15 +37,21 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="package pageModules;"/>
 		<list key="findhistory">
+			<item value="package pageModules;"/>
+			<item value="Found marks:"/>
+			<item value="21202105005"/>
+			<item value="PABBU KRISHNA SREE"/>
+			<item value="D:\Coempt_Automation\coempt_automation\path_to_config_file.xml"/>
 			<item value="Reading data from the Excel file..."/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="530"/>
-		<item key="DIALOG_Y_ORIGIN" value="112"/>
+		<item key="DIALOG_X_ORIGIN" value="848"/>
+		<item key="DIALOG_Y_ORIGIN" value="337"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

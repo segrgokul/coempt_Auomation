@@ -1,0 +1,25 @@
+package webElement;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class MasterPageXpaths {
+
+	
+	  @FindBy(xpath = "//span[contains(@class,'select2-selection') and @aria-expanded='true' or @aria-expanded='false']")
+	    public WebElement selectDropdown;
+	    
+	       
+	    
+	  
+
+	    public MasterPageXpaths(WebDriver driver) {
+	        PageFactory.initElements(driver, this);
+	    }
+	        
+	    
+	    }
+	
+
