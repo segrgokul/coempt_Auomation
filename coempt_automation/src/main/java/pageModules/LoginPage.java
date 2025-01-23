@@ -16,10 +16,10 @@ public class LoginPage extends BasicFunctions {
 
     public void DirectSignIn() throws InterruptedException, IOException {
     	
-		ExtentReports report = new ExtentReports("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\report.html",true);
-
-		ExtentTest test = report.startTest("ReportCardNavigation");	
-		
+//		ExtentReports report = new ExtentReports("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\report.html",true);
+//
+//		ExtentTest test = report.startTest("ReportCardNavigation");	
+//		
 		
     	
     	try {
@@ -30,7 +30,7 @@ public class LoginPage extends BasicFunctions {
 			
 			if (pom.getInstanceLoginXP().invaidUserName.isDisplayed()) {
 
-				test.log(LogStatus.PASS, "User is unable to enter with direct signin button ");
+	//			test.log(LogStatus.PASS, "User is unable to enter with direct signin button ");
 				 
 			 System.out.println("User is unable to enter with direct signin button");
 			 pom.getInstanceLoginXP().alertOkBtn.click();

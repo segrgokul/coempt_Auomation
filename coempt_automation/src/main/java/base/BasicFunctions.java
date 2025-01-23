@@ -28,9 +28,23 @@ import browsers.BrowserManager;
 
 
 public class BasicFunctions extends BrowserManager {
-	static ExtentTest test;
-	static ExtentReports report;
+
+	  public static ExtentReports extentReport;
+	  public static ExtentSparkReporter sparkReporter;
 	
+	
+	 public void report() {
+	        String reportPath = "D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ExtentReport.html";
+	        extentReport = new ExtentReports();
+	       //Spark is also called html reporter
+	        sparkReporter = new ExtentSparkReporter(reportPath);
+	        extentReport.attachReporter(sparkReporter);
+	    	extentReport =new ExtentReports(); 
+	    	
+	    	
+	  
+	 
+	 }
 	
 	//i wait until timeout sec but i will loop it for every seconds i menioned in durations of seconds
 	public static WebElement fluentWait(final WebElement ele,int timeoutInSec) {
@@ -160,6 +174,8 @@ public class BasicFunctions extends BrowserManager {
             throw new IOException("Failed to save screenshot to " + destPath, e);
         }
 
+        
+        
         // Return the absolute path of the screenshot file
         return dest.getAbsolutePath();
     }

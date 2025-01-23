@@ -6,14 +6,14 @@ import static pageModules.ReportEnrollmentPage.EnrollmentExamType;
 import static pageModules.ReportEnrollmentPage.EnrollmentRegulation;
 import static pageModules.ReportEnrollmentPage.EnrollmentSemester;
 
-import java.io.File;
 import java.io.IOException;
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 
 import base.BasicFunctions;
 import pageObjMod.pom;
@@ -21,21 +21,29 @@ import pageObjMod.pom;
 public class ReportCoursePage extends BasicFunctions {
 	public Object[][] data1;
 	public Object[][] data2;
-	
+	public static ExtentTest testCaseName;
 //	static ExtentReports report;
 
-	  
 
 	    // Constructor to initialize ExtentReports
-	  
+	  // Set the test case name only once
+	 
+    
+	   
+   
+	
 	    	
 
 	public void ReportCardNavigation() throws IOException {
+	
 //		ExtentReports     report = new ExtentReports("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html", true);
 //        report.loadConfig(new File("path_to_config_file.xml"));
 //    
 //        ExtentTest	 test = report.startTest("ReportCardNavigation");
-		
+//		testCaseName = extentReport.createTest("Enrollment Page Actions");
+//		
+//		testCaseName.log(Status.INFO, "This is a pass message");
+
 		
 		implicitWait( 30);
 		explicitWait( pom.getInstanceCourseXP().loginTags, 30);
@@ -45,15 +53,33 @@ public class ReportCoursePage extends BasicFunctions {
 			implicitWait( 30);
 			explicitWait( pom.getInstanceCourseXP().loginTags, 30);
 
+		//	testCaseName.log(Status.INFO, "Report Card Navigation");
 			scroll( pom.getInstanceCourseXP().reportCardOption);
 
 			implicitWait( 30);
+			
+			System.out.println("testCaseName: " + testCaseName);
+			
+			if(pom.getInstanceCourseXP().reportCardOption.isDisplayed()) {
+			
 			explicitWait( pom.getInstanceCourseXP().reportCardOption, 30);
 			click( pom.getInstanceCourseXP().reportCardOption);
-		}	
+//			testCaseName.log(Status.PASS, "Report Card is Navigated sucessfully");
+			
+
+			
+		//	testCaseName.log(Status.PASS, "This is a pass message");
+}	}
 			else {
-	   //         test.log(LogStatus.FAIL, "Login tag is not displayed");
-	        }
+	       
+				
+				/*
+				 * testCaseName.log(Status.FAIL, "Login tag is not displayed",
+				 * testCaseName.addScreenCaptureFromPath(BasicFunctions.capture(driver)));
+				 */
+	//			testCaseName.log(Status.FAIL, "Report Card page not navigating ", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			
+			}
 
 	   
 		}
@@ -74,23 +100,30 @@ public class ReportCoursePage extends BasicFunctions {
 		scroll( pom.getInstanceCourseXP().reportCardCourse);
 
 		implicitWait( 30);
+		
+		
+		try {
+		if(pom.getInstanceCourseXP().reportCardCourse.isDisplayed()) {
+			implicitWait( 30);		
+		
 		explicitWait( pom.getInstanceCourseXP().reportCardCourse, 30);
 		click( pom.getInstanceCourseXP().reportCardCourse);
-
-//		test.log(LogStatus.PASS, "ReportCard option is navigated perfectly ");
-		
+//		testCaseName.log(Status.PASS, "Report Card is course navigation sucessfully");
 	
+		
+		}
+		}
+		catch(Exception e) {
+			testCaseName.log(Status.FAIL, "Report Card is course does not navigation sucessfully");
+		}
+
+	//	testCase.log(LogStatus.PASS, "ReportCard option is navigated perfectly ");
+		
+
 	}
 	
 	public void handleCollegeCode(Object clgCode) throws InterruptedException, IOException {
-		/*
-		 * ExtentReports report = new ExtentReports(
-		 * "D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html"
-		 * ); report.loadConfig(new File("path_to_config_file.xml"));
-		 * 
-		 * 
-		 * ExtentTest test = report.startTest("Handle College Code");
-		 */
+		 
 		  
 		
 		// Wait for the dropdown and textbox elements
@@ -120,18 +153,17 @@ public class ReportCoursePage extends BasicFunctions {
 		// Click the first result in the dropdown
 		if (pom.getInstanceCourseXP().clgDropDownResults.get(0).isDisplayed()) {
 			click( pom.getInstanceCourseXP().clgDropDownResults.get(0));
+//			testCaseName.log(Status.PASS, "College code has entered sucessfully");
 			
-//			test.log(LogStatus.PASS, "College Dropdown is clicked");
+			
 
-//			String screenshotPath = BasicFunctions.capture(driver);
-//			System.out.println("Screenshot path: " + screenshotPath);
-//			test.log(LogStatus.PASS, "Click action performed", test.addScreenCapture(screenshotPath));
-//			report.endTest(test);
-//			report.flush();
-//			test.log(LogStatus.PASS, "Other parameters handled successfully");
 		} else {
-			System.out.println("College code not found.");
-//			test.log(LogStatus.FAIL, "Click action performed", test.addScreenCapture(BasicFunctions.capture(driver)));
+//			System.out.println("College code not found.");
+			
+			testCaseName.log(Status.FAIL, "College code has not entered ", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+
+			
+	//		testCase.log(LogStatus.FAIL, "Click action performed", testCase.addScreenCapture(BasicFunctions.capture(driver)));
 		}
 //		 report.endTest(test); // End the test after all logs are added
 //	        report.flush();

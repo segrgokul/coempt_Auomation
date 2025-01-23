@@ -26,7 +26,7 @@ public class MasterPage extends BasicFunctions {
 			implicitWait( 30);
 			explicitWait( pom.getInstanceMasterXP().masterBtn, 30);
 			click(pom.getInstanceMasterXP().masterBtn);
-			capture(driver);
+	//		capture(driver);
 		}	
 		}
 		catch(Exception e){

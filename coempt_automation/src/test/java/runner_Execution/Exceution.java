@@ -1,5 +1,6 @@
 package runner_Execution;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -16,9 +17,13 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentReporter;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.relevantcodes.extentreports.LogStatus;
 
+import base.BasicFunctions;
 import browsers.BrowserManager;
 import dataProcessing.ReadPdfData;
 import pageModules.AttendanceTheoryPage;
@@ -35,12 +40,20 @@ public class Exceution extends BrowserManager {
 public Object[][] data1;
 public Object[][] data2;
 
+//Declare a static flag outside for the stop print the same word in report again and again
 
-	 private ExtentReports extent;
-	 private ExtentReporter htmlReporter;
+private static boolean isTestCaseCourseSet = false;
+private static boolean isTestCaseEnrollSet1 = false;
+	// private ExtentReports extent;
+	
 
+	 ExtentReports extentReport ;
+	 ExtentSparkReporter report ;
+	 ExtentTest testCaseName;
 
-
+	 
+	 
+	 
 	LoginPage login = new LoginPage();
 	DashboardPage Dashboard = new DashboardPage();
 	MasterPage Master = new MasterPage();
@@ -91,14 +104,13 @@ return data2;
 //General login and logout
 @Test(priority = 1, enabled = false)
 public void testCase1() throws InterruptedException, IOException {
-   System.out.println("This is a Normal Test Case1");
+	testCaseName = extentReport.createTest("Login Page Actions");
+	
+	System.out.println("This is a Normal Test Case1");
 
-   ExtentSparkReporter sparkReporter = new ExtentSparkReporter("extentReport.html");
-   ExtentReports extent = new ExtentReports();
-   extent.attachReporter(sparkReporter);
    
 
-   ExtentTest test = extent.createTest("Sample Test", "This is a test description");
+   ExtentTest test = extentReport.createTest("Sample Test", "This is a test description");
    test.pass("Test passed successfully");
    
     // Perform LoginPage Actions
@@ -128,6 +140,8 @@ public void testCase1() throws InterruptedException, IOException {
 //General login and logout
 @Test(priority = 2, enabled = false)
 public void testCase2() throws InterruptedException, IOException {
+	
+	testCaseName = extentReport.createTest("DashBoard Page Actions");
  System.out.println("This is a Normal Test Case1");
 
  ExtentSparkReporter sparkReporter = new ExtentSparkReporter("extentReport.html");
@@ -167,8 +181,9 @@ public void testCase2() throws InterruptedException, IOException {
 //for navigating to the report card to avoid the loop for the dataproviders
 @Test(priority = 3, enabled = true)
 public void testCase3() throws InterruptedException, IOException {
+	testCaseName = extentReport.createTest("Report Card Page Navigation");
    System.out.println("This is a Normal Test Case2");
-   Browser_Launch();
+ 
 	login.Login();
 
     // Navigate to Course Report Card
@@ -178,10 +193,22 @@ public void testCase3() throws InterruptedException, IOException {
 }
 	
 
-@Test(priority = 4, enabled = false, dataProvider = "course")
+@Test(priority = 4, enabled = true, dataProvider = "course")
 public void testCase4(Object clgCode,Object examdate, Object awardName,Object regulation,Object semester , Object examType,Object programcourse) throws IOException, InterruptedException, InvalidFormatException {
-
-    System.out.println("Starting testCase4 execution for: " + examdate);
+	
+	
+	  // Set the test case name only once
+	 
+    
+	   
+    if(!isTestCaseCourseSet) {
+    testCaseName = extentReport.createTest("Course Page Actions");
+    
+    isTestCaseCourseSet = true;   // Mark it as set
+    	
+    } 
+	
+    System.out.println("Starting testCase4 execution for the following clg code: " + clgCode);
 	
 
     Coursewise.ReportCardCourseNavigation();
@@ -192,12 +219,12 @@ public void testCase4(Object clgCode,Object examdate, Object awardName,Object re
     // Process other details dynamically
 
 	Coursewise.handleOtherParameters(examdate, awardName,regulation,semester,examType);
-    System.out.println("Reached end of testCase3 execution for: " + examType);
+  
 	Coursewise.handleProgramCourse(programcourse);
 	
 	Enrollment.submitButton();
-	Enrollment.DownloadReport();
-
+	Enrollment.downloadReportValidation();
+	  System.out.println("Reached end of testCase4 execution for the following clg code: " + clgCode);
 //	PDF.validatePDF(null);
 }
 	
@@ -210,8 +237,28 @@ public void testCase5(Object Regno, Object examdate, Object awardName, Object se
                       Object paper2, Object paper3, Object theroryExam, 
                       Object praticalExam, Object examTotal) 
                       throws InterruptedException, IOException {
+    // Set the test case name only once
+ 
+    
+   
+    if(!isTestCaseEnrollSet1) {
+    testCaseName = extentReport.createTest("Enrollment Page Actions");
+    
+    isTestCaseEnrollSet1 = true;   // Mark it as set
+    	
+    } 
 	
+//	testCaseName = extentReport.createTest("Enrollment Page Actions");
 	System.out.println("=========================");
+	
+	testCaseName.log(Status.INFO, "Report Card is clicked sucessfully");
+	
+	testCaseName.log(Status.PASS, "Report Card check is clicked sucessfully");
+	
+	testCaseName.log(Status.SKIP, "Report Card  test is clicked sucessfully");
+	
+	testCaseName.log(Status.FAIL, "Click action performed", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+
 	System.out.println("This is a Normal Test Case5");
     System.out.println("Starting testCase5 execution for: " + Regno);
     System.out.println("=========================");
@@ -229,7 +276,7 @@ public void testCase5(Object Regno, Object examdate, Object awardName, Object se
 	Enrollment.EnrollmentExamType(examType);
 	Enrollment.submitButton();
 	
-	Enrollment.DownloadReportValidation();
+	Enrollment.downloadReportValidation();
 	Enrollment.checkPaper1Result(Regno, paper1);
 	Enrollment.checkPaper2Result(Regno, paper2);
 	Enrollment.checkPaper3Result(Regno, paper3);
@@ -292,7 +339,7 @@ public void testCase5(Object Regno, Object examdate, Object awardName, Object se
 	public void afterTest() {
 		System.out.println("This will execute after the Test");
 		
-//			driver.quit();  // Ensure the browser is closed after the test
+			driver.quit();  // Ensure the browser is closed after the test
 		
 	}
 
@@ -300,12 +347,19 @@ public void testCase5(Object Regno, Object examdate, Object awardName, Object se
 	public void beforeSuite() {
 		System.out.println("This will execute first before the Test Suite");
 //		report = new 
-		
+	extentReport =new ExtentReports(); 
+	
+	
+	 report = new ExtentSparkReporter("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ExtendReport.html");
+	 extentReport.attachReporter(report);
+	  Browser_Launch();
+	  
+	  
 	}
 
 	@AfterSuite
 	public void afterSuite() {
 		System.out.println("This will execute after the Test Suite");
-		
+		extentReport.flush();
 	}
 }

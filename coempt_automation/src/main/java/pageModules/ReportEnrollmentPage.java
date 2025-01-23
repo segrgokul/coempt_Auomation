@@ -15,6 +15,8 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.relevantcodes.extentreports.LogStatus;
 
 import base.BasicFunctions;
 import pageObjMod.pom;
@@ -52,15 +54,28 @@ public class ReportEnrollmentPage extends BasicFunctions {
 		explicitWait(pom.getInstanceEnrollXP().loginTags, 30);
 
 		if (pom.getInstanceEnrollXP().loginTags.isDisplayed()) {
-
+			
+			
+//			testCaseName = extentReport.createTest("Login in Tag");
+			
 			implicitWait(30);
 			explicitWait(pom.getInstanceEnrollXP().loginTags, 30);
 
 			scroll(pom.getInstanceEnrollXP().reportCardOption);
 
+			if(pom.getInstanceEnrollXP().reportCardOption.isDisplayed()) {
+			
 			implicitWait(30);
 			explicitWait(pom.getInstanceEnrollXP().reportCardOption, 30);
 			click(pom.getInstanceEnrollXP().reportCardOption);
+	//		testCaseName.log(Status.PASS, "Report Card is clicked sucessfully",	testCaseName.log(LogStatus.FAIL, "Click action performed", testCaseName.addScreenCapture(BasicFunctions.capture(driver))));
+			}
+			
+			else {
+	//		testCaseName.log(Status.INFO, "Report Card is clicked sucessfully");
+
+			}
+			
 		}
 	}
 
@@ -102,6 +117,8 @@ public class ReportEnrollmentPage extends BasicFunctions {
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().examSeries, 30);
 		click(pom.getInstanceEnrollXP().examSeries);
+		
+		implicitWait(50);
 		WebElement examDateOption = driver.findElement(By.xpath("//li[@role='option' and text()='" + examDate + "']"));
 		explicitWait(examDateOption, 30);
 
@@ -467,289 +484,314 @@ public class ReportEnrollmentPage extends BasicFunctions {
 		catch (Exception e) {
 
 		}
+		
+		
+		
 	}
 
-	public void DownloadReportValidation() throws InterruptedException, IOException {
-
-		try {
-
-			Actions action = new Actions(driver);
-
-			Thread.sleep(5000);
-
-			implicitWait(30);
-
-//					action.moveToElement(pom.getInstanceEnrollXP().reportCardExportTo).perform();
-
-			action.moveToElement(pom.getInstanceEnrollXP().reportCardExportTo).click().perform();
-
-			implicitWait(30);
-
-//					action.moveToElement(pom.getInstanceEnrollXP().reportCardExportToPdf).perform();
-
-			action.moveToElement(pom.getInstanceEnrollXP().reportCardExportToPdf).click().perform();
-
-			implicitWait(30);
-
-			Thread.sleep(15000);
-
-			// Get the parent window handle and store it in a list
-			ArrayList<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
-
-			// Switch to the second window (index 1 in the list)
-			driver.switchTo().window(windowHandles.get(1));
-
-			// Perform actions in the new window/tab
-			// ...
-			implicitWait(60);
-
-			if (driver.getCurrentUrl().endsWith(".pdf")) {
-				System.out.println("PDF opened successfully: " + driver.getCurrentUrl());
-				System.out.println("=========================");
-			} else {
-				System.out.println(driver.getCurrentUrl());
-				System.out.println("Failed to open the PDF.");
-			}
-
-			String downloadDir = System.getProperty("user.home") + "/Downloads"; // Set path to your Downloads folder
-
-			// Wait for the file to finish downloading
-			File dir = new File(downloadDir);
-			File[] files = null;
-			long lastModifiedTime = System.currentTimeMillis();
-			boolean fileDownloaded = false;
-			File latestFile = null;
-			long startTime = System.currentTimeMillis(); // Record the start time
-
-			// Wait until the file is downloaded
-			while (!fileDownloaded) {
-
-				files = dir.listFiles((d, name) -> name.endsWith(".pdf"));
-
-				if (files != null && files.length > 0) {
-					// Sort the files by lastModified time in descending order
-					Arrays.sort(files, (f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()));
-
-					// The first file in the sorted array is the most recently modified
-					latestFile = files[0];
-
-					// Check if the latest file was created/modified after the start time
-					// if (latestFile.lastModified() > startTime) {
-					fileDownloaded = true;
-					// }
-				}
-
-				Thread.sleep(1000); // Check every second
-			}
-
-			files = dir.listFiles((d, name) -> name.endsWith(".pdf"));
-			for (File file : files) {
-				if (file.lastModified() > lastModifiedTime) {
-					// Check if the file has been updated (download complete)
-					lastModifiedTime = file.lastModified();
-					fileDownloaded = true;
-
-					break;
-				}
-			}
-			Thread.sleep(1000); // Check every second
-
-			// After the file is downloaded, parse the PDF
-			// File downloadedPdf = files[0]; // Assuming the first file is the downloaded
-			// PDF
-			// PDDocument document = PDDocument.load(downloadedPdf);
-
-			// System.out.println(document.getDocumentInformation().getMetadataKeys());
-			if (latestFile != null) {
-				// After the file is downloaded, parse the PDF
-				PDDocument document = PDDocument.load(latestFile);
-
-				// Extract text from the PDF
-				PDFTextStripper stripper = new PDFTextStripper();
-				String text = stripper.getText(document);
-
-				// Normalize text: remove extra spaces, newlines, etc.
-				String normalizedText = text.replaceAll("[\r\n]+", "\n");
-
-				// Print the normalized extracted text
-				System.out.println("=== Extracted PDF Text ===");
-				// System.out.println(normalizedText);
-
-				Pattern registrationPattern = Pattern.compile("Registration No:\\s*(\\d+)");
-
-				Matcher regMatcher = registrationPattern.matcher(normalizedText);
-				if (regMatcher.find()) {
-
-					// String regNoText =regMatcher.group(1)
-
-					// registrationNumber =Integer.parseInt(regMatcher.group(1));
-
-					// Split the string by ": "
-					String[] parts = regMatcher.group(1).split(":");
-
-					// Get the number part (second part after the split)
-					// String regnumber = parts[1];
-
-					// Debug: Print the result of the split
-					// System.out.println("Split parts:");
-					for (int i = 0; i < parts.length; i++) {
-						registrationNumber = Long.parseLong(parts[i]);
-
-						// System.out.println("parts[" + i + "]: '" + parts[i] + "'");
-
-						System.out.println("Registration No: " + registrationNumber);
-
-					}
-
-					/*
-					 * // Check if the array has at least two parts if (parts.length > 1) { // Trim
-					 * the second part to remove any extra spaces String number = parts[1].trim();
-					 * System.out.println("Extracted number: " + number); } else { System.out.
-					 * println("Error: The input string does not contain the expected delimiter ':'"
-					 * ); }
-					 */
-
-				}
-				try {
-//       	  // Regular expression to find the marks for "Paper I"
-//          
-//        	  
-//         Pattern pattern = Pattern.compile("(\\d+)\\s(\\d+)\\s(Pass|Fail)"); // Capture two numbers followed by either "Pass" or "Fail"
-//
-//        
-					boolean isTheory = true; // Initially, assume the first pair is Theory
-					boolean isPractical = false; // Initially, assume we haven't encountered Practical marks
-
-//         // 2. Extract Paper Max/Min Marks
-					Pattern paperPattern = Pattern.compile(
-							"(Paper\\s[IVX]+)\\s+Max\\.Marks:(\\d+)|Total\\s+Max\\.Marks:(\\d+)\\s+Min\\.Marks:(\\d+)|Max\\.Marks:(\\d+)\\s+Min\\.Marks:(\\d+)");
-					Matcher paperMatcher = paperPattern.matcher(normalizedText);
-					System.out.println("==============");
-					System.out.println("\n=== Paper and Total Max/Min Marks ===");
-					while (paperMatcher.find()) {
-						// Check if the first group is not null (Paper group)
-						if (paperMatcher.group(1) != null) {
-							System.out.println(paperMatcher.group(1) + " Max Marks: " + paperMatcher.group(2));
-						}
-						// Check if the second group is not null (Theory Max Marks and Min Marks group)
-						else if (paperMatcher.group(3) != null) {
-							System.out.println("Theory Max Marks: " + paperMatcher.group(3) + ", Min Marks: "
-									+ paperMatcher.group(4));
-							theoryMaxMark = Integer.parseInt(paperMatcher.group(3));
-							theoryMinMark = Integer.parseInt(paperMatcher.group(4));
-
-							boolean theoryMinMarkText = (!paperMatcher.group(4).isEmpty());
-
-							// System.out.println("djfhjkhdskdfskjhfkdfjh" +theoryMinMarkText);
-						}
-						// Loop over the remaining groups dynamically to detect Practical Marks or Grand
-						// Total
-						else if (paperMatcher.group(5) != null) {
-							int i = 5; // Start from group 5
-							while (i < paperMatcher.groupCount()) {
-								String maxMarks = paperMatcher.group(i); // Max Marks
-								String minMarks = paperMatcher.group(i + 1); // Min Marks
-
-								if (maxMarks != null && minMarks != null) {
-									// Depending on the current flag, print the appropriate message
-									if (isTheory) {
-										System.out.println(
-												"Practical Max Marks: " + maxMarks + ", Min Marks: " + minMarks);
-
-										praticalMinMark = Integer.parseInt(minMarks);
-										praticalMaxMark = Integer.parseInt(maxMarks);
-
-										isTheory = false; // Next set will be for Practical or Grand Total
-									} else if (!isTheory && !isPractical) {
-										System.out.println(
-												"Grand Total Max Marks " + maxMarks + ", Min Marks: " + minMarks);
-										grandTotalMinMark = Integer.parseInt(minMarks);
-										grandTotalMaxMark = Integer.parseInt(maxMarks);
-
-									} else {
-										System.out.println("Total Max Marks: " + maxMarks + ", Min Marks: " + minMarks);
-										System.out.println(grandTotalMinMark + grandTotalMaxMark);
-										System.out.println("==============");
-									}
-								}
-
-								i += 2; // Move to the next pair of Max/Min marks
-							}
-						}
-					}
-
-					// 3. Extract Marks and Result
-					// Pattern marksPattern =
-					// Pattern.compile("(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(Pass|Fail)");
-
-					// Pattern marksPattern =
-					// Pattern.compile("(\\d+)(?:\\s+\\(F\\))?\\s+(\\d+)(?:\\s+\\(F\\))?\\s+(\\d+)(?:\\s+\\(F\\))?\\s+(\\d+)(?:\\s+\\(F\\))?\\s+(\\d+)(?:\\s+\\(F\\))?\\s+(\\d+)(?:\\s+\\(F\\))?\\s+(Pass|Fail)");
-					Pattern marksPattern = Pattern.compile("(\\d+)(?:\\s+\\(F\\))?\\s+" + // First mark with optional
-																							// (F)
-							"(\\d+)(?:\\s+\\(F\\))?\\s+" + // Second mark with optional (F)
-							"(\\d+)(?:\\s+\\(F\\))?\\s+" + // Third mark with optional (F)
-							"(\\d+)(?:\\s+\\(F\\))?\\s+" + // Fourth mark with optional (F)
-							"(\\d+)(?:\\s+\\(F\\))?\\s+" + // Fifth mark with optional (F)
-							"(\\d+)(?:\\s+\\(F\\))?\\s+" + // Sixth mark with optional (F)
-							"(Pass|Fail)" // Final result (Pass or Fail)
-					);
-
-					Matcher marksMatcher = marksPattern.matcher(normalizedText);
-					System.out.println("\n=== Marks and Results ===");
-					if (marksMatcher.find()) {
-
-						paper1Mark = Integer.parseInt(marksMatcher.group(1));
-						paper2Mark = Integer.parseInt(marksMatcher.group(2));
-						paper3Mark = Integer.parseInt(marksMatcher.group(3));
-
-						System.out.println("Paper I: " + marksMatcher.group(1));
-						System.out.println("Paper II: " + marksMatcher.group(2));
-						System.out.println("Paper III: " + marksMatcher.group(3));
-						System.out.println("Theory Max Mark:" + theoryMaxMark);
-						System.out.println("Theory Min Mark:" + theoryMinMark);
-
-						System.out.println("Theory Total: " + marksMatcher.group(4));
-						theoryTotal = Integer.parseInt(marksMatcher.group(4));
-						System.out.println("==============");
-
-						System.out.println("Practical Max Mark:" + praticalMaxMark);
-						System.out.println("Pratical Min Mark:" + praticalMinMark);
-						System.out.println("Practical Total: " + marksMatcher.group(5));
-						praticalTotal = Integer.parseInt(marksMatcher.group(5));
-						System.out.println("===============");
-
-						System.out.println("Grand Total Max Mark:" + grandTotalMaxMark);
-						System.out.println("Grand Total Min Mark:" + grandTotalMinMark);
-						System.out.println("Grand Total: " + marksMatcher.group(6));
-						grandTotal = Integer.parseInt(marksMatcher.group(6));
-						System.out.println(grandTotal);
-
-						System.out.println("Result: " + marksMatcher.group(7));
-					} else {
-						System.out.println("Marks and result not found.");
-					}
-					document.close();
-				}
-
-				catch (Exception e) {
-					e.printStackTrace();
-				}
-
-			}
-
-			System.out.println("===========================");
-
-			implicitWait(60);
-
-			driver.close();
-
-			// Switch back to the parent window (index 0 in the list)
-			driver.switchTo().window(windowHandles.get(0));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	public void downloadReportValidation() throws InterruptedException, IOException {
+	    try {
+	        Actions action = new Actions(driver);
+
+	        Thread.sleep(5000);
+	        implicitWait(30);
+
+	        // Click on "Export To" and then "Export to PDF"
+	        action.moveToElement(pom.getInstanceEnrollXP().reportCardExportTo).click().perform();
+	        implicitWait(30);
+	        action.moveToElement(pom.getInstanceEnrollXP().reportCardExportToPdf).click().perform();
+	        implicitWait(30);
+
+	        Thread.sleep(15000);
+
+	        // Switch to the second window (new tab)
+	        ArrayList<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
+	        driver.switchTo().window(windowHandles.get(1));
+
+	        // Validate PDF URL
+	        implicitWait(60);
+	        if (driver.getCurrentUrl().endsWith(".pdf")) {
+	            System.out.println("PDF opened successfully: " + driver.getCurrentUrl());
+	            System.out.println("=========================");
+	        } else {
+	            System.out.println(driver.getCurrentUrl());
+	            System.out.println("Failed to open the PDF.");
+	        }
+
+	        // Wait for the PDF file to download
+	        String downloadDir = System.getProperty("user.home") + "/Downloads"; // Downloads folder
+	        File dir = new File(downloadDir);
+	        File latestFile = null;
+	        long startTime = System.currentTimeMillis();
+
+	        // Wait for the file to download
+	        while (true) {
+	            File[] files = dir.listFiles((d, name) -> name.endsWith(".pdf"));
+	            if (files != null && files.length > 0) {
+	                Arrays.sort(files, (f1, f2) -> Long.compare(f2.lastModified(), f1.lastModified()));
+	                latestFile = files[0];
+	     
+	                    break; // File is downloaded
+	     
+	            }
+	            
+	            else {
+	            	System.out.println("Facing error");
+	            }
+	            
+	            Thread.sleep(1000); // Check every second
+	        }
+	        
+	        
+	        //Method to match the paterns
+	        processPdfBasedOnPattern(latestFile);
+	    
+	       
+
+        // Switch back to the parent window
+        driver.close();
+        driver.switchTo().window(windowHandles.get(0));
+    } 
+	    
+	    catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+	    
+	        public void processThreePaternPdf(File latestFile) {
+	            if (latestFile != null) {
+	                try (PDDocument document = PDDocument.load(latestFile)) {
+	                    PDFTextStripper stripper = new PDFTextStripper();
+	                    int totalPages = document.getNumberOfPages();
+	                    System.out.println("Total Pages: " + totalPages);
+	                    System.out.println("---------------------------------------------------");
+
+	                    // Iterate through all pages and extract text
+	                    for (int page = 1; page <= totalPages; page++) {
+	                        stripper.setStartPage(page);
+	                        stripper.setEndPage(page);
+
+	                        String text = stripper.getText(document).replaceAll("[\r\n]+", "\n");
+	                        System.out.println("Page " + page + ":");
+	                        System.out.println("---------------------------------------------------");
+
+	                        // Extract registration number
+	                        Pattern registrationPattern = Pattern.compile("Registration No:\\s*(\\d+)");
+	                        Matcher regMatcher = registrationPattern.matcher(text);
+	                        
+	                       if (regMatcher.find()) {
+	                            long registrationNumber = Long.parseLong(regMatcher.group(1));
+	                            System.out.println("Registration No: " + registrationNumber);
+	                        }
+
+	                       
+	                       boolean isTheory = true; // Initially, assume the first pair is Theory
+	   					boolean isPractical = false; // Initially, assume we haven't encountered Practical marks
+	                       
+	                        // Extract max/min marks
+	            
+	                        Pattern paperPattern = Pattern.compile(
+	    							"(Paper\\s[IVX]+)\\s+Max\\.Marks:(\\d+)|Total\\s+Max\\.Marks:(\\d+)\\s+Min\\.Marks:(\\d+)|Max\\.Marks:(\\d+)\\s+Min\\.Marks:(\\d+)");
+	    					Matcher paperMatcher = paperPattern.matcher(text);
+	    		
+	    					System.out.println("\n=== Paper and Total Max/Min Marks ===");
+	    					while (paperMatcher.find()) {
+	    						// Check if the first group is not null (Paper group)
+	    						if (paperMatcher.group(1) != null) {
+	    							System.out.println(paperMatcher.group(1) + " Max Marks: " + paperMatcher.group(2));
+	    						}
+	    						// Check if the second group is not null (Theory Max Marks and Min Marks group)
+	    						else if (paperMatcher.group(3) != null) {
+	    							System.out.println("Theory Max Marks: " + paperMatcher.group(3) + ", Min Marks: "
+	    									+ paperMatcher.group(4));
+	    							theoryMaxMark = Integer.parseInt(paperMatcher.group(3));
+	    							theoryMinMark = Integer.parseInt(paperMatcher.group(4));
+
+	    							boolean theoryMinMarkText = (!paperMatcher.group(4).isEmpty());
+
+	    							// System.out.println("djfhjkhdskdfskjhfkdfjh" +theoryMinMarkText);
+	    						}
+	    						// Loop over the remaining groups dynamically to detect Practical Marks or Grand
+	    						// Total
+	    						else if (paperMatcher.group(5) != null) {
+	    							int i = 5; // Start from group 5
+	    							while (i < paperMatcher.groupCount()) {
+	    								String maxMarks = paperMatcher.group(i); // Max Marks
+	    								String minMarks = paperMatcher.group(i + 1); // Min Marks
+
+	    								if (maxMarks != null && minMarks != null) {
+	    									// Depending on the current flag, print the appropriate message
+	    									if (isTheory) {
+	    										System.out.println(
+	    												"Practical Max Marks: " + maxMarks + ", Min Marks: " + minMarks);
+
+	    										praticalMinMark = Integer.parseInt(minMarks);
+	    										praticalMaxMark = Integer.parseInt(maxMarks);
+
+	    										isTheory = false; // Next set will be for Practical or Grand Total
+	    									} else if (!isTheory && !isPractical) {
+	    										System.out.println(
+	    												"Grand Total Max Marks " + maxMarks + ", Min Marks: " + minMarks);
+	    										grandTotalMinMark = Integer.parseInt(minMarks);
+	    										grandTotalMaxMark = Integer.parseInt(maxMarks);
+
+	    									} else {
+	    										System.out.println("Total Max Marks: " + maxMarks + ", Min Marks: " + minMarks);
+	    										System.out.println(grandTotalMinMark + grandTotalMaxMark);
+	    										System.out.println("==============");
+	    									}
+	    								}
+
+	    								i += 2; // Move to the next pair of Max/Min marks
+	    							}
+	    						}
+	    					}
+
+
+	                        // Extract marks and result
+	                        System.out.println("\n=== Marks and Results ===");
+	                        Pattern marksPattern = Pattern.compile("(\\d+)(?:\\s+\\(F\\))?\\s+" +
+	                                "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+	                                "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+	                                "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+	                                "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+	                                "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+	                                "(Pass|Fail)");
+	                        Matcher marksMatcher = marksPattern.matcher(text);
+	                        while (marksMatcher.find()) {
+	                        	paper1Mark = Integer.parseInt(marksMatcher.group(1));
+	    						paper2Mark = Integer.parseInt(marksMatcher.group(2));
+	    						paper3Mark = Integer.parseInt(marksMatcher.group(3));
+	    						theoryTotal = Integer.parseInt(marksMatcher.group(4));
+	    						praticalTotal = Integer.parseInt(marksMatcher.group(5));
+	    						grandTotal = Integer.parseInt(marksMatcher.group(6));
+	    						
+	    						
+	    						System.out.println("Paper I: " + paper1Mark);
+	    						System.out.println("Paper II: " + paper2Mark);
+	    						System.out.println("Paper III: " + paper3Mark);
+	    						System.out.println("Theory Max Mark:" + theoryMaxMark);
+	    						System.out.println("Theory Min Mark:" + theoryMinMark);
+
+	    						System.out.println("Theory Total: " + theoryTotal);
+	    						
+	    						System.out.println("==============");
+
+	    						System.out.println("Practical Max Mark:" + praticalMaxMark);
+	    						System.out.println("Pratical Min Mark:" + praticalMinMark);
+	    						System.out.println("Practical Total: " + praticalTotal);
+	    						
+	    						System.out.println("===============");
+
+	    						System.out.println("Grand Total Max Mark:" + grandTotalMaxMark);
+	    						System.out.println("Grand Total Min Mark:" + grandTotalMinMark);
+	    						System.out.println("Grand Total: " + grandTotal);
+	    						
+	    					
+
+	    						System.out.println("Result: " + marksMatcher.group(7));
+	                        }
+
+	                        System.out.println("---------------------------------------------------");
+
+	                        if (page == totalPages) {
+	                            break;
+	                        }
+	                    }
+
+	                    } catch (Exception e) {
+	                    e.printStackTrace();
+	                }
+	            } else {
+	                System.out.println("No PDF file found.");
+	            }
+	            
+	        }
+	
+
+	
+	        public void processTwoPatternPdf(File latestFile) {
+	            if (latestFile != null) {
+	                try (PDDocument document = PDDocument.load(latestFile)) {
+	                    PDFTextStripper stripper = new PDFTextStripper();
+	                    int totalPages = document.getNumberOfPages();
+	                    System.out.println("Total Pages: " + totalPages);
+	                    System.out.println("---------------------------------------------------");
+
+	                    // Iterate through all pages and extract text
+	                    for (int page = 1; page <= totalPages; page++) {
+	                        stripper.setStartPage(page);
+	                        stripper.setEndPage(page);
+
+	                        String normalizedText  = stripper.getText(document).replaceAll("[\r\n]+", "\n");
+	                        System.out.println("Page " + page + ":");
+	                        System.out.println("---------------------------------------------------");
+
+	                        // Extract registration number
+	                        Pattern registrationPattern = Pattern.compile("Registration No:\\s*(\\d+)");
+	                        Matcher regMatcher = registrationPattern.matcher(normalizedText );
+	                        if (regMatcher.find()) {
+	                        	String[] parts = regMatcher.group(1).split(":");
+	                        	for (int i = 0; i < parts.length; i++) {
+	        						registrationNumber = Long.parseLong(parts[i]);
+
+	        						// System.out.println("parts[" + i + "]: '" + parts[i] + "'");
+
+	        						System.out.println("Registration No: " + registrationNumber);
+
+	        					}
+
+	                        }
+
+	                        // Extract max/min marks
+	                        System.out.println("\n=== Paper and Total Max/Min Marks ===");
+	                      
+	                        Pattern paperPattern = Pattern.compile(
+	    							"(Paper\\s[IVX]+)\\s+Max\\.Marks:(\\d+)|Total\\s+Max\\.Marks:(\\d+)\\s+Min\\.Marks:(\\d+)|Max\\.Marks:(\\d+)\\s+Min\\.Marks:(\\d+)");
+	                        
+	                        Matcher paperMatcher = paperPattern.matcher(normalizedText );
+	                        while (paperMatcher.find()) {
+	                            if (paperMatcher.group(1) != null) {
+	                                System.out.println(paperMatcher.group(1) + " Max Marks: " + paperMatcher.group(2));
+	                            } else if (paperMatcher.group(3) != null) {
+	                                System.out.println("Theory Max Marks: " + paperMatcher.group(3) + ", Min Marks: " + paperMatcher.group(4));
+	                            } else if (paperMatcher.group(5) != null) {
+	                                System.out.println("Grand Total Max Marks: " + paperMatcher.group(5) + ", Min Marks: " + paperMatcher.group(6));
+	                            }
+	                        }
+
+	                        // Extract marks and result based on the new pattern
+	                        System.out.println("\n=== Marks and Results ===");
+	                        Pattern marksPattern = Pattern.compile("(\\d+)\\s+(\\d+)\\s+(Pass)");
+	                        Matcher marksMatcher = marksPattern.matcher(normalizedText );
+	                        if (marksMatcher.find()) {
+	                        	
+	                        	paper1Mark =  Integer.parseInt(marksMatcher.group(1));
+	                        	grandTotal = Integer.parseInt(marksMatcher.group(2));
+	                        	
+	                            System.out.println("First Number: " + paper1Mark);
+	                            System.out.println("Grand Total: " + grandTotal);
+	                            System.out.println("Result: " + marksMatcher.group(3));
+	                        } else {
+	                            System.out.println("Marks Result not found.");
+	                        }
+
+	                        System.out.println("---------------------------------------------------");
+
+	                        if (page == totalPages) {
+	                            break;
+	                        }
+	                    }
+
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	                }
+	            } else {
+	                System.out.println("No PDF file found.");
+	            }
+	        }
+	
+	
 	// Method to check if a student passed or failed in Paper 1
 	public void checkPaper1Result(Object regno, Object paper1) {
 		try {
@@ -1350,6 +1392,73 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 	// }
 
+	
+	 // Method to choose which processing method to run
+	 // Method to automatically detect which processing method to run based on pattern
+    public void processPdfBasedOnPattern(File latestFile) {
+        if (latestFile != null) {
+            try (PDDocument document = PDDocument.load(latestFile)) {
+                PDFTextStripper stripper = new PDFTextStripper();
+                int totalPages = document.getNumberOfPages();
+
+                // Iterate through all pages and extract text
+                for (int page = 1; page <= totalPages; page++) {
+                    stripper.setStartPage(page);
+                    stripper.setEndPage(page);
+
+                    String text = stripper.getText(document).replaceAll("[\r\n]+", "\n");
+
+                    // Check for a match with the "three" pattern first
+                    Pattern threePattern = Pattern.compile("(\\d+)(?:\\s+\\(F\\))?\\s+" +
+                            "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+                            "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+                            "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+                            "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+                            "(\\d+)(?:\\s+\\(F\\))?\\s+" +
+                            "(Pass|Fail)");
+                    Matcher threePatternMatcher = threePattern.matcher(text);
+
+                    Pattern twoPattern = Pattern.compile("(\\d+)\\s+(\\d+)\\s+(Pass)");
+                    Matcher twoPatternMatcher = twoPattern.matcher(text);
+                    
+                    if (threePatternMatcher.find()) {
+                        // If it matches, call the method for three patterns
+                        System.out.println("Pattern matched: Three patterns detected.");
+                        processThreePaternPdf(latestFile);
+                         // Exit once the matching method is called
+                        return;
+                    }
+                        // Otherwise, check for the "two" pattern
+                       
+
+                       else if (twoPatternMatcher.find()) {
+                            // If it matches, call the method for two patterns
+                            System.out.println("Pattern matched: Two patterns detected.");
+                            processTwoPatternPdf(latestFile);
+                            // Exit once the matching method is called
+                            return;
+                       }
+                    
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("No PDF file found.");
+        }
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public double objectToDataType(Object obj) {
 		if (obj == null) {
 			throw new IllegalArgumentException("Object cannot be null");
@@ -1374,4 +1483,5 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			throw new IllegalArgumentException("Unsupported object type: " + obj.getClass().getSimpleName());
 		}
 	}
+	
 }

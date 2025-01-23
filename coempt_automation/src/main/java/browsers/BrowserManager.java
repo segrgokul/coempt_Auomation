@@ -10,6 +10,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserManager {
@@ -17,8 +20,7 @@ public class BrowserManager {
     
     
     
-    
-
+	
     public static void Browser_Launch() {
         // Create a Properties object to load the property file
         Properties properties = new Properties();
