@@ -4,10 +4,6 @@ import java.io.IOException;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
-
 import base.BasicFunctions;
 import pageObjMod.pom;
 
@@ -34,7 +30,7 @@ public class LoginPage extends BasicFunctions {
 				 
 			 System.out.println("User is unable to enter with direct signin button");
 			 pom.getInstanceLoginXP().alertOkBtn.click();
-			 capture(driver);
+		
 	 }
     	}
     	
@@ -74,7 +70,7 @@ public class LoginPage extends BasicFunctions {
 			pom.getInstanceLoginXP().alertOkBtn.click();
 			implicitWait(30);	
 			pom.getInstanceLoginXP().userpass.clear();
-			capture(driver);
+			
 			
 	}}
 	
@@ -103,7 +99,7 @@ public class LoginPage extends BasicFunctions {
 			pom.getInstanceLoginXP().alertOkBtn.click();
 			implicitWait(30);	
 			pom.getInstanceLoginXP().userName.clear();
-			capture(driver);
+			
 			
 	}}
 	
@@ -142,7 +138,7 @@ public class LoginPage extends BasicFunctions {
 			pom.getInstanceLoginXP().userName.clear();
 			implicitWait(30);
 			pom.getInstanceLoginXP().userpass.clear();
-			capture(driver);
+			
 	}}
 	
 
@@ -175,7 +171,7 @@ public class LoginPage extends BasicFunctions {
 			
 			System.out.println("The Admin Login Page has login and the landing page of KNRUHS is displayed");
 			implicitWait(30);	
-			capture(driver);
+			
 	   		
 	}}
 	
@@ -198,7 +194,7 @@ public class LoginPage extends BasicFunctions {
 		   		explicitWait(pom.getInstanceLoginXP().signOutBtn,30);
 		   		click(pom.getInstanceLoginXP().signOutBtn);
 			
-				capture(driver);
+				
 				
 			}
 			}

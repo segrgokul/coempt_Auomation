@@ -36,11 +36,6 @@
     <artifactId>jxl</artifactId>
     <version>2.6.12</version>
 </dependency>
-<dependency>
-    <groupId>com.aventstack</groupId>
-    <artifactId>extentreports</artifactId>
-    <version>5.0.9</version> <!-- Use the latest version -->
-</dependency>
 
 <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
 <dependency>
@@ -57,11 +52,13 @@
 </dependency>
 
 
+<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 <dependency>
-    <groupId>com.relevantcodes</groupId>
+    <groupId>com.aventstack</groupId>
     <artifactId>extentreports</artifactId>
-    <version>2.41.2</version>
+    <version>5.1.2</version>
 </dependency>
+
 
 <dependency>
     <groupId>org.apache.poi</groupId>

@@ -26,7 +26,7 @@ public class MasterPage extends BasicFunctions {
 			implicitWait( 30);
 			explicitWait( pom.getInstanceMasterXP().masterBtn, 30);
 			click(pom.getInstanceMasterXP().masterBtn);
-	//		capture(driver);
+	//		
 		}	
 		}
 		catch(Exception e){
@@ -56,7 +56,7 @@ public class MasterPage extends BasicFunctions {
 			explicitWait( pom.getInstanceMasterXP().CollegeMasterOption, 30);
 			click(pom.getInstanceMasterXP().CollegeMasterOption);
 			System.out.println("College Master Page is navigating sucessfully");
-			capture(driver);
+			
 		}	
 		}
 		catch(Exception e){
@@ -106,7 +106,7 @@ public class MasterPage extends BasicFunctions {
 				explicitWait( pom.getInstanceMasterXP().CourseMasterOption, 30);
 				click(pom.getInstanceMasterXP().CourseMasterOption);
 				System.out.println("Course master Page is navigating sucessfully");
-				capture(driver);
+				
 			}	
 			}
 			catch(Exception e){

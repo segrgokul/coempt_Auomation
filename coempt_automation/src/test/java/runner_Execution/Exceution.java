@@ -1,7 +1,10 @@
 package runner_Execution;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.annotations.AfterClass;
@@ -17,13 +20,9 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.reporter.ExtentReporter;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.relevantcodes.extentreports.LogStatus;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 
-import base.BasicFunctions;
 import browsers.BrowserManager;
 import dataProcessing.ReadPdfData;
 import pageModules.AttendanceTheoryPage;
@@ -181,13 +180,14 @@ public void testCase2() throws InterruptedException, IOException {
 //for navigating to the report card to avoid the loop for the dataproviders
 @Test(priority = 3, enabled = true)
 public void testCase3() throws InterruptedException, IOException {
-	testCaseName = extentReport.createTest("Report Card Page Navigation");
    System.out.println("This is a Normal Test Case2");
  
 	login.Login();
-
+	 if (testCaseName == null) {
+	        testCaseName = extentReport.createTest("Report card course-wise page");
+	    }
     // Navigate to Course Report Card
-    Coursewise.ReportCardNavigation();
+    Coursewise.ReportCardNavigation(testCaseName);
 
    
 }
@@ -211,20 +211,23 @@ public void testCase4(Object clgCode,Object examdate, Object awardName,Object re
     System.out.println("Starting testCase4 execution for the following clg code: " + clgCode);
 	
 
-    Coursewise.ReportCardCourseNavigation();
+    Coursewise.ReportCardCourseNavigation(testCaseName);
 
     // Handle College Code
-    Coursewise.handleCollegeCode(clgCode);
+    Coursewise.handleCollegeCode(clgCode,testCaseName);
 
     // Process other details dynamically
 
-	Coursewise.handleOtherParameters(examdate, awardName,regulation,semester,examType);
+	Coursewise.handleOtherParameters(examdate, awardName,regulation,semester,examType,testCaseName);
   
-	Coursewise.handleProgramCourse(programcourse);
+	Coursewise.handleProgramCourse(programcourse,testCaseName);
 	
-	Enrollment.submitButton();
-	Enrollment.downloadReportValidation();
-	  System.out.println("Reached end of testCase4 execution for the following clg code: " + clgCode);
+	Enrollment.submitButton(testCaseName);
+	
+	Enrollment.downloadPdfReportValidation(testCaseName);
+	
+	
+	System.out.println("Reached end of testCase4 execution for the following clg code: " + clgCode);
 //	PDF.validatePDF(null);
 }
 	
@@ -241,48 +244,50 @@ public void testCase5(Object Regno, Object examdate, Object awardName, Object se
  
     
    
-    if(!isTestCaseEnrollSet1) {
-    testCaseName = extentReport.createTest("Enrollment Page Actions");
-    
-    isTestCaseEnrollSet1 = true;   // Mark it as set
-    	
-    } 
+
+	 if(!isTestCaseEnrollSet1) { testCaseName =
+	  extentReport.createTest("Enrollment Page Actions");
+	  
+	  isTestCaseEnrollSet1 = true; // Mark it as set
+	  
+	  }
+	 
 	
 //	testCaseName = extentReport.createTest("Enrollment Page Actions");
 	System.out.println("=========================");
 	
-	testCaseName.log(Status.INFO, "Report Card is clicked sucessfully");
+	// testCaseName.log(Status.INFO, "Report Card is clicked sucessfully");
 	
-	testCaseName.log(Status.PASS, "Report Card check is clicked sucessfully");
+	// testCaseName.log(Status.PASS, "Report Card check is clicked sucessfully");
 	
-	testCaseName.log(Status.SKIP, "Report Card  test is clicked sucessfully");
+	// testCaseName.log(Status.SKIP, "Report Card  test is clicked sucessfully");
 	
-	testCaseName.log(Status.FAIL, "Click action performed", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+	// testCaseName.log(Status.FAIL, "Click action performed", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
 
 	System.out.println("This is a Normal Test Case5");
     System.out.println("Starting testCase5 execution for: " + Regno);
     System.out.println("=========================");
     // Navigate to the Enrollment Page
-    Enrollment.ReportCardEnrollNavigation();
+    Enrollment.ReportCardEnrollNavigation(testCaseName);
 
 // //Need to Create the separte methos in one class for the below ones exam,awardName,etcc
     // Process Registration Number
     
-    Enrollment.EnrollmentRegNo(Regno);
-	Enrollment.EnrollmentExamDate(examdate);
-	Enrollment.EnrollmentAwardName(awardName);
-	Enrollment.EnrollmentSemester(semester);
-	Enrollment.EnrollmentRegulation(regulation);
-	Enrollment.EnrollmentExamType(examType);
-	Enrollment.submitButton();
+    Enrollment.EnrollmentRegNo(Regno,testCaseName);
+	Enrollment.EnrollmentExamDate(examdate,testCaseName);
+	Enrollment.EnrollmentAwardName(awardName,testCaseName);
+	Enrollment.EnrollmentSemester(semester,testCaseName);
+	Enrollment.EnrollmentRegulation(regulation,testCaseName);
+	Enrollment.EnrollmentExamType(examType,testCaseName);
+	Enrollment.submitButton(testCaseName);
 	
-	Enrollment.downloadReportValidation();
-	Enrollment.checkPaper1Result(Regno, paper1);
-	Enrollment.checkPaper2Result(Regno, paper2);
-	Enrollment.checkPaper3Result(Regno, paper3);
-	Enrollment.checkPracticalExamResult(Regno, praticalExam);
-	Enrollment.checkTheoryExamResult(Regno,theroryExam);
-	Enrollment.checkFinalExamResult(Regno,examTotal);
+	Enrollment.downloadPdfReportValidation(testCaseName);
+	Enrollment.checkPaper1Result(Regno, paper1, testCaseName);
+	Enrollment.checkPaper2Result(Regno, paper2,testCaseName);
+	Enrollment.checkPaper3Result(Regno, paper3,testCaseName);
+	Enrollment.checkPraticalExamResult(Regno, praticalExam,testCaseName);
+	Enrollment.checkTheoryExamResult(Regno,theroryExam,testCaseName);
+	Enrollment.checkFinalExamResult(Regno,examTotal,testCaseName);
 
 //Need to Create the separte methos in one class for the below ones exam,awardName,etcc
 
@@ -293,7 +298,7 @@ public void testCase5(Object Regno, Object examdate, Object awardName, Object se
  //  Enrollment.validatePaperResults(Regno, paper1, paper2, paper3, praticalExam, theroryExam, examTotal);
 
 	System.out.println("=====================");
-    System.out.println("Reached end of testCase2 execution for: " + Regno);
+    System.out.println("Reached end of testCase5 execution for: " + Regno);
    
 }
 
@@ -339,7 +344,7 @@ public void testCase5(Object Regno, Object examdate, Object awardName, Object se
 	public void afterTest() {
 		System.out.println("This will execute after the Test");
 		
-			driver.quit();  // Ensure the browser is closed after the test
+			  // Ensure the browser is closed after the test
 		
 	}
 
@@ -351,6 +356,14 @@ public void testCase5(Object Regno, Object examdate, Object awardName, Object se
 	
 	
 	 report = new ExtentSparkReporter("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ExtendReport.html");
+	
+	 System.out.println(com.aventstack.extentreports.ExtentReports.class.getPackage().getImplementationVersion());
+
+	 
+
+	 report.config().setTheme(Theme.STANDARD); // Set theme to DARK or STANDARD
+	 report.config().setDocumentTitle("Test Automation Report");
+	 report.config().setReportName("Automation Test Results");
 	 extentReport.attachReporter(report);
 	  Browser_Launch();
 	  
@@ -358,8 +371,30 @@ public void testCase5(Object Regno, Object examdate, Object awardName, Object se
 	}
 
 	@AfterSuite
-	public void afterSuite() {
+	public void afterSuite() throws IOException, URISyntaxException {
 		System.out.println("This will execute after the Test Suite");
 		extentReport.flush();
+		
+		try {
+		String path = "D:/Coempt_Automation/coempt_automation/src/test/resources/reports/ExtendReport.html";
+		
+		  // Open the report in default browser
+//        Desktop.getDesktop().browse(new URI("file:///D:Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ExtendReport.html")); 
+
+        //Use File to Create URI
+		
+		File file = new File(path);
+        
+		Desktop.getDesktop().browse(file.toURI());
+        
+		
+		
+		driver.quit();
 	}
-}
+		catch(Exception e) {
+			e.printStackTrace();
+			
+			driver.quit();	
+			
+		}
+}}

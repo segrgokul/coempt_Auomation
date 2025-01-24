@@ -27,7 +27,7 @@ import webElement.SettingsAssignCoursePageXpaths;
 				
 				// Use a different name for the static instance
 		
-					// Constructor
+				// Constructor to initialize the WebDriver when the class is instantiated
    public pom(WebDriver driver) {
 						// Initialize the driver when the class is instantiated
 						this.driver = driver;

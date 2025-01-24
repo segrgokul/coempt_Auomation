@@ -36,6 +36,9 @@ public class BrowserManager {
 
         // Get the browser value from the properties file
         String browser = properties.getProperty("browser", "chrome").toLowerCase();  // Default to "chrome" if not set
+        String loginName =properties.getProperty("login_name","test").toLowerCase(); //Default to localhost if not set
+        System.out.println("Login name: " + loginName);
+        String url = urlBasedLogin(loginName);
         
         // Launch the browser based on the value in the properties file
         switch (browser) {
@@ -69,12 +72,26 @@ public class BrowserManager {
         driver.manage().window().maximize();
 
         // Open a website test url
-       driver.get("http://103.154.253.118:81/");
-        
+        driver.get(url);
+       
+    }
+        // Method to return the appropriate URL based on login name
+        private static String urlBasedLogin(String loginName) {
+            switch (loginName) {
+                case "live":
+                    return "https://knruhs.uonex.in/";
+                case "test":
+                    return "http://103.154.253.118:81/";
+                case "localhost":
+                    return "http://localhost:8080/";
+                default:
+                    System.out.println("Invalid login name, defaulting to localhost.");
+                    return "http://localhost:8080/";
+            }
+        }
         //live url
      //   driver.get("https://knruhs.uonex.in/");
 
         // Close the browser (optional)
         // driver.quit();
     }
-}

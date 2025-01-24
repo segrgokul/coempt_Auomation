@@ -15,15 +15,15 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-import com.relevantcodes.extentreports.LogStatus;
-
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import base.BasicFunctions;
 import pageObjMod.pom;
 
 public class ReportEnrollmentPage extends BasicFunctions {
 	static ExtentTest test;
-	static ExtentReports report;
+	
 	double Paper1;
 	double Paper2;
 	double Paper3;
@@ -47,8 +47,20 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	double theoryTotal;
 	double praticalTotal;
 	double grandTotal;
+	 
+	private static boolean isTestCaseEnrollSet1 = false;
 
-	public void ReportCardNavigation() {
+	 
+	 
+	 
+
+	 
+	 
+	 
+	 
+	 public void ReportCardNavigation(ExtentTest testCaseName) throws IOException {
+
+		 
 
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().loginTags, 30);
@@ -68,43 +80,75 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			implicitWait(30);
 			explicitWait(pom.getInstanceEnrollXP().reportCardOption, 30);
 			click(pom.getInstanceEnrollXP().reportCardOption);
-	//		testCaseName.log(Status.PASS, "Report Card is clicked sucessfully",	testCaseName.log(LogStatus.FAIL, "Click action performed", testCaseName.addScreenCapture(BasicFunctions.capture(driver))));
+			testCaseName.log(Status.PASS, "Report Card button has clicked sucessfully");
 			}
 			
 			else {
 	//		testCaseName.log(Status.INFO, "Report Card is clicked sucessfully");
-
+				testCaseName.log(Status.FAIL, "Report Card button has not click", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
 			}
 			
 		}
 	}
 
-	public void ReportCardEnrollNavigation() {
+	public void ReportCardEnrollNavigation(ExtentTest testCaseName) throws IOException {
 
+		testCaseName.log(Status.INFO, "Report card Enrollment wise  Navigation");
+		
+//		System.out.println("Testcase: " + testCaseName);
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().reportCardEnroll, 30);
 
 		scroll(pom.getInstanceEnrollXP().reportCardEnroll);
 
+		if(pom.getInstanceEnrollXP().reportCardEnroll.isDisplayed()) {
+		
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().reportCardEnroll, 30);
 		click(pom.getInstanceEnrollXP().reportCardEnroll);
-
+		testCaseName.log(Status.PASS, "Report Card Enrollment wise has navigating sucessfully");
+		
+		
+		}
+		else {
+			testCaseName.log(Status.FAIL, "Report Card Enrollment wise has navigating sucessfully", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			
+		}
+		
 	}
 
-	public void EnrollmentRegNo(Object regno) throws IOException {
-
+	public void EnrollmentRegNo(Object regno,ExtentTest testCaseName) throws IOException {
+		testCaseName.log(Status.INFO, "Report card Enrollment wise for the following register number: " + regno );
+		
+		
+		if(pom.getInstanceEnrollXP().enrollNo.isDisplayed()) {
+		
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().enrollNo, 30);
 		click(pom.getInstanceEnrollXP().enrollNo);
 
+		
+		
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().enrollNo, 30);
 		sendKeys(pom.getInstanceEnrollXP().enrollNo, String.valueOf(regno));
+		testCaseName.log(Status.PASS, "Enrollment wise Register number has entered sucessfully");
+		
+		
+		
+		}
+		else {
+			testCaseName.log(Status.FAIL, "Enrollment wise Register number has not entered", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			
+		}
+	
+	
+	
 	}
 
-	public static void EnrollmentExamDate(Object examDate) throws IOException {
-
+	public static void EnrollmentExamDate(Object examDate,ExtentTest testCaseName) throws IOException {
+		testCaseName.log(Status.INFO, "Exam date Test case has started running");
+		
 		implicitWait(30);
 
 		explicitWait(pom.getInstanceEnrollXP().examSeries, 30);
@@ -126,7 +170,9 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			explicitWait(examDateOption, 30);
 			implicitWait(30);
 			click(examDateOption);
-
+			testCaseName.log(Status.PASS, "Exam date has entered sucessfully");
+			
+			
 		}
 
 		else {
@@ -136,12 +182,15 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			implicitWait(30);
 			explicitWait(pom.getInstanceEnrollXP().examSeries, 30);
 			click(examDateOption);
+			testCaseName.log(Status.FAIL, "Exam date has not entered", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			
 		}
 		// // dropDownClick(pom.getInstanceEnrollXP().examSeriesOption,examdate);
 
 	}
 
-	public static void EnrollmentAwardName(Object awardName) throws IOException {
+	public static void EnrollmentAwardName(Object awardName,ExtentTest testCaseName) throws IOException {
+		testCaseName.log(Status.INFO, "Award name Test case has started running" );
 
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().awardName, 30);
@@ -156,7 +205,8 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			explicitWait(awardOption, 30);
 			implicitWait(30);
 			click(awardOption);
-
+			testCaseName.log(Status.PASS, "Award name has entered sucessfully");
+			
 		}
 
 		else {
@@ -166,12 +216,15 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			implicitWait(30);
 			explicitWait(pom.getInstanceEnrollXP().awardName, 30);
 			click(awardOption);
+			testCaseName.log(Status.FAIL, "Award name has not entered", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+						
 		}
-
 	}
 
-	public static void EnrollmentSemester(Object semester) throws IOException {
+	public static void EnrollmentSemester(Object semester,ExtentTest testCaseName) throws IOException {
+		testCaseName.log(Status.INFO, "Semester Test case has started running ");
 
+		
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().yearSession, 30);
 //		System.out.println(pom.getInstanceEnrollXP().yearSession.isDisplayed());
@@ -191,7 +244,8 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			explicitWait(yearSessionOption, 30);
 			implicitWait(30);
 			click(yearSessionOption);
-
+			testCaseName.log(Status.PASS, "Semester has entered sucessfully");
+			
 		}
 
 		else {
@@ -201,12 +255,17 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			implicitWait(30);
 			explicitWait(pom.getInstanceEnrollXP().yearSession, 30);
 			click(yearSessionOption);
+			testCaseName.log(Status.FAIL, "Semester has not entered", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			
 		}
 
 	}
 
-	public static void EnrollmentRegulation(Object regulation) {
+	public static void EnrollmentRegulation(Object regulation,ExtentTest testCaseName) throws IOException {
+		testCaseName.log(Status.INFO, "Regulation Test case has started running");
 
+		
+		
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().regulation, 30);
 //		System.out.println(pom.getInstanceEnrollXP().regulation.isDisplayed());
@@ -222,7 +281,8 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			explicitWait(regulationOption, 30);
 			implicitWait(30);
 			click(regulationOption);
-
+			testCaseName.log(Status.PASS, "Regulation has entered sucessfully");
+			
 		}
 
 		else {
@@ -232,13 +292,18 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			implicitWait(30);
 			explicitWait(pom.getInstanceEnrollXP().regulation, 30);
 			click(regulationOption);
+			testCaseName.log(Status.FAIL, "Regulation has not entered", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			
 		}
 	}
 
-	public static void EnrollmentExamType(Object examType) throws InterruptedException {
+	public static void EnrollmentExamType(Object examType,ExtentTest testCaseName) throws InterruptedException, IOException {
 
 //		System.out.println("To check" + examType);
+		testCaseName.log(Status.INFO, "Exam Type Test case has started running");
 
+		
+		
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().examType, 30);
 
@@ -252,7 +317,8 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			explicitWait(examTypesOption, 30);
 			implicitWait(30);
 			click(examTypesOption);
-
+			testCaseName.log(Status.PASS, "Exam Type has entered sucessfully");
+			
 		}
 
 		else {
@@ -262,173 +328,19 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			implicitWait(30);
 			explicitWait(examTypesOption, 30);
 			click(examTypesOption);
+			testCaseName.log(Status.FAIL, "Exam Type has not entered", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			
 		}
 	}
 
-// 	public void processOtherDetails(Object examdate, Object awardName, Object semester, Object regulation, Object examType)  throws InterruptedException, IOException {
-// 			
 
-// 			Actions action = new Actions(driver);
+	public void submitButton(ExtentTest testCaseName) throws InterruptedException, IOException {
 
-// 		explicitWait( pom.getInstanceEnrollXP().examSeries, 30);
-// 		click( pom.getInstanceEnrollXP().examSeries);
-
-// 		implicitWait( 30);
-// 		explicitWait( pom.getInstanceEnrollXP().examSeries, 30);
-// 		click( pom.getInstanceEnrollXP().examSeries);
-// //		   		
-// //		   		if(pom.getInstanceEnrollXP().alertOk.isDisplayed()) {
-// //			   		
-// //			   		implicitWait(30);	
-// //			   		explicitWait(pom.getInstanceEnrollXP().alertOk,30);
-// //			   		click(pom.getInstanceEnrollXP().alertOk);
-// //				}
-
-// //				implicitWait(5000);	
-// //		   		explicitWait(pom.getInstanceEnrollXP().enrollNo,30);
-// //		   		pom.getInstanceEnrollXP().enrollNo.clear();
-// //		   		implicitWait(30);	
-// //		   		explicitWait(pom.getInstanceEnrollXP().enrollNo,30);
-// //		   		sendKeys(pom.getInstanceEnrollXP().enrollNo, str);
-// //			
-// //			   		System.out.println(str);
-// //			   		implicitWait(30);	
-// //		   		
-// //		   		}
-
-// 		implicitWait( 30);
-// 		explicitWait( pom.getInstanceEnrollXP().examSeries, 30);
-// 		click( pom.getInstanceEnrollXP().examSeries);
-// //		   		implicitWait(30);	
-// //		   		
-// //		   	//li[contains(@class,'select2-results__option')
-// 		WebElement examDateOption = driver.findElement(By.xpath("//li[@role='option' and text()='" + examdate + "']"));
-// 		explicitWait( examDateOption, 30);
-
-// 		if (examDateOption.isDisplayed()) {
-// 			explicitWait( examDateOption, 30);
-// 			implicitWait( 30);		
-// 		click( examDateOption);
-
-// 		}
-
-// 		else {
-// 			implicitWait( 30);
-// 			explicitWait( pom.getInstanceEnrollXP().examSeries, 30);
-// 			click( pom.getInstanceEnrollXP().examSeries);
-// 			implicitWait( 30);
-// 			explicitWait( pom.getInstanceEnrollXP().examSeries, 30);
-// 			click( examDateOption);
-// 		}
-// //		   		dropDownClick(pom.getInstanceEnrollXP().examSeriesOption,examdate);
-
-// 		implicitWait( 30);
-// 		explicitWait( pom.getInstanceEnrollXP().awardName, 30);
-// 		click( pom.getInstanceEnrollXP().awardName);
-// //
-// //		   	//li[contains(@class,'select2-results__option') and text()!='Select']
-// //		   	// Construct XPath with the dynamic text
-// 		WebElement awardOption = driver.findElement(By.xpath("//li[@role='option' and text()='" + awardName + "']"));
-
-// //
-// 		if (awardOption.isDisplayed()) {
-// 			explicitWait( awardOption, 30);
-// 			implicitWait( 30);		
-// 		click( awardOption);
-
-// 		}
-
-// 		else {
-// 			implicitWait( 30);
-// 			explicitWait( pom.getInstanceEnrollXP().awardName, 30);
-// 			click( pom.getInstanceEnrollXP().awardName);
-// 			implicitWait( 30);
-// 			explicitWait( pom.getInstanceEnrollXP().awardName, 30);
-// 			click( awardOption);
-// 		}
-
-// 		implicitWait( 30);
-// 		explicitWait( pom.getInstanceEnrollXP().yearSession, 30);
-// 		click( pom.getInstanceEnrollXP().yearSession);
-// //		   		
-// //		   		implicitWait(30);	
-// //		   		
-// //		   	//li[contains(@class,'select2-results__option')
-// 		WebElement yearSessionOption = driver
-// 				.findElement(By.xpath("//li[@role='option' and text()='" + semester + "']"));
-// //		click( yearSessionOption);
-// //		    	
-// 		if (yearSessionOption.isDisplayed()) {
-// 			explicitWait( yearSessionOption, 30);
-// 			implicitWait( 30);		
-// 		click( yearSessionOption);
-
-// 		}
-
-// 		else {
-// 			implicitWait( 30);
-// 			explicitWait( pom.getInstanceEnrollXP().yearSession, 30);
-// 			click( pom.getInstanceEnrollXP().yearSession);
-// 			implicitWait( 30);
-// 			explicitWait( pom.getInstanceEnrollXP().yearSession, 30);
-// 			click( yearSessionOption);
-// 		}
-
-// 		implicitWait( 30);
-// 		explicitWait( pom.getInstanceEnrollXP().regulation, 30);
-// 		click( pom.getInstanceEnrollXP().regulation);
-// 		implicitWait( 30);
-
-// 		// System.out.println(regulation);
-// 		WebElement regulationOption = driver
-// 				.findElement(By.xpath("//li[@role='option' and text()='" + regulation + "']"));
-
-// 		if (regulationOption.isDisplayed()) {
-// 			explicitWait( regulationOption, 30);
-// 			implicitWait( 30);		
-// 		click( regulationOption);
-
-// 		}
-
-// 		else {
-// 			implicitWait( 30);
-// 			explicitWait( pom.getInstanceEnrollXP().regulation, 30);
-// 			click( pom.getInstanceEnrollXP().regulation);
-// 			implicitWait( 30);
-// 			explicitWait( pom.getInstanceEnrollXP().regulation, 30);
-// 			click( regulationOption);
-// 		}
-
-// //		click( regulationOption);
-
-// 		implicitWait( 30);
-// 		explicitWait( pom.getInstanceEnrollXP().examType, 30);
-// 		click( pom.getInstanceEnrollXP().examType);
-// 		implicitWait( 30);
-
-// 		WebElement examTypesOption = driver.findElement(By.xpath("//li[@role='option' and text()='" + examType + "']"));
-
-// 		if (examTypesOption.isDisplayed()) {
-// 			explicitWait( examTypesOption, 30);
-// 			implicitWait( 30);		
-// 		click( examTypesOption);
-
-// 		}
-
-// 		else {
-// 			implicitWait( 30);
-// 			explicitWait( pom.getInstanceEnrollXP().examType, 30);
-// 			click( pom.getInstanceEnrollXP().examType);
-// 			implicitWait( 30);
-// 			explicitWait( examTypesOption, 30);
-// 			click( examTypesOption);
-// 		}
-// //		click( examTypesOption);
-
-	public void submitButton() throws InterruptedException {
-
+		testCaseName.log(Status.INFO, "Submit Button Test case has started running");
 		implicitWait(30);
 		explicitWait(pom.getInstanceEnrollXP().submitBtn, 30);
+		if(pom.getInstanceEnrollXP().submitBtn.isDisplayed()) {
+		
 		click(pom.getInstanceEnrollXP().submitBtn);
 
 		explicitWait(pom.getInstanceEnrollXP().loadingScreen, 30);
@@ -436,7 +348,14 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 		fluentWait(pom.getInstanceEnrollXP().loadingScreen, 30);
 
-		Thread.sleep(5000);
+		testCaseName.log(Status.PASS, "Submit button has clicked sucessfully");
+		Thread.sleep(5000);}
+		
+		else {
+			
+			testCaseName.log(Status.FAIL, "Submit has not clicked", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			
+		}
 
 	}
 
@@ -489,8 +408,11 @@ public class ReportEnrollmentPage extends BasicFunctions {
 		
 	}
 
-	public void downloadReportValidation() throws InterruptedException, IOException {
+	public void downloadPdfReportValidation(ExtentTest testCaseName) throws InterruptedException, IOException {
 	    try {
+	    	
+	    	testCaseName.log(Status.INFO, "Pdf Report Validation Test case has started running");
+	    	
 	        Actions action = new Actions(driver);
 
 	        Thread.sleep(5000);
@@ -513,9 +435,13 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	        if (driver.getCurrentUrl().endsWith(".pdf")) {
 	            System.out.println("PDF opened successfully: " + driver.getCurrentUrl());
 	            System.out.println("=========================");
+	        	testCaseName.log(Status.PASS, "PDF opened successfully sucessfully" +  driver.getCurrentUrl());
+	            
 	        } else {
 	            System.out.println(driver.getCurrentUrl());
 	            System.out.println("Failed to open the PDF.");
+	        	testCaseName.log(Status.FAIL,"Failed to open the PDF.");
+		        
 	        }
 
 	        // Wait for the PDF file to download
@@ -537,6 +463,9 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	            
 	            else {
 	            	System.out.println("Facing error");
+	            	
+	            	testCaseName.log(Status.FAIL, "Facing error", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+	        		
 	            }
 	            
 	            Thread.sleep(1000); // Check every second
@@ -640,10 +569,13 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	    										System.out.println(grandTotalMinMark + grandTotalMaxMark);
 	    										System.out.println("==============");
 	    									}
+	    							//		 checkPaper1Result(registrationNumber,paper1Mark);
 	    								}
 
 	    								i += 2; // Move to the next pair of Max/Min marks
 	    							}
+	    							
+	    							
 	    						}
 	    					}
 
@@ -793,35 +725,54 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	
 	
 	// Method to check if a student passed or failed in Paper 1
-	public void checkPaper1Result(Object regno, Object paper1) {
+	public void checkPaper1Result(Object regno, Object paper1,ExtentTest testCaseName) {
 		try {
 			Paper1 = objectToDataType(paper1);
 			System.out.println(Paper1);
+			testCaseName.log(Status.INFO, "Paper1 Validation Test case has started running");
+			
 			try {
 				if (paper1Mark == Paper1) {
 					System.out.println(
-							"Both Excel " + Paper1 + " and Pdf " + paper1Mark + " data are same for paper 1 mark");
+							"Both Excel " + Paper1 + " and Pdf " + paper1Mark  + " for the following Register " + regno +" number data are same for paper 1 mark");
+					testCaseName.log(Status.PASS, "Both Excel " + Paper1 + " and Pdf " + paper1Mark  + " for the following Register " + regno +" number data are same for paper 1 mark" );
+				      
+			        
+				
 				}
 
 				else {
 					System.out.println("Both Excel " + Paper1 + " and Pdf " + paper1Mark
-							+ " data are not same please check Excel file or Pdf file for paper 1 mark");
+							+ " for the following " + regno +" data are not same please check Excel file or Pdf file for paper 1 mark");
+				testCaseName.log(Status.FAIL, "Both Excel " + Paper1 + " and Pdf " + paper1Mark  + " for the following " + regno +" number data are not same for paper 1 mark" , MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+		       
 				}
 
 			} catch (Exception e) {
 				e.printStackTrace();
 
+				testCaseName.log(Status.FAIL, "Check the files" , MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			       
+			       
 			}
 
 			if (paper1Mark < 50 && Paper1 < 50) {
 				System.out.println("The following Registration number " + registrationNumber
 						+ " is failed in Paper1 exam with marks: " + paper1Mark);
+				
+				testCaseName.log(Status.PASS, "The following Registration number " + registrationNumber
+						+ " is failed in Paper1 exam with marks: " + paper1Mark);
+				
 			} else if (paper1Mark >= 50 && Paper1 >= 50) {
 				System.out.println("The following Registration number " + registrationNumber
 						+ " is passed in Paper1 exam with marks: " + paper1Mark);
+				testCaseName.log(Status.PASS,"The following Registration number " + registrationNumber
+						+ " is passed in Paper1 exam with marks: " + paper1Mark);
+				
 			} else {
 				System.out.println("Pdf mark is " + paper1Mark + " Excel mark is " + Paper1);
-
+				testCaseName.log(Status.FAIL, "Pdf mark is " + paper1Mark + " Excel mark is " + Paper1 + " for the following "+ regno + " number");
+			       
 			}
 
 		} catch (Exception e) {
@@ -832,19 +783,24 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	}
 
 	// Method to check if a student passed or failed in Paper 2
-	public void checkPaper2Result(Object regno, Object paper2) {
+	public void checkPaper2Result(Object regno, Object paper2,ExtentTest testCaseName) {
 		try {
+			testCaseName.log(Status.INFO, "Paper1 Validation Test case has started running");
 			Paper2 = objectToDataType(paper2);
 
 			try {
 				if (paper2Mark == Paper2) {
 					System.out.println(
-							"Both Excel " + Paper2 + " and Pdf " + paper2Mark + " data are same for paper 2 mark");
+							"Both Excel " + Paper2 + " and Pdf " + paper2Mark  + " for the following Register " + regno +" number data are same for paper 2 mark");
+					testCaseName.log(Status.PASS, "Both Excel " + Paper2 + " and Pdf " + paper2Mark  + " for the following Register " + regno +" number data are same for paper 2 mark" );
+				  
 				}
 
 				else {
 					System.out.println("Both Excel " + Paper2 + " and Pdf " + paper2Mark
-							+ " data are not same please check Excel file or Pdf file for paper 2 mark");
+							+ " for the following " + regno +" data are not same please check Excel file or Pdf file for paper 1 mark");
+				testCaseName.log(Status.FAIL, "Both Excel " + Paper2 + " and Pdf " + paper2Mark  + " for the following " + regno +" number data are not same for paper 2 mark" , MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+		       
 				}
 
 			} catch (Exception e) {
@@ -870,19 +826,23 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	}
 
 	// Method to check if a student passed or failed in Paper 3
-	public void checkPaper3Result(Object regno, Object paper3) {
+	public void checkPaper3Result(Object regno, Object paper3,ExtentTest testCaseName) {
 		try {
+			testCaseName.log(Status.INFO, "Paper3 Validation Test case has started running");
 			Paper3 = objectToDataType(paper3);
 
 			try {
 				if (paper3Mark == Paper3) {
 					System.out.println(
-							"Both Excel " + Paper3 + " and Pdf " + paper3Mark + " data are same for paper 3 mark");
-				}
+							"Both Excel " + Paper3 + " and Pdf " + paper3Mark  + " for the following Register " + regno +" number data are same for paper 3 mark");
+					testCaseName.log(Status.PASS, "Both Excel " + Paper3 + " and Pdf " + paper3Mark  + " for the following Register " + regno +" number data are same for paper 3 mark" );
+				  		}
 
 				else {
 					System.out.println("Both Excel " + Paper3 + " and Pdf " + paper3Mark
-							+ " data are not same please check Excel file or Pdf file for paper 3 mark");
+							+ " for the following " + regno +" data are not same please check Excel file or Pdf file for paper 3 mark");
+				testCaseName.log(Status.FAIL, "Both Excel " + Paper3 + " and Pdf " + paper3Mark  + " for the following " + regno +"number data are not same for paper 3 mark" , MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+		       
 				}
 
 			} catch (Exception e) {
@@ -908,9 +868,9 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 	// Method to check if a student passed or failed in the Theory Exam (Paper1 +
 	// Paper2 + Paper3)
-	public void checkTheoryExamResult(Object regno, Object theoryExam) {
+	public void checkTheoryExamResult(Object regno, Object theoryExam,ExtentTest testCaseName) {
 		try {
-
+			testCaseName.log(Status.INFO, "Therory Exam Toal Result Validation Test case has started running");
 			TheroryExamTotal = Paper1 + Paper2 + Paper3;
 			//
 
@@ -922,13 +882,24 @@ public class ReportEnrollmentPage extends BasicFunctions {
 
 			try {
 				if (theoryTotal == theroryExamTotal && theoryTotal == TheroryExamTotal) {
-					System.out.println("Both Excel " + theroryExamTotal + " and Pdf " + theoryTotal
-							+ " data are same for theory total mark");
+		
+					
+				
+					System.out.println(
+							"Both Excel " + theroryExamTotal + " and Pdf " + theoryTotal  + " for the following Register " + regno +" number data are same for theory total mark");
+					testCaseName.log(Status.PASS, "Both Excel " + theroryExamTotal + " and Pdf " + theoryTotal  + " for the following Register " + regno +" number data are same for theory total mark" );
+				  
+				
 				}
 
 				else {
+				
 					System.out.println("Both Excel " + theroryExamTotal + " and Pdf " + theoryTotal
-							+ " data are not same please check Excel file or Pdf file for theory total mark");
+							+ " for the following " + regno +" data are not same please check Excel file or Pdf file for theory total mark");
+				testCaseName.log(Status.FAIL, "Both Excel " + theroryExamTotal + " and Pdf " + theoryTotal  + " for the following " + regno +" number data are not same for theory total mark" , MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+		       
+				
+				
 				}
 
 			} catch (Exception e) {
@@ -956,17 +927,27 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	}
 
 	// Method to check if a student passed or failed in the Practical Exam
-	public void checkPracticalExamResult(Object regno, Object praticalExam) {
+	public void checkPraticalExamResult(Object regno, Object praticalExam,ExtentTest testCaseName) {
 		try {
+			testCaseName.log(Status.INFO, "Pratical Exam Total Result Validation Test case has started running");
 			PraticalExamTotal = objectToDataType(praticalExam);
 
 			try {
 				if (praticalTotal == PraticalExamTotal) {
-					System.out.println("Both Excel " + PraticalExamTotal +" and Pdf "+ praticalTotal +" data are same for pratical total mark");
+				
+					System.out.println(
+							"Both Excel " + PraticalExamTotal + " and Pdf " + praticalTotal  + " for the following Register " + regno +" number data are same for pratical total mark");
+					testCaseName.log(Status.PASS, "Both Excel " + PraticalExamTotal + " and Pdf " + praticalTotal  + " for the following Register " + regno +" number data are same for pratical total mark" );
+				  
+				
 				}
 	
 				else {
-					System.out.println("Both Excel " + PraticalExamTotal +" and Pdf "+ praticalTotal +" data are not same please check Excel file or Pdf file for pratical total mark");	
+
+					System.out.println("Both Excel " + PraticalExamTotal + " and Pdf " + praticalTotal
+							+ " for the following " + regno +" data are not same please check Excel file or Pdf file for pratical total mark");
+				testCaseName.log(Status.FAIL, "Both Excel " + PraticalExamTotal + " and Pdf " + praticalTotal  + " for the following " + regno +" number data are not same for pratical total mark" , MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+		       
 				}
 
 			} catch (Exception e) {
@@ -990,9 +971,9 @@ public class ReportEnrollmentPage extends BasicFunctions {
 	}
 
 	// Method to check the final result (Theory Exam + Practical Exam)
-	public void checkFinalExamResult(Object regno, Object examTotal) {
+	public void checkFinalExamResult(Object regno, Object examTotal,ExtentTest testCaseName) {
 		try {
-
+			testCaseName.log(Status.INFO, "Grand Total Exam Result Validation Test case has started running");
 			// Calculate total score (Theory + Practical)
 			ExamTotalScore = TheroryExamTotal + PraticalExamTotal;
 
@@ -1003,11 +984,18 @@ public class ReportEnrollmentPage extends BasicFunctions {
 			try {
 				if (grandTotal == grandTotalScore) {
 				
-						System.out.println("Both Excel " + grandTotalScore +" and Pdf "+ grandTotal +" data are same for pratical grand total mark");
-					}
+					System.out.println(
+							"Both Excel " + grandTotalScore + " and Pdf " + grandTotal  + " for the following Register " + regno +" number data are same for grand total mark");
+					testCaseName.log(Status.PASS, "Both Excel " + grandTotalScore + " and Pdf " + grandTotal  + " for the following Register " + regno +" number data are same for grand total mark" );
+						}
 		
 					else {
-						System.out.println("Both Excel " + grandTotalScore +" and Pdf "+ grandTotal +" data are not same please check Excel file or Pdf file for grand total mark");	
+				
+					
+						System.out.println("Both Excel " + grandTotalScore + " and Pdf " + grandTotal
+								+ " for the following " + regno +" data are not same please check Excel file or Pdf file for grand total mark");
+					testCaseName.log(Status.FAIL, "Both Excel " + grandTotalScore + " and Pdf " + grandTotal  + " for the following " + regno +" number data are not same for grand total mark" , MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			       
 					}
 
 			} catch (Exception e) {
