@@ -3,35 +3,38 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="replacehistory">
+		<item value="Marks is:"/>
+		<item value="processEightSubjectPattern"/>
+		<item value="if (subject.equalsIgnoreCase(subjectToFind))"/>
+		<item value="regno"/>
+		<item value="maxMark"/>
+		<item value="minMark"/>
+		<item value="m"/>
+		<item value="theoryMinMark"/>
+		<item value="subject"/>
+		<item value="ExtentTest testCaseScenario = testCaseName.createNode("/>
+		<item value="testCaseScenario.log"/>
 		<item value="Register &quot;"/>
 		<item value="Both Excel &quot;"/>
 		<item value="// ExtentReports     report = new ExtentReports(&quot;D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html&quot;);"/>
 		<item value="// &#x09;ExtentReports     report = new ExtentReports(&quot;D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html&quot;);"/>
-		<item value="pom.getInstanceAssignCourseXP()"/>
-		<item value="CoursePage"/>
-		<item value="studentDetail"/>
-		<item value="AssignCourse"/>
-		<item value="enrollPage"/>
-		<item value="Enroll"/>
-		<item value="enrollNo"/>
-		<item value="sendKeys"/>
 	</list>
 	<list key="searchhistory">
-		<item value="Register&quot;"/>
-		<item value="Both Excel"/>
-		<item value="Enrollment wise "/>
-		<item value="capture(driver);"/>
-		<item value="&#x09; capture(driver);"/>
-		<item value="Max Marks"/>
-		<item value="Grand Total"/>
-		<item value="Practical Max Marks"/>
-		<item value="Both Excel&quot;"/>
-		<item value="isdisplayed"/>
+		<item value="eight"/>
+		<item value="marks"/>
+		<item value="marksLine "/>
+		<item value="//li[@role=&apos;option&apos; and text()"/>
+		<item value="pratical internal Sec mark"/>
+		<item value="//li[@role=&apos;option&apos;"/>
+		<item value=" //li[@role=&apos;option&apos;"/>
+		<item value="marks marks"/>
+		<item value="Pdf mark is"/>
+		<item value="Both PDF file total"/>
 		<item value="check"/>
-		<item value="+ regno"/>
-		<item value="Input string does not match the pattern."/>
-		<item value="ExtentReports     report = new ExtentReports(&quot;D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html&quot;);"/>
-		<item value="&#x09;ExtentReports     report = new ExtentReports(&quot;D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html&quot;);"/>
+		<item value="Paper3Mark"/>
+		<item value="praticalTotalSecMark"/>
+		<item value="checkmarks"/>
+		<item value="Both PDF file"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item key="wrap" value="true"/>
@@ -39,27 +42,31 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="174.0"/>
+		<item key="selection" value="2309492017"/>
 		<list key="findhistory">
-			<item value="174.0"/>
-			<item value="Page 42:"/>
-			<item value="Page 36:"/>
-			<item value="21207105003"/>
-			<item value="Grand Total"/>
-			<item value="package pageModules;"/>
-			<item value="Found marks:"/>
-			<item value="21202105005"/>
-			<item value="PABBU KRISHNA SREE"/>
-			<item value="D:\Coempt_Automation\coempt_automation\path_to_config_file.xml"/>
-			<item value="Reading data from the Excel file..."/>
+			<item value="2309492017"/>
+			<item value="paper 3 mark in check marks"/>
+			<item value="2309483014"/>
+			<item value="36"/>
+			<item value="35"/>
+			<item value="71"/>
+			<item value="0.0"/>
+			<item value="Both PDF file"/>
+			<item value="2220603001"/>
+			<item value="NURSING FOUNDATION"/>
+			<item value="24"/>
+			<item value="Biochemistry"/>
+			<item value="AB"/>
+			<item value="Theory plus Pratical Sec"/>
+			<item value="subject: PHYSIOLOGY"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="376"/>
-		<item key="DIALOG_Y_ORIGIN" value="345"/>
-		<item key="DIALOG_WIDTH" value="322"/>
+		<item key="DIALOG_X_ORIGIN" value="306"/>
+		<item key="DIALOG_Y_ORIGIN" value="110"/>
+		<item key="DIALOG_WIDTH" value="318"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>

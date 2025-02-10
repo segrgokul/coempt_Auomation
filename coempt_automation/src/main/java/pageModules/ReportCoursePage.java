@@ -1,11 +1,5 @@
 package pageModules;
 
-import static pageModules.ReportEnrollmentPage.EnrollmentAwardName;
-import static pageModules.ReportEnrollmentPage.EnrollmentExamDate;
-import static pageModules.ReportEnrollmentPage.EnrollmentExamType;
-import static pageModules.ReportEnrollmentPage.EnrollmentRegulation;
-import static pageModules.ReportEnrollmentPage.EnrollmentSemester;
-
 import java.io.IOException;
 
 import org.openqa.selenium.By;
@@ -16,6 +10,11 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
 import base.BasicFunctions;
+import static pageModules.ReportEnrollmentPage.EnrollmentAwardName;
+import static pageModules.ReportEnrollmentPage.EnrollmentExamDate;
+import static pageModules.ReportEnrollmentPage.EnrollmentExamType;
+import static pageModules.ReportEnrollmentPage.EnrollmentRegulation;
+import static pageModules.ReportEnrollmentPage.EnrollmentSemester;
 import pageObjMod.pom;
 
 public class ReportCoursePage extends BasicFunctions {
@@ -37,8 +36,8 @@ public class ReportCoursePage extends BasicFunctions {
 
 	public void ReportCardNavigation(ExtentTest testCaseName) throws IOException {
 		
-		testCaseName.log(Status.INFO, "Report Card Navigation");
-
+	//	testCaseName.log(Status.INFO, "Report Card Navigation");
+		ExtentTest testCaseScenario = testCaseName.createNode("Report Card Navigation");
 		
 		implicitWait( 30);
 		explicitWait( pom.getInstanceCourseXP().loginTags, 30);
@@ -53,22 +52,20 @@ public class ReportCoursePage extends BasicFunctions {
 
 			implicitWait( 30);
 			
-			System.out.println("testCaseName: " + testCaseName);
+		
 			
 			if(pom.getInstanceCourseXP().reportCardOption.isDisplayed()) {
 			
 			explicitWait( pom.getInstanceCourseXP().reportCardOption, 30);
 			click( pom.getInstanceCourseXP().reportCardOption);
-			testCaseName.log(Status.PASS, "Report Card is Navigated sucessfully");
-			
-
+			testCaseScenario.log(Status.PASS, "Report Card is Navigated sucessfully");
 			
 		
 		//	testCaseName.log(Status.FAIL, "This is a pass message");
 			}	}
 			else {
 	       
-				testCaseName.log(Status.FAIL, "Report Card page not navigating ", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+				testCaseScenario.log(Status.FAIL, "Report Card page not navigating ", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
 			
 			}
 
@@ -81,12 +78,9 @@ public class ReportCoursePage extends BasicFunctions {
 	public void ReportCardCourseNavigation(ExtentTest testCaseName) throws IOException {
 	// // // 	// // // ExtentReports     report = new ExtentReports("D:\\Coempt_Automation\\coempt_automation\\src\\test\\resources\\reports\\ReportCoursePage.html");
     //    report.loadConfig(new File("path_to_config_file.xml"));
-    
-
-      //  ExtentTest	test = report.startTest("ReportCard Course Navigation");
 	    
-		testCaseName.log(Status.INFO, "Report card course wise Navigation");
-	
+		
+		ExtentTest testCaseScenario = testCaseName.createNode("Report card course wise navigation");
 		
 		implicitWait( 30);
 		explicitWait( pom.getInstanceCourseXP().reportCardCourse, 30);
@@ -102,13 +96,13 @@ public class ReportCoursePage extends BasicFunctions {
 		
 		explicitWait( pom.getInstanceCourseXP().reportCardCourse, 30);
 		click( pom.getInstanceCourseXP().reportCardCourse);
-		testCaseName.log(Status.PASS, "Report Card is course wise navigation sucessfully");
+		testCaseScenario.log(Status.PASS, "Report Card is course wise navigation sucessfully");
 	
 		
 		}
 		}
 		catch(Exception e) {
-			testCaseName.log(Status.FAIL, "Report Card is course wise does not navigation sucessfully ", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			testCaseScenario.log(Status.FAIL, "Report Card is course wise does not navigation sucessfully ", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
 
 		
 		}
@@ -120,8 +114,10 @@ public class ReportCoursePage extends BasicFunctions {
 	
 	public void handleCollegeCode(Object clgCode,ExtentTest testCaseName) throws InterruptedException, IOException {
 		 
-		testCaseName.log(Status.INFO, "Report card course wise for the following clg code: " + clgCode );
-			
+		
+		ExtentTest testCaseScenario = testCaseName.createNode("Report card course wise for the following clg code: " + clgCode);
+	
+
 		// Wait for the dropdown and textbox elements
 		implicitWait( 50);
 		
@@ -149,14 +145,14 @@ public class ReportCoursePage extends BasicFunctions {
 		// Click the first result in the dropdown
 		if (pom.getInstanceCourseXP().clgDropDownResults.get(0).isDisplayed()) {
 			click( pom.getInstanceCourseXP().clgDropDownResults.get(0));
-			testCaseName.log(Status.PASS, "College code has entered sucessfully");
+			testCaseScenario.log(Status.PASS, "College code has entered sucessfully");
 			
 			
 
 		} else {
 //			System.out.println("College code not found.");
 			
-			testCaseName.log(Status.FAIL, "College code has not entered ", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+			testCaseScenario.log(Status.FAIL, "College code has not entered ", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
 
 			
 	//		testCase.log(LogStatus.FAIL, "Click action performed", testCase.addScreenCapture(BasicFunctions.capture(driver)));
@@ -207,9 +203,11 @@ public class ReportCoursePage extends BasicFunctions {
 
 
 
-	public void handleProgramCourse(Object programcourse,ExtentTest testCaseName) throws InterruptedException {
+	public void handleProgramCourse(Object programcourse,ExtentTest testCaseName) throws InterruptedException, IOException {
 	
-		
+
+		ExtentTest testCaseScenario = testCaseName.createNode("Program course Test case has started running ");
+	
 		// Wait for the dropdown and textbox elements
 		implicitWait( 30);
 		explicitWait( pom.getInstanceCourseXP().ProgramCourse, 30);
@@ -230,7 +228,8 @@ public class ReportCoursePage extends BasicFunctions {
 			explicitWait( ProgramCourseOption, 30);
 			implicitWait( 30);		
 		click( ProgramCourseOption);
-
+		testCaseScenario.log(Status.PASS, "Program course has entered sucessfully");
+		
 		}
 		
 		else {
@@ -240,6 +239,8 @@ public class ReportCoursePage extends BasicFunctions {
 			implicitWait( 30);
 			explicitWait( pom.getInstanceCourseXP().ProgramCourse, 30);
 			click( ProgramCourseOption);
+			testCaseScenario.log(Status.FAIL, "Program course has not entered ", MediaEntityBuilder.createScreenCaptureFromPath(BasicFunctions.capture(driver)).build());
+
 		}
 		
 		

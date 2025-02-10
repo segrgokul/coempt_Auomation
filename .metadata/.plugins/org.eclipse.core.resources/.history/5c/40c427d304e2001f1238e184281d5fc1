@@ -1,0 +1,19 @@
+# Define the browser to use
+browser=firefox
+
+# Possible values: live, test, localhost
+login_name=test
+
+
+#Defines Enrollment file path to use for three pattern
+excel.file2.path=D:/Coempt_Automation/coempt_automation/src/test/resources/dataSheets/ResulProcess.xlsx
+excel.file2.sheet=mds
+
+#Defines Enrollment file path to use for four pattern
+excel.file3.path=D:/Coempt_Automation/coempt_automation/src/test/resources/dataSheets/Resultprocessfordumb.xlsx
+excel.file3.sheet=Sheet2
+
+#Defines Course file path to use
+excel.file1.path=D:/Coempt_Automation/coempt_automation/src/test/resources/dataSheets/Book1.xlsx
+excel.file1.sheet=Sheet1
+

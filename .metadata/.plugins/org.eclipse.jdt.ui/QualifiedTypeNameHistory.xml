@@ -20,8 +20,6 @@
     <fullyQualifiedTypeName name="java.nio.file.spi.FileSystemProvider"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.interactions.Actions"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.aventstack.extentreports.ExtentTest"/>
     <fullyQualifiedTypeName name="pageObjMod.pom"/>
     <fullyQualifiedTypeName name="com.aventstack.extentreports.model.Report"/>
     <fullyQualifiedTypeName name="org.openqa.selenium.By"/>
@@ -31,4 +29,6 @@
     <fullyQualifiedTypeName name="com.aventstack.extentreports.MediaEntityBuilder"/>
     <fullyQualifiedTypeName name="com.relevantcodes.extentreports.ExtentReports"/>
     <fullyQualifiedTypeName name="com.aventstack.extentreports.Status"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.aventstack.extentreports.ExtentTest"/>
 </qualifiedTypeNameHistroy>

@@ -6,7 +6,7 @@
       <class name="runner_Execution.Exceution">
         <methods>
           <include name="beforeClass"/>
-          <include name="testCase5" invocation-numbers="4"/>
+          <include name="testCase5" invocation-numbers="9 10"/>
           <include name="beforeMethod"/>
           <include name="afterClass"/>
           <include name="afterTest"/>

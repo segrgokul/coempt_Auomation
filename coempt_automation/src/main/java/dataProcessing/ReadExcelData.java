@@ -81,7 +81,11 @@ public class ReadExcelData {
                                 data[i - 1][j] = "";  // If the cell type is not handled, store empty string
                                 break;
                         }
-                    } else {
+                    }
+                    
+               
+                    
+                    else {
                         // If the cell is null, store a null value
                         data[i - 1][j] = null;
                     }
